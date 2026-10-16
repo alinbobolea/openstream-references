@@ -65,6 +65,26 @@ classdef ToPlainTest < matlab.unittest.TestCase
             testCase.verifyEqual(s.hidden, 2);
         end
 
+        function testIndependentPropertiesKeepSharedObjects(testCase)
+            % Upstream solvers share handles between properties (shallow
+            % copies); each top-level property must still hold its own data.
+            shared = ExportFixture.Node(5);
+            root = ExportFixture.Node(0);
+            root.value = shared;
+            root.next = shared;
+            shared.next = root;
+            s = toPlain(root, includePrefixes = "ExportFixture.", ...
+                independentProperties = true);
+            testCase.assertTrue(isstruct(s) && isstruct(s.value) && isstruct(s.next));
+            testCase.verifyEqual(s.value.value, 5);
+            testCase.verifyEqual(s.next.value, 5);
+            % A reference back to the top object still ends in a marker.
+            testCase.verifyEqual(s.value.next, '<cycle:ExportFixture.Node>');
+            % Without the option, one of the two references is a marker.
+            d = toPlain(root, includePrefixes = "ExportFixture.");
+            testCase.verifyTrue(xor(ischar(d.value), ischar(d.next)));
+        end
+
         function testCycleIsMarked(testCase)
             a = ExportFixture.Node(1);
             b = ExportFixture.Node(2);
