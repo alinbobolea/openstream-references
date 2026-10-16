@@ -11,7 +11,7 @@ a plain format that any MAT-file reader can open.
 
 - OpenSTREAM commit `a614c7173822a93c1e64ac28d1541cbac028cbd8` (tag
   `v2026.0`), with its `+CoolPropWrapper` submodule.
-- MATLAB R2026b.
+- MATLAB R2026b on the GitHub-hosted `ubuntu-24.04` runner image.
 - CoolProp 8.0.0, installed from upstream's
   `+CoolPropWrapper/requirements.txt`.
 
