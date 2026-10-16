@@ -1,0 +1,42 @@
+[
+  {
+    "name": "bartolomey_22",
+    "dataset": "Bartolomey",
+    "testID": 22,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "relaxCondCoefficients": [0.1118, 0.5]
+  },
+  {
+    "name": "bartolomey_35",
+    "dataset": "Bartolomey",
+    "testID": 35,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "relaxCondCoefficients": [0.1118, 0.5]
+  }
+]

@@ -11,6 +11,8 @@ a plain format that any MAT-file reader can open.
 
 - OpenSTREAM commit `a614c7173822a93c1e64ac28d1541cbac028cbd8` (tag
   `v2026.0`), with its `+CoolPropWrapper` submodule.
+- OpenSTREAM-database commit `b48541e6438a92b4c0ddc83cf0ceda3f71a59b22`
+  (tag `v2026.0.0`), for the dataset-driven cases.
 - MATLAB R2026b on the GitHub-hosted `ubuntu-24.04` runner image.
 - CoolProp 8.0.0, installed from upstream's
   `+CoolPropWrapper/requirements.txt`.
@@ -19,7 +21,7 @@ a plain format that any MAT-file reader can open.
 
 | Path | Contents |
 |---|---|
-| `cases/` | Case lists (JSON): solver class and the upstream input files and IDs for each case |
+| `cases/` | Case lists (JSON). Input-file cases name the upstream input files and IDs; dataset cases name a database dataset, a record (`testID`), a solver and model/option overrides |
 | `matlab/` | Scripts that run the cases and export the results |
 | `tests/` | MATLAB unit tests for the export scripts |
 | `results/` | Exported results, one folder per case list |
@@ -52,7 +54,25 @@ CoolProp versions, the upstream commits and the runner image.
 ## Running
 
 A push to `main` runs the MATLAB unit tests. **Actions → references → Run
-workflow** also runs the cases and opens a pull request with the results.
+workflow** also runs one target and opens a pull request with the results:
+
+| Target | Cases | Results folder |
+|---|---|---|
+| `tutorial1` | `cases/tutorial1.json`: upstream's TUTORIAL1 input files, four solvers, plus a re-export of upstream's saved references | `results/tutorial1/`, `results/tutorial1-upstream/` |
+| `nuthos15-bartolomey` | `cases/nuthos15-bartolomey.json`: Bartolomey records 22 and 35 from OpenSTREAM-database, Mixture solver | `results/nuthos15-bartolomey/` |
+
+## Dataset cases
+
+A dataset case names a database dataset (`dataset`), a record in it
+(`testID`), a solver and overrides for the dataset's default model and
+numerical options (`model`, `options`). The run follows the `runBartolomey`
+function of the database's NUTHOS-15 project: it generates the input files
+with the dataset's `makeInputFiles`, solves with `runCase`, and exports the
+solver as above. When a case has `relaxCondCoefficients = [c1 c2]`, it sets
+`RELAXCONDCOEF = [c1/Re^c2, 1/3, 1.0e-4, 0.0]` with `Re` computed from the
+record's mass flux and diameter and the saturated-liquid viscosity at its
+pressure. Each result `<name>.mat` has a folder `<name>-inputs/` with the four
+generated input files.
 
 ## Licence and credit
 

@@ -4,6 +4,14 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      target:
+        description: Which set of reference cases to run
+        type: choice
+        options:
+          - tutorial1
+          - nuthos15-bartolomey
+        default: tutorial1
 
 jobs:
   tests:
@@ -35,6 +43,11 @@ jobs:
           ref: a614c7173822a93c1e64ac28d1541cbac028cbd8
           path: upstream/openstream
           submodules: true
+      - uses: actions/checkout@v7
+        with:
+          repository: OpenSTREAM-solvers/openstream-database
+          ref: b48541e6438a92b4c0ddc83cf0ceda3f71a59b22
+          path: upstream/openstream-database
       - name: Record upstream commits
         run: |
           echo "OPENSTREAM_COMMIT=$(git -C upstream/openstream rev-parse HEAD)" >> "$GITHUB_ENV"
@@ -45,8 +58,8 @@ jobs:
       - name: Install CoolProp as pinned by upstream
         run: |
           pip install -r upstream/openstream/+CoolPropWrapper/requirements.txt
-          mkdir -p results/tutorial1
-          pip freeze > results/tutorial1/pip-freeze.txt
+          mkdir -p results/${{ inputs.target }}
+          pip freeze > results/${{ inputs.target }}/pip-freeze.txt
       - uses: matlab-actions/setup-matlab@v3
         with:
           release: R2026b
@@ -55,9 +68,7 @@ jobs:
         with:
           command: >-
             addpath("matlab");
-            runCases("cases/tutorial1.json","upstream/openstream","results/tutorial1");
-            exportReferences("cases/tutorial1.json","upstream/openstream","results/tutorial1-upstream");
-            writeFormatFixture("fixtures/format_fixture.mat")
+            runTarget("${{ inputs.target }}")
       - uses: actions/upload-artifact@v7
         if: always()
         with:
@@ -69,7 +80,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          branch="results/${{ github.run_id }}"
+          branch="results/${{ inputs.target }}-${{ github.run_id }}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$branch"
@@ -77,5 +88,5 @@ jobs:
           git commit -m "Add MATLAB reference results for run ${{ github.run_id }}"
           git push origin "$branch"
           gh pr create --base main --head "$branch" \
-            --title "MATLAB reference results, run ${{ github.run_id }}" \
-            --body "OpenSTREAM ${OPENSTREAM_COMMIT}, MATLAB R2026b. Environment: results/tutorial1/environment.json."
+            --title "MATLAB reference results (${{ inputs.target }}), run ${{ github.run_id }}" \
+            --body "OpenSTREAM ${OPENSTREAM_COMMIT}, MATLAB R2026b. Environment: results/${{ inputs.target }}/environment.json."
