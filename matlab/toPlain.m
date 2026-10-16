@@ -24,14 +24,29 @@ function out = toPlain(value, opts)
 %     already converted becomes '<cycle:CLASS>'; an object whose properties
 %     cannot be read becomes '<unreadable:CLASS:ERRORID>'.
 %   - Anything else becomes '<skipped:CLASS>'.
+%
+%   OUT = TOPLAIN(VALUE, independentProperties=true), for a scalar object of
+%   an included class, converts each of its properties separately: a handle
+%   shared between two properties is exported in full under both, and a
+%   cycle marker only refers to an object exported earlier within the same
+%   property (or to VALUE itself). Upstream solvers share handles between
+%   properties through shallow copies, e.g. TwoFluidSolver's liquidInit and
+%   liquid.
 
 arguments
     value
     opts.includePrefixes (1,:) string = ["Solvers." "Inputs." "Session."]
+    opts.independentProperties (1,1) logical = false
 end
 
 visited = {};
-out = convert(value);
+if opts.independentProperties && isscalar(value) && isobject(value) ...
+        && ~isEnumeration(value) && startsWith(class(value), opts.includePrefixes)
+    visited = {value};
+    out = convertProperties(value, true);
+else
+    out = convert(value);
+end
 
     function out = convert(v)
         if isEnumeration(v)
@@ -101,6 +116,12 @@ out = convert(value);
             end
             visited{end+1} = obj;
         end
+        out = convertProperties(obj, false);
+    end
+
+    function out = convertProperties(obj, independent)
+        % Struct of OBJ's stored properties. With INDEPENDENT, each property
+        % starts from a visited list holding only OBJ.
         mc = metaclass(obj);
         props = mc.PropertyList;
         stored = props(~[props.Dependent] & ~[props.Transient] & ~[props.Constant]);
@@ -119,6 +140,9 @@ out = convert(value);
         warning(warningState);
         out = struct();
         for j = 1:numel(stored)
+            if independent
+                visited = {obj};
+            end
             out.(stored(j).Name) = convert(raw.(stored(j).Name));
         end
     end

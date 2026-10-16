@@ -6,7 +6,8 @@ function result = exportSolver(solver, caseDef)
 %   - caseDef:     the case-list entry
 %   - solverClass: the solver class name
 %   - state:       the solver state name, e.g. 'INITIALSTEPCONVERGED'
-%   - solver:      toPlain(SOLVER), every stored property
+%   - solver:      every stored property of SOLVER, each exported in full
+%                  (toPlain with independentProperties=true)
 %   - compared:    W, U and H for each field path below that exists, one
 %                  struct element per stored state of the path's root array
 %                  ([] where a quantity is absent). Path dots become
@@ -26,7 +27,7 @@ result = struct();
 result.caseDef = toPlain(caseDef);
 result.solverClass = class(solver);
 result.state = toPlain(solver.STATE);
-result.solver = toPlain(solver);
+result.solver = toPlain(solver, independentProperties = true);
 
 compared = struct();
 for fieldPath = COMPARED

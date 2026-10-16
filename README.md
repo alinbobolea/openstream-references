@@ -37,10 +37,11 @@ Each result file holds one variable, `result`, with these fields:
 - `state`: the final solver state, e.g. `INITIALSTEPCONVERGED`.
 - `solver`: every stored property of the solver and of its field objects
   (the properties MATLAB itself saves: not dependent, transient or constant),
-  converted to plain types. Enumerations become their member names and
-  function handles become their text. A handle already exported is written
-  as `<cycle:CLASS>`, and an object from outside OpenSTREAM as
-  `<skipped:CLASS>`.
+  converted to plain types. Each solver property is exported in full, even
+  when it shares objects with another property. Enumerations become their
+  member names and function handles become their text. Within one solver
+  property, a handle already exported is written as `<cycle:CLASS>`; an
+  object from outside OpenSTREAM is written as `<skipped:CLASS>`.
 - `compared`: the mass flow rate `W`, velocity `U` and enthalpy `H` for each
   field object and stored state, read the way upstream's integration test
   reads them.
