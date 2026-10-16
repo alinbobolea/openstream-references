@@ -57,6 +57,14 @@ classdef ToPlainTest < matlab.unittest.TestCase
             testCase.verifyFalse(isfield(s, 'LIMIT'));
         end
 
+        function testOverloadedStructIsBypassed(testCase)
+            s = toPlain(ExportFixture.Overloaded(), includePrefixes = "ExportFixture.");
+            testCase.assertTrue(isstruct(s));
+            testCase.verifyEqual(s.shown, 1);
+            testCase.verifyTrue(isfield(s, 'hidden'));
+            testCase.verifyEqual(s.hidden, 2);
+        end
+
         function testCycleIsMarked(testCase)
             a = ExportFixture.Node(1);
             b = ExportFixture.Node(2);
