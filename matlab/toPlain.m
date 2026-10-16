@@ -104,11 +104,13 @@ out = convert(value);
         mc = metaclass(obj);
         props = mc.PropertyList;
         stored = props(~[props.Dependent] & ~[props.Transient] & ~[props.Constant]);
-        % struct() is the only way to read private properties from outside a
-        % class; its warning about that is expected here.
+        % The built-in struct() is the only way to read private properties
+        % from outside a class; its warning about that is expected here.
+        % builtin() bypasses class overloads: upstream's Solvers.AbstractField
+        % defines its own struct() that returns only a few properties.
         warningState = warning('off', 'MATLAB:structOnObject');
         try
-            raw = struct(obj);
+            raw = builtin('struct', obj);
         catch err
             warning(warningState);
             out = sprintf('<unreadable:%s:%s>', class(obj), err.identifier);
