@@ -1,0 +1,50 @@
+[
+  {
+    "name": "tutorial1_MixtureSolver",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL1",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "upstreamReference": "tests/integration/references/TUTORIAL1-TUTORIAL1-DEFAULT/tutorial1_MixtureSolver.mat"
+  },
+  {
+    "name": "tutorial1_TwoFluidSolver",
+    "solver": "Solvers.TwoFluid.TwoFluidSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL1",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "upstreamReference": "tests/integration/references/TUTORIAL1-TUTORIAL1-DEFAULT/tutorial1_TwoFluidSolver.mat"
+  },
+  {
+    "name": "tutorial1_ThreeFieldSolver",
+    "solver": "Solvers.ThreeField.ThreeFieldSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL1",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "upstreamReference": "tests/integration/references/TUTORIAL1-TUTORIAL1-DEFAULT/tutorial1_ThreeFieldSolver.mat"
+  },
+  {
+    "name": "tutorial1_FourFieldSolver",
+    "solver": "Solvers.FourField.FourFieldSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL1",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "upstreamReference": "tests/integration/references/TUTORIAL1-TUTORIAL1-DEFAULT/tutorial1_FourFieldSolver.mat"
+  }
+]
