@@ -72,6 +72,11 @@ out = convert(value);
             out = struct([]);
             return
         end
+        if isscalar(objs)
+            % A single object gives its struct or its marker text directly.
+            out = convertObject(objs);
+            return
+        end
         parts = cell(size(objs));
         for k = 1:numel(objs)
             parts{k} = convertObject(objs(k));
