@@ -104,6 +104,17 @@ classdef ToPlainTest < matlab.unittest.TestCase
             testCase.verifyEqual([s.value], [1 2 3]);
         end
 
+        function testLastWarningIsKept(testCase)
+            % builtin struct() on an object sets lastwarn even with its
+            % warning off; toPlain must leave the caller's last warning.
+            lastwarn('m', 'a:b');
+            s = toPlain(ExportFixture.Node(1), includePrefixes = "ExportFixture.");
+            [message, id] = lastwarn;
+            testCase.assertTrue(isstruct(s));
+            testCase.verifyEqual(message, 'm');
+            testCase.verifyEqual(id, 'a:b');
+        end
+
         function testUnincludedObjectIsSkipped(testCase)
             testCase.verifyEqual(toPlain(containers.Map()), '<skipped:containers.Map>');
             testCase.verifyEqual(toPlain(ExportFixture.Node(1)), '<skipped:ExportFixture.Node>');

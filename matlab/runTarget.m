@@ -6,7 +6,9 @@ function runTarget(target)
 %   - "tutorial1": the TUTORIAL1 case list (runCases, exportReferences and
 %     writeFormatFixture);
 %   - "nuthos15-bartolomey": the dataset-driven Bartolomey cases
-%     (runDatasetCases).
+%     (runDatasetCases);
+%   - "input-fixture": the input-parsing cases of cases/input-fixture.json
+%     (exportInputFixture).
 %
 %   Any other target errors with References:UnknownTarget.
 
@@ -25,6 +27,9 @@ switch target
         runDatasetCases("cases/nuthos15-bartolomey.json", ...
             "upstream/openstream", "upstream/openstream-database", ...
             "results/nuthos15-bartolomey");
+    case "input-fixture"
+        exportInputFixture("cases/input-fixture.json", "upstream/openstream", ...
+            "results/input-fixture");
     otherwise
         error('References:UnknownTarget', 'Unknown target: %s', target);
 end

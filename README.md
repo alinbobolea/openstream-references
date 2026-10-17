@@ -21,7 +21,7 @@ a plain format that any MAT-file reader can open.
 
 | Path | Contents |
 |---|---|
-| `cases/` | Case lists (JSON). Input-file cases name the upstream input files and IDs; dataset cases name a database dataset, a record (`testID`), a solver and model/option overrides |
+| `cases/` | Case lists (JSON). Input-file cases name the upstream input files and IDs; dataset cases name a database dataset, a record (`testID`), a solver and model/option overrides; `input-fixture.json` lists the input-parsing cases, and `input-fixture/` holds the input files written for them |
 | `matlab/` | Scripts that run the cases and export the results |
 | `tests/` | MATLAB unit tests for the export scripts |
 | `results/` | Exported results, one folder per case list |
@@ -49,7 +49,9 @@ Each result file holds one variable, `result`, with these fields:
   reads them.
 
 Every results folder also has an `environment.json` recording the MATLAB and
-CoolProp versions, the upstream commits and the runner image.
+CoolProp versions, the upstream commits, the runner image and the processor
+model (`cpuModel`, read from `/proc/cpuinfo`; empty where that file does not
+exist).
 
 ## Running
 
@@ -60,6 +62,37 @@ workflow** also runs one target and opens a pull request with the results:
 |---|---|---|
 | `tutorial1` | `cases/tutorial1.json`: upstream's TUTORIAL1 input files, four solvers, plus a re-export of upstream's saved references | `results/tutorial1/`, `results/tutorial1-upstream/` |
 | `nuthos15-bartolomey` | `cases/nuthos15-bartolomey.json`: Bartolomey records 22 and 35 from OpenSTREAM-database, Mixture solver | `results/nuthos15-bartolomey/` |
+| `input-fixture` | `cases/input-fixture.json`: what OpenSTREAM's input classes and the MATLAB functions they rely on do with given input files and values, including invalid ones | `results/input-fixture/` |
+
+## Input fixture
+
+The `input-fixture` target records behaviour rather than a solution. Each
+entry of `cases/input-fixture.json` has a unique `name`, a `kind` and the
+fields its kind needs; file paths are relative to the repository root, and
+numeric arguments are given as text lists, `{"double": ["0.2", "NaN", "-0"]}`,
+converted with `str2double`, so that values JSON numbers cannot carry (NaN,
+Inf, -0) can be written. The kinds are: `read` and `convert2json`
+(upstream's input-file parser), `model`, `options`, `geometry`, `bc`,
+`default`, `listprops` and `write` (the input classes), `inputset` (a full
+input set and its solver-dependent properties), and `handle`, `textscan`,
+`upper`, `sprintf`, `num2str`, `readlines`, `ismembertol`, `uint8`, `sum`,
+`sumsweep` and `legalpath` (single functions the input code relies on:
+MATLAB built-ins and upstream's `Session.isLegalPath`). Some cases fail on
+purpose: the error is part of the record.
+
+`results/input-fixture/input_fixture.mat` holds one variable, `fixture`,
+whose field `cases` is a cell array with one struct per manifest entry:
+`name`, `kind`, `input` (the entry), `ok`, `errorId`, `errorMessage`,
+`console` (everything printed, warnings included), `lastWarningId`,
+`lastWarningMessage` and `result` (per kind, empty when the case failed).
+For `inputset` cases the console is not captured because `evalc` disables
+the diary the session log writes; their `console` is empty. The run fails
+after saving its results if a case failed because of the manifest itself
+(error identifier `References:InvalidInputFixture`), so that a typo in an
+argument cannot pass for an intended failure.
+Plain values in results go through `describeValue`, which keeps the class
+and size of every level, so a string can be told from a char vector and a
+row from a column; input objects are converted as in solver results.
 
 ## Dataset cases
 

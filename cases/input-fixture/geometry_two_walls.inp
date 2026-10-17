@@ -1,0 +1,6 @@
+ID ! id > G2
+LENGTH ! l > 5.5
+AREA ! a > 1e-4
+PERIM ! p > 0.01 0.02
+ANGLE ! a > 90
+END

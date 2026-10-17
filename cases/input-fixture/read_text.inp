@@ -1,0 +1,9 @@
+T1 ! lower > mrm
+T2 ! mixed > Bestion
+T3 ! quoted > "WATER"
+T4 ! handle > @(z) 1
+T5 ! handle long > @(z) 1 + 0.1*exp(-z/2)
+T6 ! true > true
+T7 ! TRUE > TRUE
+T8 ! underscore > WALLIS_SIMP
+END

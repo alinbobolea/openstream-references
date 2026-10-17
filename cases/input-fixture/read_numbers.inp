@@ -1,0 +1,24 @@
+N1 ! integer > 100
+N2 ! decimal > 0.07
+N3 ! exp upper > 1.1394E6
+N4 ! exp lower > 6.0821e-05
+N5 ! signs > -0.2 +0.5
+N6 ! leading dot > .5
+N7 ! trailing dot > 5.
+N8 ! infinities > Inf -Inf NaN
+N9 ! lower > inf nan
+N10 ! eleven > 0.00032928972
+N11 ! long > 0.1000000000000000055511151231257827
+N12 ! tabs > 1	2		3
+N13 ! then text > 1.5 abc
+N14 ! text first > abc 1.5
+N15 ! d exponent > 1d3
+N16 ! commas > 1,2,3
+N17 ! empty >
+N18 ! hex > 0x10
+N19 ! spaces >    3.5    4.5   
+N20 ! brackets > [1 2 3]
+N21 ! minus zero > -0
+N22 ! overflow > 1e309
+N23 ! subnormal > 4.9e-324
+END

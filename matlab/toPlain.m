@@ -22,7 +22,8 @@ function out = toPlain(value, opts)
 %     property: the properties MATLAB itself saves (not Dependent, Transient
 %     or Constant), including private ones. Arrays keep their size. A handle
 %     already converted becomes '<cycle:CLASS>'; an object whose properties
-%     cannot be read becomes '<unreadable:CLASS:ERRORID>'.
+%     cannot be read becomes '<unreadable:CLASS:ERRORID>'. Reading them
+%     leaves lastwarn as it was.
 %   - Anything else becomes '<skipped:CLASS>'.
 %
 %   OUT = TOPLAIN(VALUE, independentProperties=true), for a scalar object of
@@ -129,15 +130,20 @@ end
         % from outside a class; its warning about that is expected here.
         % builtin() bypasses class overloads: upstream's Solvers.AbstractField
         % defines its own struct() that returns only a few properties.
+        % lastwarn records a warning even while it is off, so the caller's
+        % last warning is saved and restored around the call.
+        [lastMessage, lastId] = lastwarn;
         warningState = warning('off', 'MATLAB:structOnObject');
         try
             raw = builtin('struct', obj);
         catch err
             warning(warningState);
+            lastwarn(lastMessage, lastId);
             out = sprintf('<unreadable:%s:%s>', class(obj), err.identifier);
             return
         end
         warning(warningState);
+        lastwarn(lastMessage, lastId);
         out = struct();
         for j = 1:numel(stored)
             if independent

@@ -11,6 +11,7 @@ on:
         options:
           - tutorial1
           - nuthos15-bartolomey
+          - input-fixture
         default: tutorial1
 
 jobs:
