@@ -1,0 +1,12 @@
+{
+  "matlabVersion": "26.2.0.3386108 (R2026b)",
+  "matlabRelease": "2026b",
+  "pythonVersion": "3.13.16 (main, Oct  1 2026, 02:37:54) [GCC 13.3.0]",
+  "coolpropVersion": "8.0.0",
+  "openstreamCommit": "a614c7173822a93c1e64ac28d1541cbac028cbd8",
+  "coolpropWrapperCommit": "a7c40902ff66faf6ed668986398bb1b9faa16e13",
+  "runnerImage": "ubuntu24 20261012.334.1",
+  "computer": "GLNXA64",
+  "cpuModel": "AMD EPYC 7763 64-Core Processor",
+  "created": "2026-10-17T20:27:13Z"
+}
