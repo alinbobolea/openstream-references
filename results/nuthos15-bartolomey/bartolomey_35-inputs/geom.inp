@@ -1,0 +1,7 @@
+ID         ! Channel identifier                                             > BARTOLOMEY
+LENGTH     ! Axial length [m]                                               > 1.40000000000
+AREA       ! Coolant area [m^2]                                             > 0.00011366000
+PERIM      ! Perimeter(s) of the channel walls [m]                          > 0.03779300000
+ANGLE      ! Inclination angle from vertical [deg]                          > 0.00000000000
+END
+
