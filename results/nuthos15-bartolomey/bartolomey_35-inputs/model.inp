@@ -1,0 +1,104 @@
+ID         ! Identifier for the model configuration                         > DEFAULT
+NNODES     !                                                                > 100.00000000000
+FLUID      ! CoolProp fluid identifier                                      > WATER
+PROPERTIES ! Assumption model for fluid properties selected from :class:`InputEnums.FLUIDPROPERTIES`> PSYSTEM
+KLOC       ! Elevation of local perturbations [m]                           > 0.00000000000
+WBOILINGXSUB! Equilibrium thermodynamic quality at onset of subcooled wall boiling [-]> -0.20000000000
+WBOILINGN  ! Wall boiling function exponent [-]                             > 1.00000000000
+WBOILINGXSAT! Equilibrium thermodynamic quality at onset of saturated wall boiling [-]> 0.00000000000
+OAF        ! Onset of annular flow model selected from :class:`InputEnums.OAF`> WALLIS
+OAFTRANSITION! Annular flow transition function parameters (sigmoid width/location wrt OAF) [m]> 0.10000000000 0.00000000000
+CBT        ! Critical Boiling Transition model selected from :class:`InputEnums.CBT`> NONE
+CBTMULT    ! Critical boiling Heat flux multiplier function                 > @(z)1
+CBTKEFFECT ! Grid effect coefficients (:math:`1 + C(1) \exp(C(2) z)`) [-]   > 0.00000000000 0.00000000000
+CBTELEVATION! Critical Boiling Transition Elevation [m]                      > 1.00000000000
+MFBT       ! Minimum Film Boiling Transition model selected from :class:`InputEnums.MFBT`> NONE
+DTMFB      ! Minimum film boiling temperature from saturation [K]           > 100.00000000000
+SPMTM      ! Single-phase wall momentum transfer model selected from :class:`InputEnums.SPMTM`> BLASIUS
+FRICTION   ! Wall friction coefficients [-]                                 > 0.20000000000 -0.20000000000  0.00000000000
+TPFM       ! Two-phase friction multiplier model selected from :class:`InputEnums.TPFM`> HOMOGENEOUS
+KLOSS      ! Pressure loss coefficients of local perturbations [-]          > 0.00000000000
+TPKM       ! Two-phase local loss multiplier model selected from :class:`InputEnums.TPKM`> HOMOGENEOUS
+BTMTM      ! Boiling transition wall momentum transfer model selected from :class:`InputEnums.BTMTM`> TPFM
+SPHTM      ! Single-phase wall heat transfer model selected from :class:`InputEnums.SPHTM`> DITTUSBOELTER
+DITTUSBOELTERCOEF! Dittus-Boelter coefficients [-]                                > 0.02300000000 0.80000000000 0.40000000000
+TPHTM      ! Two-phase wall heat transfer model selected from :class:`InputEnums.TPHTM`> THOM
+BTHTM      ! Boiling transition wall heat transfer model selected from :class:`InputEnums.BTHTM`> VAPOR
+MOECKCOEF  ! Groeneveld-Moeck post-boiling transition model coefficients [-]> 0.00109000000  0.98900000000  1.41000000000 -1.15000000000
+VOID       ! Void fraction model selected from :class:`InputEnums.VOID`     > BESTION
+SLIP       ! Phase velocity ratio [-]                                       > 1.00000000000
+THERMALNONEQ! Thermal non-equilibrium model selected from :class:`InputEnums.THERMALNONEQ`> MRM
+THERMALRELAX! Thermal non-equilibrium time relaxation model selected from :class:`InputEnums.THERMALRELAX`> HOMOGENEOUS
+RELAXX     ! Interfacial phase change relaxation time thermodynamic quality [-]> -0.50000000000 -0.25000000000 -0.10000000000  0.00000000000  1.00000000000
+RELAXCONDFO! Interfacial condensation Fourier number array  for THERMALRELAX FOURIERX model [-]> 0.00010000000 0.00010000000 0.00010000000 0.00010000000 0.00010000000
+RELAXEVAPFO! Interfacial evaporation  Fourier number array  for THERMALRELAX FOURIERX model [-]> 0.00005000000 0.00005000000 0.00005000000 0.00005000000 0.00005000000
+RELAXCONDT ! Interfacial condensation relaxation time array  for THERMALRELAX TIMEX model [s]> 1.00000000000 0.50000000000 0.30000000000 0.10000000000 0.10000000000
+RELAXEVAPT ! Interfacial evaporation  relaxation time array  for THERMALRELAX TIMEX model [s]> 0.30000000000 0.30000000000 0.30000000000 0.30000000000 0.30000000000
+RELAXCONDCOEF! Interfacial condensation time relaxation coefficients for THERMALRELAX HOMOGENEOUS model> 0.00031138589 0.33333333333 0.00010000000 0.00000000000
+RELAXEVAPCOEF! Interfacial evaporation  time relaxation coefficients for THERMALRELAX HOMOGENEOUS model> 0.00010000000 0.33333333333 0.00001000000 0.00000000000
+RELAXCONDFOCOEF! Interfacial condensation time relaxation coefficients for THERMALRELAX FOURIER model> 0.00005000000 500000.00000000000      0.00000000000      0.00000000000
+RELAXEVAPFOCOEF! Interfacial evaporation  time relaxation coefficients for THERMALRELAX FOURIER model> 0.00010000000 500000.00000000000      2.00000000000      2.00000000000      0.01000000000      1.00000000000
+KTRELAX    ! Thermal relaxation time at local perturbations [s]             > NaN
+NEARWALLRATIO! Near-wall mass flow distribution ratio [-]                     > 0.50000000000
+NEARWALLEQOAF! Near-wall equilibrium at onset of annular two-phase flow       > false
+NEARWALLH  ! Near-wall equilibrium enthalpy model selected from :class:`InputEnums.NEARWALLH`> RATIO
+NEARWALLHRATIO! Near-wall equilibrium enthalpy ratio [-]                       > 1.00000000000
+NEARWALLRELAX! Near-wall energy transfer time relaxation model selected from :class:`InputEnums.NEARWALLRELAX`> QUALITY
+NEARWALLRELAXX! Near-wall exchange relaxation time thermodynamic quality [-]   > -0.50000000000 -0.25000000000 -0.10000000000  0.00000000000  1.00000000000
+NEARWALLRELAXT! Near-wall energy transfer relaxation time array [s]            > 1.00000000000 0.50000000000 0.30000000000 0.10000000000 0.10000000000
+NEARWALLRELAXCOEF! Near-wall energy transfer time relaxation coefficients for void option> 0.00010000000 0.33333333333 0.05000000000
+INTLENGTH  ! Interfacial length scale model selected from :class:`InputEnums.INTLENGTH`> CONSTANT
+INTAREA    ! Interfacial area model selected from :class:`InputEnums.INTAREA`> DISPGAS2DISPLIQ
+INTLENGTHVCST! Dispersed gas    constant interfacial length scale [m]         > 0.00200000000
+INTLENGTHLCST! Dispersed liquid constant interfacial length scale [m]         > 0.00200000000
+LOCRELVEL  ! Local relative phase velocity model selected from :class:`InputEnums.LOCRELVEL`> AREAMEAN
+RELVELCST  ! Multiplication factor to the local relative velocity [-]       > 1.00000000000
+MOMENTLIQUID! Liquid momentum conservation model selected from :class:`InputEnums.MOMENTLIQUID`> MIXTURE
+MOMENTGAS  ! Gas momentum conservation model selected from :class:`InputEnums.MOMENTGAS`> MIXTURE
+DROPDRAG   ! Drop drag model selected from :class:`InputEnums.DROPDRAG`     > VISCOUS
+DROPDRAGCOEF! Drop constant drag coefficient [-]                             > 0.45000000000
+BUBBLEDRAG ! Bubble drag model selected from :class:`InputEnums.BUBBLEDRAG` > STOKES
+BUBBLEDRAGCOEF! Bubble constant drag coefficient [-]                           > 0.45000000000
+INTNU      ! Interfacial heat transfer model selected from :class:`InputEnums.INTNU`> RELAXATION
+INTNUVCST  ! Dispersed gas    constant interfacial Nusselt number [-]       > 2.00000000000
+INTNULCST  ! Dispersed liquid constant interfacial Nusselt number [-]       > 2.00000000000
+RANZMARSHALLVCST! Dispersed gas    Ranz-Marshall coefficients [-]                > 2.00000000000 0.60000000000 0.50000000000 0.33333333333
+RANZMARSHALLLCST! Dispersed liquid Ranz-Marshall coefficients [-]                > 2.00000000000 0.60000000000 0.50000000000 0.33333333333
+INTTRANSH  ! Interfacial enthalpy transfer model selected from :class:`InputEnums.INTTRANSH`> BULK
+POSFILM    ! Positive film flow rate/thickness model                        > true
+OAFENTRAINED! Entrained drop model at onset of annular flow selected from :class:`InputEnums.OAFENTRAINED`> EQUILIBRIUM
+OAFDROPRATIO! Drop/Liquid mass ratio at onset of annular flow [-]            > 0.70000000000
+DEPOSITION ! Drop deposition model selected from :class:`InputEnums.DEPOSITION`> OKAWA
+DEPENHANCEMENT! Drop deposition enhancement model due to local perturbations selected from :class:`InputEnums.DEPENHANCEMENT`> NONE
+KBLOCKRATIO! Blockage ratios of local perturbations [-]                     > 0.00000000000
+KTUNING    ! Drop deposition enhancement tuning coefficients [-]            > 0.00000000000
+ENTRAINMENT! Film entrainment model selected from :class:`InputEnums.ENTRAINMENT`> OKAWA2003
+OKAWACOEFS ! Coefficients of Okawa entrainment model [-]                    > 320.00000000000   0.11100000000   0.00047900000   1.00000000000
+MOMENTFILM ! Film momentum conservation model selected from :class:`InputEnums.MOMENTFILM`> ALGEBRAIC
+VAPORFRIC  ! Vapor friction model selected from :class:`InputEnums.VAPORFRIC`> SOLVER_DEPENDENT
+VAPORFRICCST! Vapor friction constant [-]                                    > 0.00500000000
+THINFILMFRIC! Thin film wall friction model selected from :class:`InputEnums.THINFILMFRIC`> TURBULENT
+THINFILMTHICK! Minimum thin film thickness [m]                                > 0.00010000000
+MOMENTDROP ! Drop momentum conservation model selected from :class:`InputEnums.MOMENTDROP`> SLIP
+DROPSLIP   ! Drop/vapor velocity ratio [-]                                  > 1.00000000000
+DROPDIAM   ! Drop diameter [m]                                              > 0.00100000000
+OAFFILMSPLIT! Film mass flow split model at onset of annular flow selected from :class:`InputEnums.OAFFILMSPLIT`> EQUILIBRIUM
+OAFBASERATIO! Base/Film mass ratio at onset of annular flow [-]              > 0.50000000000
+BASEEQTHICK! Equilibrium base film thickness model selected from :class:`InputEnums.BASEEQTHICK`> RISO
+BASEEQTHICKCOEF! Equilibrium base film thickness coefficients [-]               > 0.00005370000 -0.64000000000  1.21000000000
+BASEYPLUS  ! Equilibrium base film y+ value [-]                             > 15.00000000000
+RELAXTB    ! Base film / wave mass exchange relaxation time [s]             > 0.20000000000
+WAVEMIXCOEF! Base film / wave turbulent mixing coefficient                  > 2.00000000000
+WAVEFREQUENCY! Wave number density model selected from :class:`InputEnums.WAVEFREQUENCY`> RELAXATION
+EQSTROUHAL ! Equilibrium wave Strouhal number model selected from :class:`InputEnums.EQSTROUHAL`> RISO
+EQSTROUHALCOEF! Equilibrium wave Strouhal number coefficients [-]              > 0.00011236000 0.50000000000 0.00000000000
+RELAXTW    ! Wave number density relaxation time [s]                        > 0.20000000000
+CSTWAVEFREQ! Imposed constant wave frequency [Hz]                           > 100.00000000000
+MOMENTBASE ! Base film momentum conservation model selected from :class:`InputEnums.MOMENTBASE`> FULLNOP
+MOMENTWAVE ! Wave momentum conservation model selected from :class:`InputEnums.MOMENTWAVE`> FULL
+WAVEBASEINT! Wave / base film interfacial momentum transfer model selected from :class:`InputEnums.WAVEBASEINT`> VAPORSHEAR
+SHAPEFACTORCOEF! Wave shape factor coefficients [-]                             > 132500.00000000000      2.00000000000      1.00000000000      0.00000000000
+WAVEDRAGCOEF! Wave drag coefficient [-]                                      > 0.02000000000 135000.00000000000      0.43700000000
+THINWAVETHICK! Minimum thin wave thickness [m]                                > 0.00001000000
+END
+
