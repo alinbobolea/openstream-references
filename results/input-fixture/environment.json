@@ -5,8 +5,8 @@
   "coolpropVersion": "8.0.0",
   "openstreamCommit": "a614c7173822a93c1e64ac28d1541cbac028cbd8",
   "coolpropWrapperCommit": "a7c40902ff66faf6ed668986398bb1b9faa16e13",
-  "runnerImage": "ubuntu24 20261012.334.1",
+  "runnerImage": "ubuntu24 20261023.334.3",
   "computer": "GLNXA64",
-  "cpuModel": "AMD EPYC 7763 64-Core Processor",
-  "created": "2026-10-17T20:27:13Z"
+  "cpuModel": "Intel(R) Xeon(R) 6973P-C",
+  "created": "2026-10-24T18:12:43Z"
 }
