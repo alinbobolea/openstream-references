@@ -75,10 +75,40 @@ Inf, -0) can be written. The kinds are: `read` and `convert2json`
 (upstream's input-file parser), `model`, `options`, `geometry`, `bc`,
 `default`, `listprops` and `write` (the input classes), `inputset` (a full
 input set and its solver-dependent properties), and `handle`, `textscan`,
-`upper`, `sprintf`, `num2str`, `readlines`, `ismembertol`, `uint8`, `sum`,
-`sumsweep` and `legalpath` (single functions the input code relies on:
-MATLAB built-ins and upstream's `Session.isLegalPath`). Some cases fail on
-purpose: the error is part of the record.
+`upper`, `sprintf`, `num2str`, `strcat`, `readlines`, `ismembertol`,
+`uint8`, `sum`, `sumsweep` and `legalpath` (single functions the input code
+relies on: MATLAB built-ins and upstream's `Session.isLegalPath`). Some
+cases fail on purpose: the error is part of the record.
+
+Arguments of `sprintf` and `strcat` (and of `write` calls) are objects with
+one key: `double`, `logical`, `text`, `handle`, `strings`, `uint8` (a text
+list converted with `str2double`, then `uint8`) or `matrix`
+(`{"rows": 2, "double": ["1", "3", "2", "4"]}`, filled column by column).
+Every list of numbers is a list of texts, as in `double`. Optional fields
+select other forms of a call: `upper` takes `"as"` `char`, `string`,
+`double` or `uint8` (with `values` given as `{"double": [...]}` or
+`{"uint8": [...]}`) or `textscan` (upper of what `textscan(text, '%f')`
+reads); `num2str` takes `values` as `{"double": [...]}` or as
+`{"text": ...}`, an empty `format` for the one-argument call, `"shape"`
+`row` or `column`, and `"valuesClass"` `uint8` or `string`; `sprintf` and
+`num2str` take `"formatClass": "string"` to pass the format as a string.
+`matlab/functionCall.m` documents each of these calls and how its result is
+stored. A text field `exporterChange` on an entry only describes the form
+of call it needs; the scripts ignore it. Before any case starts, the run
+stops on a field an entry's kind does not use (`exporterChange` aside), a
+`class` of a `default`, `listprops` or `write` entry other than `Model`,
+`Options`, `Geometry` or `BoundaryConditions`, a key a `write` call does not
+use (`id` and `values`, or `time`, `pressure`, `hin`, `mflow` and `values`
+for `BoundaryConditions`), and the other malformed fields listed in
+`matlab/validateInputFixtureList.m`. The arguments inside a `write` call are
+converted only when its case runs. A badly shaped one (an argument that is
+not an object with one known key, numbers that are not a list of texts, a
+malformed matrix, a value list that is not `[key, argument]` pairs) then
+fails the run after it saves its results, as described below. The values
+themselves are not checked: a value of another type under `logical`, `text`,
+`handle` or `strings`, or an unusual call `id`, is passed on, and whatever
+follows, including an error from the conversion, is recorded as that case's
+result or error.
 
 `results/input-fixture/input_fixture.mat` holds one variable, `fixture`,
 whose field `cases` is a cell array with one struct per manifest entry:

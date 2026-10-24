@@ -6,8 +6,9 @@ function checkInputFixtureCases(cases)
 %   identifier References:InvalidInputFixture, naming the cases, when any
 %   case's errorId is References:InvalidInputFixture. That identifier is
 %   raised only by the fixture's own code for a malformed manifest argument
-%   (an unknown argument key, class or "as" value, or a badly shaped list),
-%   which would otherwise look like an intended failing case.
+%   (an unknown argument key, class or "as" value, a badly shaped list or
+%   matrix, or a field value functionCall does not accept), which would
+%   otherwise look like an intended failing case.
 
 arguments
     cases cell
