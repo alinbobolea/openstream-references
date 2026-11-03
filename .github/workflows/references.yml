@@ -12,6 +12,7 @@ on:
           - tutorial1
           - nuthos15-bartolomey
           - input-fixture
+          - semantics-fixture
         default: tutorial1
 
 jobs:

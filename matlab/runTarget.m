@@ -8,12 +8,21 @@ function runTarget(target)
 %   - "nuthos15-bartolomey": the dataset-driven Bartolomey cases
 %     (runDatasetCases);
 %   - "input-fixture": the input-parsing cases of cases/input-fixture.json
-%     (exportInputFixture).
+%     (exportInputFixture);
+%   - "semantics-fixture": the function-behaviour and fluid-property cases of
+%     cases/semantics-fixture.json (exportSemanticsFixture).
 %
-%   Any other target errors with References:UnknownTarget.
+%   The accepted names are listed by knownTargets, and every one of them has
+%   a case below. Any other target errors with References:UnknownTarget,
+%   whose message lists the known targets.
 
 arguments
     target (1,1) string
+end
+
+if ~ismember(target, knownTargets())
+    error('References:UnknownTarget', 'Unknown target: %s (known targets: %s)', ...
+        target, strjoin(knownTargets(), ', '));
 end
 
 switch target
@@ -30,8 +39,9 @@ switch target
     case "input-fixture"
         exportInputFixture("cases/input-fixture.json", "upstream/openstream", ...
             "results/input-fixture");
-    otherwise
-        error('References:UnknownTarget', 'Unknown target: %s', target);
+    case "semantics-fixture"
+        exportSemanticsFixture("cases/semantics-fixture.json", ...
+            "upstream/openstream", "results/semantics-fixture");
 end
 
 end

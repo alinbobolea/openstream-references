@@ -23,6 +23,11 @@ classdef FixtureArgumentsTest < matlab.unittest.TestCase
             spec = struct('matrix', struct('rows', rows, 'double', {texts}));
         end
 
+        function spec = decode(json)
+            % A manifest argument as jsondecode returns it.
+            spec = jsondecode(json);
+        end
+
         function out = errorOf(spec)
             % {identifier, true when the message is the rows message} of
             % the error FixtureArguments.value(SPEC) raises; {'', false}
@@ -128,6 +133,134 @@ classdef FixtureArgumentsTest < matlab.unittest.TestCase
             testCase.verifyEqual(FixtureArgumentsTest.errorOf( ...
                 FixtureArgumentsTest.matrixSpec(3, texts)), ...
                 {'References:InvalidInputFixture', false});
+        end
+
+        function testEmptyGivesZeros(testCase)
+            % {"empty": [rows, cols]} is zeros(rows, cols), whatever the
+            % sizes, including the empty ones.
+            sizes = {[0 0], [0 3], [3 0], [1 0], [0 1], [2 3]};
+            for k = 1:numel(sizes)
+                json = sprintf('{"empty":[%d,%d]}', sizes{k}(1), sizes{k}(2));
+                v = FixtureArguments.value(FixtureArgumentsTest.decode(json));
+                testCase.verifyClass(v, 'double', json);
+                testCase.verifySize(v, sizes{k}, json);
+                testCase.verifyEqual(v, zeros(sizes{k}), json);
+            end
+        end
+
+        function testMalformedEmptyIsRejected(testCase)
+            % Each bad value differs from the accepted [0,3] by one thing.
+            testCase.verifyEqual(FixtureArguments.value( ...
+                FixtureArgumentsTest.decode('{"empty":[0,3]}')), zeros(0, 3));
+            bad = {'{"empty":[0]}', '{"empty":[0,3,1]}', '{"empty":[-1,3]}', ...
+                '{"empty":[1.5,3]}', '{"empty":[0,-3]}', '{"empty":["0","3"]}', ...
+                '{"empty":[0,"3"]}', '{"empty":5}', '{"empty":[]}', ...
+                '{"empty":"03"}', '{"empty":[true,false]}'};
+            for k = 1:numel(bad)
+                spec = FixtureArgumentsTest.decode(bad{k});
+                testCase.verifyError(@() FixtureArguments.value(spec), ...
+                    'References:InvalidInputFixture', bad{k});
+            end
+        end
+
+        function testCellstrGivesACellRowOfChar(testCase)
+            v = FixtureArguments.value(FixtureArgumentsTest.decode('{"cellstr":["a","b"]}'));
+            testCase.verifyClass(v, 'cell');
+            testCase.verifySize(v, [1 2]);
+            testCase.verifyEqual(v, {'a', 'b'});
+            testCase.verifyClass(v{1}, 'char');
+            v = FixtureArguments.value(FixtureArgumentsTest.decode('{"cellstr":["abc"]}'));
+            testCase.verifyClass(v, 'cell');
+            testCase.verifySize(v, [1 1]);
+            testCase.verifyEqual(v, {'abc'});
+            testCase.verifyClass(v{1}, 'char');
+            v = FixtureArguments.value(FixtureArgumentsTest.decode('{"cellstr":["a","bc","def"]}'));
+            testCase.verifyEqual(v, {'a', 'bc', 'def'});
+        end
+
+        function testEmptyCellstrIsAnEmptyCellRow(testCase)
+            v = FixtureArguments.value(FixtureArgumentsTest.decode('{"cellstr":[]}'));
+            testCase.verifyClass(v, 'cell');
+            testCase.verifySize(v, [1 0]);
+        end
+
+        function testMalformedCellstrIsRejected(testCase)
+            bad = {'{"cellstr":[1,2]}', '{"cellstr":["a",1]}', '{"cellstr":5}', ...
+                '{"cellstr":[true]}'};
+            for k = 1:numel(bad)
+                spec = FixtureArgumentsTest.decode(bad{k});
+                testCase.verifyError(@() FixtureArguments.value(spec), ...
+                    'References:InvalidInputFixture', bad{k});
+            end
+        end
+
+        function testArrayIsColumnMajor(testCase)
+            % The list fills the first dimension fastest.
+            v = FixtureArguments.value(FixtureArgumentsTest.decode( ...
+                ['{"array":{"dims":[2,2,2],"double":' ...
+                '["1","2","3","4","5","6","7","8"]}}']));
+            testCase.verifyClass(v, 'double');
+            testCase.verifySize(v, [2 2 2]);
+            testCase.verifyEqual(v, reshape(1:8, [2 2 2]));
+            testCase.verifyEqual(v(2, 1, 1), 2);
+            testCase.verifyEqual(v(1, 2, 1), 3);
+            testCase.verifyEqual(v(1, 1, 2), 5);
+            v = FixtureArguments.value(FixtureArgumentsTest.decode( ...
+                '{"array":{"dims":[2,2],"double":["1","2","3","4"]}}'));
+            testCase.verifyEqual(v, [1 3; 2 4]);
+            v = FixtureArguments.value(FixtureArgumentsTest.decode( ...
+                '{"array":{"dims":[1,2,3],"double":["1","2","3","4","5","6"]}}'));
+            testCase.verifySize(v, [1 2 3]);
+            testCase.verifyEqual(v(1, 2, 3), 6);
+            testCase.verifyEqual(v(1, 1, 2), 3);
+        end
+
+        function testArrayWithAZeroDimension(testCase)
+            v = FixtureArguments.value(FixtureArgumentsTest.decode( ...
+                '{"array":{"dims":[3,0,2],"double":[]}}'));
+            testCase.verifyClass(v, 'double');
+            testCase.verifySize(v, [3 0 2]);
+        end
+
+        function testMalformedArrayIsRejected(testCase)
+            % Each bad value differs from the accepted one by one thing; the
+            % dims of the fourth and fifth have a product equal to the
+            % count, so only the check of the dims themselves rejects them.
+            good = '{"array":{"dims":[2,2],"double":["1","2","3","4"]}}';
+            testCase.verifyEqual(FixtureArguments.value( ...
+                FixtureArgumentsTest.decode(good)), [1 3; 2 4]);
+            bad = { ...
+                '{"array":{"dims":[2,2],"double":["1","2","3"]}}', ...
+                '{"array":{"dims":[2,2],"double":["1","2","3","4","5"]}}', ...
+                '{"array":{"dims":[4],"double":["1","2","3","4"]}}', ...
+                '{"array":{"dims":[1.5,2],"double":["1","2","3"]}}', ...
+                '{"array":{"dims":[-2,-2],"double":["1","2","3","4"]}}', ...
+                '{"array":{"dims":["2","2"],"double":["1","2","3","4"]}}', ...
+                '{"array":{"dims":[],"double":[]}}', ...
+                '{"array":{"dims":[2,2]}}', ...
+                '{"array":{"double":["1","2","3","4"]}}', ...
+                '{"array":{"dims":[2,2],"double":["1","2","3","4"],"rows":2}}', ...
+                '{"array":{"dims":[2,2],"double":[1,2,3,4]}}', ...
+                '{"array":{"dims":[0,3],"double":["1"]}}', ...
+                '{"array":5}'};
+            for k = 1:numel(bad)
+                spec = FixtureArgumentsTest.decode(bad{k});
+                testCase.verifyError(@() FixtureArguments.value(spec), ...
+                    'References:InvalidInputFixture', bad{k});
+            end
+        end
+
+        function testArrayAndEmptyAreKnownKeys(testCase)
+            % An unknown key is still rejected, and the new keys are not.
+            testCase.verifyError(@() FixtureArguments.value(struct('arrays', 1)), ...
+                'References:InvalidInputFixture');
+            testCase.verifyError(@() FixtureArguments.value(struct('cell', 1)), ...
+                'References:InvalidInputFixture');
+            for json = {'{"empty":[0,0]}', '{"cellstr":[]}', ...
+                    '{"array":{"dims":[1,1],"double":["1"]}}'}
+                testCase.verifyWarningFree(@() FixtureArguments.value( ...
+                    FixtureArgumentsTest.decode(json{1})));
+            end
         end
 
         function testNonTextNumberListsAreRejected(testCase)

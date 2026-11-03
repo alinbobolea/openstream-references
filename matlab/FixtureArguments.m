@@ -14,7 +14,15 @@ classdef FixtureArguments
     %   - {"matrix": {"rows": R, "double": [...]}}: str2double of each
     %     text, reshaped to R rows in column-major order, so
     %     {"rows": 2, "double": ["1", "3", "2", "4"]} is [1 2; 3 4]. R must
-    %     be a positive integer that divides the number of texts.
+    %     be a positive integer that divides the number of texts;
+    %   - {"empty": [R, C]}:  zeros(R, C), R and C non-negative integers
+    %     ([0, 0] is the empty matrix []);
+    %   - {"cellstr": [...]}: a 1xN cell of char, one per text of the list
+    %     (a 1x0 cell for an empty list);
+    %   - {"array": {"dims": [...], "double": [...]}}: str2double of each
+    %     text, reshaped to the dims in column-major order. There must be at
+    %     least two dims, non-negative integers whose product is the number
+    %     of texts.
     %
     %   V = FIXTUREARGUMENTS.DOUBLES(SPEC, SHAPE) returns a {"double": [...]}
     %   argument as a row, or as a column when SHAPE is 'column'.
@@ -64,6 +72,12 @@ classdef FixtureArguments
                     v = uint8(FixtureArguments.textToDoubles(spec.uint8));
                 case 'matrix'
                     v = FixtureArguments.matrix(spec.matrix);
+                case 'empty'
+                    v = FixtureArguments.emptyArray(spec.empty);
+                case 'cellstr'
+                    v = FixtureArguments.cellText(spec.cellstr);
+                case 'array'
+                    v = FixtureArguments.array(spec.array);
                 otherwise
                     error('References:InvalidInputFixture', ...
                         'Unknown argument key %s', key);
@@ -183,6 +197,54 @@ classdef FixtureArguments
                     'The rows of a matrix argument must divide its number of values');
             end
             v = reshape(values, rows, []);
+        end
+
+        function v = emptyArray(size2)
+            % {"empty": [R, C]} as zeros(R, C).
+            if ~(isnumeric(size2) && isreal(size2) && isvector(size2) ...
+                    && numel(size2) == 2 && all(isfinite(size2)) ...
+                    && all(size2 >= 0) && all(size2 == fix(size2)))
+                error('References:InvalidInputFixture', ...
+                    'An empty argument must be [rows, cols], non-negative integers');
+            end
+            v = zeros(size2(1), size2(2));
+        end
+
+        function v = cellText(texts)
+            % {"cellstr": [...]} as a 1xN cell of char; a list of texts as
+            % jsondecode returns it (a cell of texts, or [] when empty).
+            isText = @(t) ischar(t) && (isrow(t) || isempty(t));
+            if isnumeric(texts) && isempty(texts)
+                v = cell(1, 0);
+            elseif iscell(texts) && all(cellfun(isText, texts(:)))
+                v = reshape(texts, 1, []);
+            else
+                error('References:InvalidInputFixture', ...
+                    'A cellstr argument must be a list of texts');
+            end
+        end
+
+        function v = array(m)
+            % {"dims": [...], "double": [...]} as an array of those dims,
+            % column-major.
+            if ~isstruct(m) || ~isscalar(m) || numel(fieldnames(m)) ~= 2 ...
+                    || ~all(isfield(m, {'dims', 'double'}))
+                error('References:InvalidInputFixture', ...
+                    'An array argument must have exactly the keys dims and double');
+            end
+            dims = m.dims;
+            if ~(isnumeric(dims) && isreal(dims) && isvector(dims) ...
+                    && numel(dims) >= 2 && all(isfinite(dims)) ...
+                    && all(dims >= 0) && all(dims == fix(dims)))
+                error('References:InvalidInputFixture', ...
+                    'The dims of an array argument must be two or more non-negative integers');
+            end
+            values = FixtureArguments.textToDoubles(m.double);
+            if prod(dims) ~= numel(values)
+                error('References:InvalidInputFixture', ...
+                    'The dims of an array argument must multiply to its number of values');
+            end
+            v = reshape(values, reshape(dims, 1, []));
         end
 
     end
