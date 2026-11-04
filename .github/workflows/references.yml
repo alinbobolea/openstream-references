@@ -21,6 +21,11 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: OpenSTREAM-solvers/openstream
+          ref: a614c7173822a93c1e64ac28d1541cbac028cbd8
+          path: upstream/openstream
       - uses: matlab-actions/setup-matlab@v3
         with:
           release: R2026b

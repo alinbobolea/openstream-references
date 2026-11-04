@@ -1329,8 +1329,8 @@ classdef SemanticsListTest < matlab.unittest.TestCase
 
         function testRealManifestFilesExist(testCase)
             % The file check from the repository root. Entries naming files
-            % under upstream/ are left out: that checkout exists only in the
-            % references job.
+            % under upstream/ are left out: this test does not depend on
+            % that checkout.
             import matlab.unittest.fixtures.CurrentFolderFixture
             here = fileparts(mfilename('fullpath'));
             testCase.applyFixture(CurrentFolderFixture(fullfile(here, '..')));

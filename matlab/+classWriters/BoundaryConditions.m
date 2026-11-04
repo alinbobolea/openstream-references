@@ -1,0 +1,23 @@
+function BoundaryConditions(filePathName, fidMode, TIME, PRESSURE, HIN, MFLOW, varargin)
+%BOUNDARYCONDITIONS Write a boundary-conditions input file with a file mode chosen by the caller.
+%
+%   BOUNDARYCONDITIONS(FILEPATHNAME, FIDMODE, TIME, PRESSURE, HIN, MFLOW,
+%   NAME1, VALUE1, ...) writes what Inputs.BoundaryConditions.writeInputFile
+%   writes, with the fopen mode FIDMODE instead of the mode that the class
+%   method picks (w+ at time 0, a+ otherwise).
+%
+%   This file is named like the class on purpose. Inputs.Input.writeInputFile
+%   finds the property descriptions of the class from the name of the file
+%   that calls it (the second entry of dbstack), so the call has to come
+%   from a file called BoundaryConditions.m. The file does nothing else.
+
+Inputs.Input.writeInputFile( ...
+    filePathName, fidMode, ...
+    "TIME", TIME, ...
+    "PRESSURE", PRESSURE, ...
+    "HIN", HIN, ...
+    "MFLOW", MFLOW, ...
+    varargin{:} ...
+    );
+
+end

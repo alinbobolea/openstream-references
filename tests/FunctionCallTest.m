@@ -59,9 +59,10 @@ classdef FunctionCallTest < matlab.unittest.TestCase
         function id = argumentError(e)
             % The identifier of the error raised by the code exportInputFixture
             % runs for entry E ('' when none): runFunctionCase and
-            % runNumberCase for their kinds, FixtureArguments.writeArguments
-            % for each call of a write case (the writeInputFile calls
-            % themselves need OpenSTREAM). Other kinds need OpenSTREAM or
+            % runNumberCase for their kinds (ismembertolsweep included),
+            % FixtureArguments.writeArguments for each call of a write case
+            % (the writeInputFile calls themselves need OpenSTREAM). Other
+            % kinds (the session and log kinds among them) need OpenSTREAM or
             % convert nothing that can raise the fixture's error (the
             % inputset pairs only go through FixtureArguments.list; their
             % shape is checked by validateInputFixtureList) and are skipped.
@@ -70,7 +71,7 @@ classdef FunctionCallTest < matlab.unittest.TestCase
                 switch char(e.kind)
                     case {'upper', 'sprintf', 'num2str', 'strcat'}
                         runFunctionCase(e);
-                    case {'handle', 'ismembertol', 'uint8', 'sum'}
+                    case {'handle', 'ismembertol', 'uint8', 'sum', 'ismembertolsweep'}
                         runNumberCase(e);
                     case 'write'
                         calls = FixtureArguments.list(e.calls);
@@ -577,6 +578,155 @@ classdef FunctionCallTest < matlab.unittest.TestCase
             viaCall = FunctionCallTest.outcome(@() call.fn(call.args{:}));
             direct = FunctionCallTest.outcome(@() strcat());
             testCase.verifyEqual(viaCall, direct);
+        end
+
+        % ----- ismembertolsweep, run by runNumberCase -----
+
+        function testSweepRecordsTheDirectCallOfEveryCall(testCase)
+            % Each call {a, b, tol} of decimal texts is made with
+            % ismembertol(a, b, tol), a and b rows of the converted texts,
+            % and recorded in order: ok, no error, and describeValue of the
+            % logical vector. The expected values are the direct calls with
+            % the numbers written out (the spellings NaN, Inf and -0 and an
+            % exponent included).
+            e = jsondecode(['{"name":"sw","kind":"ismembertolsweep","calls":[' ...
+                '{"a":["1","2","3"],"b":["1.0005"],"tol":"0.001"},' ...
+                '{"a":["1","2","3"],"b":["1.0005"],"tol":"0"},' ...
+                '{"a":["NaN"],"b":["1"],"tol":"0.001"},' ...
+                '{"a":["1"],"b":["Inf"],"tol":"0.001"},' ...
+                '{"a":["-0","1e-12"],"b":["0"],"tol":"1e-6"}]}']);
+            expected = { ...
+                describeValue(ismembertol([1 2 3], 1.0005, 0.001)), ...
+                describeValue(ismembertol([1 2 3], 1.0005, 0)), ...
+                describeValue(ismembertol(NaN, 1, 0.001)), ...
+                describeValue(ismembertol(1, Inf, 0.001)), ...
+                describeValue(ismembertol([-0 1e-12], 0, 1e-6))};
+            % The first two calls differ in the tolerance only: their
+            % verdicts differ, so a result that ignored tol would fail.
+            testCase.assertNotEqual(expected{1}, expected{2});
+            result = runNumberCase(e);
+            testCase.verifyEqual(fieldnames(result), {'calls'});
+            testCase.assertNumElements(result.calls, numel(expected));
+            for k = 1:numel(expected)
+                c = result.calls{k};
+                testCase.verifyEqual(sort(fieldnames(c)), ...
+                    {'errorId'; 'errorMessage'; 'ok'; 'value'}, sprintf('call %d', k));
+                testCase.verifyTrue(c.ok, sprintf('call %d', k));
+                testCase.verifyEmpty(c.errorId);
+                testCase.verifyEmpty(c.errorMessage);
+                testCase.verifyEqual(c.value, expected{k}, sprintf('call %d', k));
+            end
+        end
+
+        function testSweepOfOneCallAndOfTwoDecodeAlike(testCase)
+            % One call decodes as a scalar struct, two as a struct array:
+            % both run, and the single call gives the first result of the
+            % two-call sweep.
+            one = jsondecode(['{"name":"sw","kind":"ismembertolsweep","calls":[' ...
+                '{"a":["1","2"],"b":["1"],"tol":"0.001"}]}']);
+            two = jsondecode(['{"name":"sw","kind":"ismembertolsweep","calls":[' ...
+                '{"a":["1","2"],"b":["1"],"tol":"0.001"},' ...
+                '{"a":["5"],"b":["5"],"tol":"0"}]}']);
+            testCase.verifyClass(one.calls, 'struct');
+            testCase.verifyNumElements(one.calls, 1);
+            resultOne = runNumberCase(one);
+            resultTwo = runNumberCase(two);
+            testCase.assertNumElements(resultOne.calls, 1);
+            testCase.assertNumElements(resultTwo.calls, 2);
+            testCase.verifyEqual(resultOne.calls{1}, resultTwo.calls{1});
+            testCase.verifyEqual(resultOne.calls{1}.value, ...
+                describeValue(ismembertol([1 2], 1, 0.001)));
+            testCase.verifyEqual(resultTwo.calls{2}.value, ...
+                describeValue(ismembertol(5, 5, 0)));
+        end
+
+        function testSweepCallThatErrorsIsRecordedAndTheOthersRun(testCase)
+            % ismembertol is replaced by a stub that errors for a tolerance
+            % of 7 and otherwise returns true for every element of a. The
+            % call with tolerance 7 is recorded with ok false, the error
+            % identifier and message and no value; the calls before and
+            % after it are recorded as usual.
+            import matlab.unittest.fixtures.TemporaryFolderFixture
+            import matlab.unittest.fixtures.PathFixture
+            fixture = testCase.applyFixture(TemporaryFolderFixture);
+            lines = [ ...
+                "function tf = ismembertol(a, b, tol)"
+                "if tol == 7"
+                "    error('Stub:badTolerance', 'tolerance %g is refused', tol);"
+                "end"
+                "tf = true(size(a));"
+                "end"];
+            fid = fopen(fullfile(fixture.Folder, 'ismembertol.m'), 'w');
+            fprintf(fid, '%s\n', strjoin(reshape(lines, 1, []), newline));
+            fclose(fid);
+            testCase.applyFixture(PathFixture(fixture.Folder));
+            % Control: the stub is the function in use.
+            testCase.assertTrue(startsWith(which('ismembertol'), fixture.Folder));
+
+            e = jsondecode(['{"name":"sw","kind":"ismembertolsweep","calls":[' ...
+                '{"a":["1","2"],"b":["1"],"tol":"1"},' ...
+                '{"a":["1","2"],"b":["1"],"tol":"7"},' ...
+                '{"a":["3"],"b":["1"],"tol":"2"}]}']);
+            result = runNumberCase(e);
+            testCase.assertNumElements(result.calls, 3);
+            testCase.verifyTrue(result.calls{1}.ok);
+            testCase.verifyEqual(result.calls{1}.value, describeValue(true(1, 2)));
+            testCase.verifyFalse(result.calls{2}.ok);
+            testCase.verifyEqual(result.calls{2}.errorId, 'Stub:badTolerance');
+            testCase.verifyEqual(result.calls{2}.errorMessage, 'tolerance 7 is refused');
+            testCase.verifyEmpty(result.calls{2}.value);
+            testCase.verifyTrue(result.calls{3}.ok);
+            testCase.verifyEqual(result.calls{3}.value, describeValue(true));
+        end
+
+        function testSweepRejectsAMalformedCall(testCase)
+            % A call that is not {a, b, tol} of texts errors with the
+            % fixture identifier (the list is validated before a run, so
+            % this is the second guard); each rejected entry differs from
+            % the accepted one by one thing.
+            template = ['{"name":"sw","kind":"ismembertolsweep","calls":[' ...
+                '{"a":["1"],"b":["1"],"tol":"0.001"}]}'];
+            testCase.verifyClass(runNumberCase(jsondecode(template)), 'struct');
+            bad = { ...
+                '{"a":["1"],"b":["1"]}', ...
+                '{"b":["1"],"tol":"0.001"}', ...
+                '{"a":["1"],"tol":"0.001"}', ...
+                '{"a":[1],"b":["1"],"tol":"0.001"}', ...
+                '{"a":["1"],"b":["1"],"tol":0.001}', ...
+                '{"a":"1","b":["1"],"tol":"0.001"}', ...
+                '{"a":["1"],"b":["1"],"tol":["0.001"]}'};
+            for k = 1:numel(bad)
+                e = jsondecode(strrep(template, '{"a":["1"],"b":["1"],"tol":"0.001"}', bad{k}));
+                testCase.verifyError(@() runNumberCase(e), ...
+                    'References:InvalidInputFixture', sprintf('case %d', k));
+            end
+        end
+
+        function testBrokenSweepEntryIsFlagged(testCase)
+            % Negative control for testRealManifestRaisesNoFixtureError on
+            % the sweep kind: a sweep entry is not flagged by argumentError,
+            % then flagged once a tolerance is a number.
+            fixtureId = 'References:InvalidInputFixture';
+            e = jsondecode(['{"name":"sw","kind":"ismembertolsweep","calls":[' ...
+                '{"a":["1"],"b":["1"],"tol":"0.001"}]}']);
+            testCase.verifyNotEqual(FunctionCallTest.argumentError(e), fixtureId);
+            e.calls.tol = 0.001;
+            testCase.verifyEqual(FunctionCallTest.argumentError(e), fixtureId);
+        end
+
+        function testOtherNumberKindsAreNotMistakenForTheSweep(testCase)
+            % The sweep is a kind of its own: an ismembertol entry (fields
+            % a, b, tol) still gives a plain logical description, and a
+            % sweep entry does not run as an ismembertol one.
+            d = @(texts) struct('double', {texts});
+            plain = struct('name', 't', 'kind', 'ismembertol', 'a', d({'1'}), ...
+                'b', d({'1'}), 'tol', 0.001);
+            result = runNumberCase(plain);
+            testCase.verifyFalse(isfield(result, 'calls'));
+            testCase.verifyEqual(result, describeValue(ismembertol(1, 1, 0.001)));
+            sweep = jsondecode(['{"name":"sw","kind":"ismembertolsweep","calls":[' ...
+                '{"a":["1"],"b":["1"],"tol":"0.001"}]}']);
+            testCase.verifyTrue(isfield(runNumberCase(sweep), 'calls'));
         end
 
     end

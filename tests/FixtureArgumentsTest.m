@@ -13,6 +13,8 @@ classdef FixtureArgumentsTest < matlab.unittest.TestCase
             import matlab.unittest.fixtures.PathFixture
             here = fileparts(mfilename('fullpath'));
             testCase.applyFixture(PathFixture(fullfile(here, '..', 'matlab')));
+            % The folder of the tests, for the package TestData.
+            testCase.applyFixture(PathFixture(here));
         end
 
     end
@@ -345,6 +347,98 @@ classdef FixtureArgumentsTest < matlab.unittest.TestCase
             testCase.verifyEqual(out{2}, struct('a', 2));
             testCase.verifyEqual(FixtureArguments.list([]), {});
             testCase.verifyEqual(FixtureArguments.list('x'), {'x'});
+        end
+
+        function testWriteArgumentsLeaveOutTheFileMode(testCase)
+            % A write call may carry the fopen mode of the file as its
+            % field mode; it is not an argument after the file name, so the
+            % arguments are those of the same call without it, for every
+            % class. (The mode reaches the file call by another route.)
+            pairs = {{'NNODES'; struct('double', {{'100'}})}};
+            d = @(text) struct('double', {{text}});
+            for className = {'Model', 'Options', 'Geometry'}
+                plain = struct('id', 'W1', 'values', {pairs});
+                withMode = struct('id', 'W1', 'mode', 'w', 'values', {pairs});
+                testCase.verifyEqual(FixtureArguments.writeArguments( ...
+                    className{1}, withMode), {'W1', 'NNODES', 100});
+                testCase.verifyEqual(FixtureArguments.writeArguments( ...
+                    className{1}, withMode), ...
+                    FixtureArguments.writeArguments(className{1}, plain));
+            end
+            plain = struct('time', d('0'), 'pressure', d('6e6'), 'hin', d('1'), ...
+                'mflow', d('0.07'), 'values', {pairs});
+            withMode = struct('time', d('0'), 'pressure', d('6e6'), 'hin', d('1'), ...
+                'mflow', d('0.07'), 'mode', 'r+', 'values', {pairs});
+            testCase.verifyEqual(FixtureArguments.writeArguments( ...
+                'BoundaryConditions', withMode), {0, 6e6, 1, 0.07, 'NNODES', 100});
+            testCase.verifyEqual(FixtureArguments.writeArguments( ...
+                'BoundaryConditions', withMode), ...
+                FixtureArguments.writeArguments('BoundaryConditions', plain));
+        end
+
+        function testWriteArgumentsConvertMatrixArrayAndEmptyTextValues(testCase)
+            % The three value forms of the writer's pairs, from entries as
+            % jsondecode gives them: a matrix with rows (filled column by
+            % column, so rows 2 over 1 3 2 4 is [1 2; 3 4]), an array with
+            % dims (1x2x2 over 1..4 puts 1 2 in the first page and 3 4 in
+            % the second), and an empty text, which stays an empty char of
+            % size 0x0 (not a string, not 1x0).
+            matrix = TestData.CaseEntries.entry('write', 'ext_write_01');
+            calls = FixtureArguments.list(matrix.calls);
+            args = FixtureArguments.writeArguments(matrix.class, calls{1});
+            testCase.verifyEqual(args, {'G', 'PERIM', [1 2; 3 4]});
+
+            array = TestData.CaseEntries.entry('write', 'ext_write_06');
+            calls = FixtureArguments.list(array.calls);
+            args = FixtureArguments.writeArguments(array.class, calls{1});
+            testCase.verifyEqual(args{1}, 'G');
+            testCase.verifyEqual(args{2}, 'PERIM');
+            testCase.verifyEqual(args{3}, cat(3, [1 2], [3 4]));
+            testCase.verifySize(args{3}, [1 2 2]);
+
+            empty = TestData.CaseEntries.entry('write', 'ext_write_05');
+            calls = FixtureArguments.list(empty.calls);
+            args = FixtureArguments.writeArguments(empty.class, calls{1});
+            testCase.verifyClass(args{3}, 'char');
+            testCase.verifySize(args{3}, [0 0]);
+        end
+
+        function testEveryWriteEntryConvertsWithoutAnError(testCase)
+            % Every write entry of the manifest extension converts its
+            % calls: no entry raises the fixture's error. The control: the
+            % same entry with a value key that does not exist does.
+            lines = TestData.CaseEntries.write();
+            entries = TestData.CaseEntries.decode(lines);
+            for k = 1:numel(entries)
+                e = entries{k};
+                calls = FixtureArguments.list(e.calls);
+                for j = 1:numel(calls)
+                    FixtureArguments.writeArguments(e.class, calls{j});
+                end
+            end
+            e = entries{1};
+            calls = FixtureArguments.list(e.calls);
+            call = calls{1};
+            call.values = {{'PERIM'; struct('number', 1)}};
+            testCase.verifyError(@() FixtureArguments.writeArguments( ...
+                e.class, call), 'References:InvalidInputFixture');
+        end
+
+        function testCallsWithDifferentKeysConvertAlike(testCase)
+            % A write entry whose calls do not all have a mode decodes its
+            % calls as a cell, not a struct array; list gives the same row of
+            % calls either way and each converts.
+            text = ['{"name":"w","kind":"write","class":"Geometry","calls":[' ...
+                '{"id":"G","mode":"w","values":[["LENGTH",{"double":["5.5"]}]]},' ...
+                '{"id":"G","values":[["LENGTH",{"double":["6"]}]]}]}'];
+            e = jsondecode(text);
+            testCase.assertClass(e.calls, 'cell');
+            calls = FixtureArguments.list(e.calls);
+            testCase.assertNumElements(calls, 2);
+            testCase.verifyEqual(FixtureArguments.writeArguments('Geometry', calls{1}), ...
+                {'G', 'LENGTH', 5.5});
+            testCase.verifyEqual(FixtureArguments.writeArguments('Geometry', calls{2}), ...
+                {'G', 'LENGTH', 6});
         end
 
     end

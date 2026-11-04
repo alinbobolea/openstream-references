@@ -27,22 +27,48 @@ function validateInputFixtureList(entries, checkFiles)
 %     an empty format only); "valuesClass" other than uint8 for double
 %     values or string for text values; "shape" other than row or column,
 %     or with text values; "formatClass" with an empty format;
+%   - a logcalls entry's logmode is not NONE, LOGTOFILEONLY, LOGTOCONSOLEONLY,
+%     BOTH or null, its sessionName is not a text or null, or its calls is
+%     not [] or a list of objects with exactly the keys op (log, warning,
+%     openLog, openLogKeep, closeLog, readLog, readLogFilePath or
+%     removeFolder) and args (a list of texts and one-key arguments, as for
+%     sprintf, so that a number is a text);
+%   - a sessionfs entry's logmode is not one of the four, dirName not a text,
+%     overwrite not true or false, before not absent, folder, folderWithFile,
+%     file or ownLogOpen, or parent not exists, missing, file or empty;
+%   - an inputsetcall entry's logmode is not one of the four, or its args is
+%     not a list of [name, value] pairs, the name a text and the value a text
+%     or a one-key argument;
+%   - an inputsetwarnings entry's logmode is not one of the four, its capture
+%     is not console or files, or its model, options, geometry or bc is not
+%     given as for inputset;
+%   - an ismembertolsweep entry's calls is not a non-empty list of objects
+%     with exactly the keys a, b (lists of decimal texts) and tol (a decimal
+%     text); a decimal text is one that str2double reads as a number, or the
+%     spelling NaN;
 %   - an entry has a field its kind does not use. Besides name, kind,
 %     exporterChange (a description only) and its required fields, a kind
 %     may have only: upper values; sprintf formatClass; num2str shape,
-%     valuesClass and formatClass; inputset model, options, geometry, bc;
+%     valuesClass and formatClass; inputset and inputsetwarnings model,
+%     options, geometry, bc;
 %   - "formatClass" other than string;
 %   - a default, listprops or write entry's class is not Model, Options,
 %     Geometry or BoundaryConditions;
 %   - a write entry's calls is not a non-empty list of objects, or a call
 %     lacks or adds a key: id and values for Model, Options and Geometry;
-%     time, pressure, hin, mflow and values for BoundaryConditions;
+%     time, pressure, hin, mflow and values for BoundaryConditions; a call
+%     may also have mode, the fopen mode: w, a, r+ or a+;
 %   - an ismembertol entry's tol is not a real numeric scalar;
 %   - a sumsweep entry's lengths is not a non-empty list of positive
 %     integers;
 %   - only when CHECKFILES is true: a file the entry names does not exist
-%     (paths relative to the current folder). The case named read_missing
-%     is exempt: it reads a missing file on purpose.
+%     (paths relative to the current folder). The files an entry names are
+%     those of its file, geometryFile, model, options, geometry and bc fields
+%     (model, options, geometry and bc for the kinds inputset and
+%     inputsetwarnings), and, for inputsetcall, the values of the arguments
+%     modelFilePath, optionsFilePath, geometryFilePath and bcFilePath unless
+%     the value is empty or holds the text <scratch>. The case named
+%     read_missing is exempt: it reads a missing file on purpose.
 %
 %   ENTRIES is a struct array, or a cell array of structs as returned by
 %   jsondecode when entries have different fields.
@@ -82,7 +108,12 @@ required = struct( ...
     'sumsweep', {{'lengths'}}, ...
     'legalpath', {{'path'}}, ...
     'inputset', {{'logmode'}}, ...
-    'strcat', {{'args'}});
+    'strcat', {{'args'}}, ...
+    'logcalls', {{'logmode', 'sessionName', 'calls'}}, ...
+    'sessionfs', {{'logmode', 'dirName', 'overwrite', 'before', 'parent'}}, ...
+    'inputsetcall', {{'logmode', 'args'}}, ...
+    'inputsetwarnings', {{'logmode', 'capture'}}, ...
+    'ismembertolsweep', {{'calls'}});
 kinds = fieldnames(required);
 % Fields a kind may have besides its required ones. Every entry may also
 % have name, kind and exporterChange (a text describing the form of call
@@ -90,8 +121,10 @@ kinds = fieldnames(required);
 optional = struct('upper', {{'values'}}, ...
     'sprintf', {{'formatClass'}}, ...
     'num2str', {{'shape', 'valuesClass', 'formatClass'}}, ...
-    'inputset', {{'model', 'options', 'geometry', 'bc'}});
+    'inputset', {{'model', 'options', 'geometry', 'bc'}}, ...
+    'inputsetwarnings', {{'model', 'options', 'geometry', 'bc'}});
 common = {'name', 'kind', 'exporterChange'};
+logModes = {'NONE', 'LOGTOFILEONLY', 'LOGTOCONSOLEONLY', 'BOTH'};
 
 names = strings(1, numel(entries));
 for k = 1:numel(entries)
@@ -126,6 +159,28 @@ for k = 1:numel(entries)
     switch char(e.kind)
         case 'inputset'
             checkInputSetShape(e, names(k));
+        case 'inputsetwarnings'
+            checkChoice(e, 'logmode', logModes, names(k));
+            checkChoice(e, 'capture', {'console', 'files'}, names(k));
+            checkInputSetShape(e, names(k));
+        case 'logcalls'
+            checkLogcalls(e, logModes, names(k));
+        case 'sessionfs'
+            checkChoice(e, 'logmode', logModes, names(k));
+            if ~isTextScalar(e.dirName)
+                fail('entry %s: dirName must be text', names(k));
+            end
+            if ~(islogical(e.overwrite) && isscalar(e.overwrite))
+                fail('entry %s: overwrite must be true or false', names(k));
+            end
+            checkChoice(e, 'before', ...
+                {'absent', 'folder', 'folderWithFile', 'file', 'ownLogOpen'}, names(k));
+            checkChoice(e, 'parent', {'exists', 'missing', 'file', 'empty'}, names(k));
+        case 'inputsetcall'
+            checkChoice(e, 'logmode', logModes, names(k));
+            checkCallArguments(e.args, names(k));
+        case 'ismembertolsweep'
+            checkSweepCalls(e.calls, names(k));
         case {'default', 'listprops', 'write'}
             if ~isOneOf(e.class, {'Model', 'Options', 'Geometry', 'BoundaryConditions'})
                 fail(['entry %s: class must be Model, Options, Geometry or ' ...
@@ -198,28 +253,191 @@ else
     fail('entry %s: args must be a list of arguments', name);
 end
 for k = 1:numel(list)
-    a = list{k};
-    if ~isstruct(a) || ~isscalar(a) || numel(fieldnames(a)) ~= 1
-        fail('entry %s: argument %d must have exactly one key', name, k);
+    checkOneArgument(list{k}, name, k);
+end
+end
+
+function checkOneArgument(a, name, k)
+% One argument: an object with exactly one known key.
+if ~isstruct(a) || ~isscalar(a) || numel(fieldnames(a)) ~= 1
+    fail('entry %s: argument %d must have exactly one key', name, k);
+end
+key = fieldnames(a);
+key = key{1};
+switch key
+    case {'logical', 'text', 'handle', 'strings'}
+    case {'double', 'uint8'}
+        if ~isTextList(a.(key))
+            fail('entry %s: argument %d: %s must be a list of texts', name, k, key);
+        end
+    case 'matrix'
+        if ~isMatrixSpec(a.matrix)
+            fail(['entry %s: argument %d: matrix must be {"rows": R, ' ...
+                '"double": [...]} with R a positive integer dividing ' ...
+                'the number of texts'], name, k);
+        end
+    otherwise
+        fail('entry %s: argument %d has an unknown key %s', name, k, key);
+end
+end
+
+function checkChoice(e, field, allowed, name)
+% The field of the entry is one of the texts ALLOWED.
+if ~isOneOf(e.(field), allowed)
+    fail('entry %s: %s must be %s', name, field, strjoin(allowed, ', '));
+end
+end
+
+function checkLogcalls(e, logModes, name)
+% logmode: a log mode or null (jsondecode: []); sessionName: a text or null;
+% calls: no calls ([]) or a list of objects with exactly the keys op and
+% args, op one of the eight operations, args a list of texts and arguments.
+if ~(isnumeric(e.logmode) && isempty(e.logmode)) && ~isOneOf(e.logmode, logModes)
+    fail('entry %s: logmode must be %s or null', name, strjoin(logModes, ', '));
+end
+if ~(isnumeric(e.sessionName) && isempty(e.sessionName)) && ~isTextScalar(e.sessionName)
+    fail('entry %s: sessionName must be text or null', name);
+end
+calls = e.calls;
+if isnumeric(calls) && isempty(calls)
+    return
+end
+list = objectList(calls);
+if isempty(list)
+    fail('entry %s: calls must be a list of objects', name);
+end
+ops = {'log', 'warning', 'openLog', 'openLogKeep', 'closeLog', 'readLog', ...
+    'readLogFilePath', 'removeFolder'};
+for k = 1:numel(list)
+    c = list{k};
+    if ~isstruct(c) || ~isscalar(c)
+        fail('entry %s: call %d is not an object', name, k);
     end
-    key = fieldnames(a);
-    key = key{1};
-    switch key
-        case {'logical', 'text', 'handle', 'strings'}
-        case {'double', 'uint8'}
-            if ~isTextList(a.(key))
-                fail('entry %s: argument %d: %s must be a list of texts', name, k, key);
-            end
-        case 'matrix'
-            if ~isMatrixSpec(a.matrix)
-                fail(['entry %s: argument %d: matrix must be {"rows": R, ' ...
-                    '"double": [...]} with R a positive integer dividing ' ...
-                    'the number of texts'], name, k);
-            end
-        otherwise
-            fail('entry %s: argument %d has an unknown key %s', name, k, key);
+    need = {'op', 'args'};
+    missing = need(~isfield(c, need));
+    if ~isempty(missing)
+        fail('entry %s: call %d is missing key(s): %s', name, k, strjoin(missing, ', '));
+    end
+    unknown = setdiff(fieldnames(c), need, 'stable');
+    if ~isempty(unknown)
+        fail('entry %s: call %d has unknown key(s): %s', name, k, ...
+            strjoin(reshape(unknown, 1, []), ', '));
+    end
+    if ~isOneOf(c.op, ops)
+        fail('entry %s: call %d: op must be %s', name, k, strjoin(ops, ', '));
+    end
+    checkLogArguments(c.args, name, k);
+end
+end
+
+function list = objectList(x)
+% A JSON list of objects as a 1xN cell: a struct array, or a cell; {} for
+% anything else (and for an empty list).
+if isstruct(x) && ~isempty(x)
+    list = num2cell(reshape(x, 1, []));
+elseif iscell(x) && ~isempty(x)
+    list = reshape(x, 1, []);
+else
+    list = {};
+end
+end
+
+function checkLogArguments(args, name, k)
+% The args of a log call: [] or a list whose items are texts or objects with
+% one known key.
+if (isnumeric(args) || iscell(args)) && isempty(args)
+    return
+elseif isstruct(args)
+    list = num2cell(reshape(args, 1, []));
+elseif iscell(args)
+    list = reshape(args, 1, []);
+else
+    fail('entry %s: call %d: args must be a list', name, k);
+end
+for j = 1:numel(list)
+    if ~isTextScalar(list{j})
+        checkOneArgument(list{j}, name, j);
     end
 end
+end
+
+function pairs = argumentPairs(args)
+% The [name, value] pairs of an inputsetcall args as a 1xN cell of 1x2
+% cells, or {} for an empty list; a list of pairs decodes as a cell of
+% 2-element cells or as an N-by-2 cell, and a single pair may come back
+% unwrapped, as the 2-element cell {name; value} (the shapes FixtureArguments
+% accepts for the pairs of a write call). Anything else gives [].
+if (isnumeric(args) || iscell(args)) && isempty(args)
+    pairs = {};
+elseif iscell(args) && numel(args) == 2 && ~iscell(args{1}) && ~iscell(args{2})
+    pairs = {args};
+elseif iscell(args) && all(cellfun(@iscell, args(:)))
+    pairs = reshape(args, 1, []);
+elseif iscell(args) && ismatrix(args) && size(args, 2) == 2
+    pairs = reshape(num2cell(args, 2), 1, []);
+else
+    pairs = [];
+end
+end
+
+function checkCallArguments(args, name)
+% The args of an inputsetcall entry: a list of [name, value] pairs, the
+% name a text, the value a text or an object with one known key.
+pairs = argumentPairs(args);
+if ~iscell(pairs)
+    fail('entry %s: args must be a list of [name, value] pairs', name);
+end
+for k = 1:numel(pairs)
+    p = pairs{k};
+    if numel(p) ~= 2 || ~isTextScalar(p{1})
+        fail('entry %s: args item %d must be a [name, value] pair', name, k);
+    end
+    if ~isTextScalar(p{2})
+        checkOneArgument(p{2}, name, k);
+    end
+end
+end
+
+function checkSweepCalls(calls, name)
+% The calls of an ismembertolsweep entry: a non-empty list of objects with
+% exactly the keys a, b and tol; a and b lists of decimal texts, tol one
+% decimal text.
+list = objectList(calls);
+if isempty(list)
+    fail('entry %s: calls must be a non-empty list of objects', name);
+end
+need = {'a', 'b', 'tol'};
+for k = 1:numel(list)
+    c = list{k};
+    if ~isstruct(c) || ~isscalar(c)
+        fail('entry %s: call %d is not an object', name, k);
+    end
+    missing = need(~isfield(c, need));
+    if ~isempty(missing)
+        fail('entry %s: call %d is missing key(s): %s', name, k, strjoin(missing, ', '));
+    end
+    unknown = setdiff(fieldnames(c), need, 'stable');
+    if ~isempty(unknown)
+        fail('entry %s: call %d has unknown key(s): %s', name, k, ...
+            strjoin(reshape(unknown, 1, []), ', '));
+    end
+    for field = {'a', 'b'}
+        texts = c.(field{1});
+        if ~isTextList(texts) || (iscell(texts) && ~all(cellfun(@isDecimal, texts(:))))
+            fail('entry %s: call %d: %s must be a list of decimal texts', ...
+                name, k, field{1});
+        end
+    end
+    if ~isDecimal(c.tol)
+        fail('entry %s: call %d: tol must be a decimal text', name, k);
+    end
+end
+end
+
+function tf = isDecimal(v)
+% A text that reads as a number: str2double of it is not NaN, or it is the
+% spelling NaN.
+tf = isTextScalar(v) && (strcmp(char(v), 'NaN') || ~isnan(str2double(char(v))));
 end
 
 function checkUpper(e, name)
@@ -294,10 +512,13 @@ for k = 1:numel(list)
     if ~isempty(missing)
         fail('entry %s: call %d is missing key(s): %s', name, k, strjoin(missing, ', '));
     end
-    unknown = setdiff(fieldnames(c), keys, 'stable');
+    unknown = setdiff(fieldnames(c), [keys, {'mode'}], 'stable');
     if ~isempty(unknown)
         fail('entry %s: call %d has unknown key(s): %s', name, k, ...
             strjoin(reshape(unknown, 1, []), ', '));
+    end
+    if isfield(c, 'mode') && ~isOneOf(c.mode, {'w', 'a', 'r+', 'a+'})
+        fail('entry %s: call %d: mode must be w, a, r+ or a+', name, k);
     end
 end
 end
@@ -371,7 +592,7 @@ for field = {'file', 'geometryFile'}
         paths(end+1) = string(e.(field{1})); %#ok<AGROW>
     end
 end
-if strcmp(char(e.kind), 'inputset')
+if any(strcmp(char(e.kind), {'inputset', 'inputsetwarnings'}))
     for field = {'model', 'options', 'geometry'}
         if isfield(e, field{1})
             pair = e.(field{1});
@@ -380,6 +601,18 @@ if strcmp(char(e.kind), 'inputset')
     end
     if isfield(e, 'bc')
         paths(end+1) = string(e.bc);
+    end
+elseif strcmp(char(e.kind), 'inputsetcall')
+    % The file arguments, unless empty or holding the scratch marker.
+    pairs = argumentPairs(e.args);
+    for k = 1:numel(pairs)
+        p = pairs{k};
+        if isTextScalar(p{2}) ...
+                && ismember(char(p{1}), {'modelFilePath', 'optionsFilePath', ...
+                'geometryFilePath', 'bcFilePath'}) ...
+                && strlength(p{2}) > 0 && ~contains(char(p{2}), '<scratch>')
+            paths(end+1) = string(p{2}); %#ok<AGROW>
+        end
     end
 end
 end

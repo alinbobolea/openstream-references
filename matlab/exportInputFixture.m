@@ -17,6 +17,9 @@ function exportInputFixture(manifestFile, openstreamRoot, outputDir)
 %                         (evalc, warning backtraces off). For inputset
 %                         cases the console is not captured ('') because
 %                         evalc disables the diary the session log writes;
+%                         the same for the kinds logcalls, sessionfs,
+%                         inputsetcall and inputsetwarnings, which record
+%                         what they print themselves (runSessionCase);
 %   - lastWarningId,
 %     lastWarningMessage: lastwarn after the case (reset to '' before it);
 %   - result:             the case's result, per kind ([] when not ok).
@@ -27,8 +30,10 @@ function exportInputFixture(manifestFile, openstreamRoot, outputDir)
 %   as text lists {"double": [...]} and converted with str2double; every
 %   argument is converted by FixtureArguments, and upper, sprintf, num2str
 %   and strcat cases run through runFunctionCase (the call that
-%   functionCall describes), handle, ismembertol, uint8 and sum cases
-%   through runNumberCase. The run
+%   functionCall describes), handle, ismembertol, ismembertolsweep, uint8
+%   and sum cases through runNumberCase, write cases through runWriteCase,
+%   and logcalls, sessionfs, inputsetcall and inputsetwarnings cases
+%   through runSessionCase. The run
 %   then writes OUTPUTDIR/environment.json and finally errors
 %   (checkInputFixtureCases) if a case failed because of the manifest
 %   itself, so that a manifest typo cannot pass for an intended failure.
@@ -79,8 +84,11 @@ c.kind = char(entry.kind);
 c.input = toPlain(entry);
 
 % evalc disables diary, which the session log of an input set writes, so
-% inputset cases run without console capture (console is then '').
-captureConsole = ~strcmp(c.kind, 'inputset');
+% inputset cases run without console capture (console is then ''). The
+% session kinds decide for themselves where evalc is safe and record the
+% console in their result.
+captureConsole = ~ismember(c.kind, {'inputset', 'logcalls', 'sessionfs', ...
+    'inputsetcall', 'inputsetwarnings'});
 lastwarn('', '');
 [console, result, err] = runCaptured(@() runGuarded(entry), captureConsole);
 [warningMessage, warningId] = lastwarn;
@@ -171,9 +179,11 @@ switch kind
         result.defaults = describeValue(d);
         result.nameValue = describeValue(s);
     case 'write'
-        result = toPlain(writeCalls(e));
-    case {'handle', 'ismembertol', 'uint8', 'sum'}
+        result = toPlain(runWriteCase(e));
+    case {'handle', 'ismembertol', 'ismembertolsweep', 'uint8', 'sum'}
         result = runNumberCase(e);
+    case {'logcalls', 'sessionfs', 'inputsetcall', 'inputsetwarnings'}
+        result = runSessionCase(e);
     case 'textscan'
         scanned = textscan(string(e.text), '%f');
         result = describeValue(scanned{1});
@@ -218,32 +228,6 @@ switch char(className)
     otherwise
         error('References:InvalidInputFixture', 'Unknown class %s', className);
 end
-end
-
-function text = writeCalls(e)
-% Successive writeInputFile calls into one new temporary file; its text.
-file = [tempname '.inp'];
-cleanup = onCleanup(@() deleteIfPresent(file));
-calls = FixtureArguments.list(e.calls);
-for k = 1:numel(calls)
-    args = FixtureArguments.writeArguments(e.class, calls{k});
-    switch char(e.class)
-        case 'Model'
-            Inputs.Model.writeInputFile(file, args{:});
-        case 'Options'
-            Inputs.Options.writeInputFile(file, args{:});
-        case 'Geometry'
-            Inputs.Geometry.writeInputFile(file, args{:});
-        case 'BoundaryConditions'
-            Inputs.BoundaryConditions.writeInputFile(file, args{:});
-        otherwise
-            % Guards a class that writeArguments accepts but this switch
-            % does not, which would otherwise write nothing.
-            error('References:InvalidInputFixture', 'Unknown class %s', e.class);
-    end
-end
-text = fileread(file);
-clear cleanup
 end
 
 function s = sumSweep(lengths)
@@ -312,12 +296,6 @@ names = sort({listing(~[listing.isdir]).name});
 for k = 1:numel(names)
     files(k).name = names{k};
     files(k).text = fileread(fullfile(folder, names{k}));
-end
-end
-
-function deleteIfPresent(file)
-if isfile(file)
-    delete(file);
 end
 end
 
