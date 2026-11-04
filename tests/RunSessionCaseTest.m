@@ -174,6 +174,12 @@ classdef RunSessionCaseTest < matlab.unittest.TestCase
             end
         end
 
+        function names = callerFolderNames(~)
+            % The names in the current folder (the caller's).
+            listing = dir(pwd);
+            names = sort(setdiff({listing.name}, {'.', '..'}));
+        end
+
         function verifyWarningsLayout(testCase, warnings)
             testCase.verifyClass(warnings, 'struct');
             testCase.verifyEqual(sort(fieldnames(warnings)), ...
@@ -384,18 +390,35 @@ classdef RunSessionCaseTest < matlab.unittest.TestCase
             testCase.verifyEmpty(result.files);
         end
 
-        function testMissingAndFileParentsAreRecordedAsErrors(testCase)
-            % The parent folder is checked by isfolder when the session is
-            % built, which fails for a folder that does not exist, for a
-            % file and for the empty text. Each failure is recorded (the
-            % text of MATLAB's own message is not asserted) and the session
-            % makes no folder.
+        function testMissingAndFileParentsGiveARecordNotAnException(testCase)
+            % Parents that are a folder that does not exist (ext_session_19),
+            % a file (20) and the empty text (28): the runner never throws,
+            % the error is a struct of two chars, the listings are valid, and
+            % nothing is made outside the sandbox: a session folder named
+            % with the empty parent is a relative name, which the runner
+            % resolves inside the scratch folder (the current folder during
+            % the case), not in the current folder of the caller. A parent
+            % that is a file records an error. Observed on the runner and
+            % not asserted: for 19 and 28 the session records no error (the
+            % folder is made, the missing parent with it).
+            home = pwd;
+            namesBefore = testCase.callerFolderNames();
+            testCase.assertFalse(isfolder(fullfile(home, 'run')), ...
+                'a folder run stands in the current folder');
             for name = {'ext_session_19', 'ext_session_20', 'ext_session_28'}
                 e = TestData.CaseEntries.entry('sessionfs', name{1});
                 result = runSessionCase(e);
-                testCase.verifyNotEmpty(result.error.message, name{1});
-                testCase.verifyFalse(any([result.files.isFolder]), name{1});
+                testCase.verifyClass(result.error.identifier, 'char', name{1});
+                testCase.verifyClass(result.error.message, 'char', name{1});
+                testCase.verifyFilesLayout(result.files);
+                testCase.verifyFilesLayout(result.sandboxFiles);
+                testCase.verifyFalse(isfolder(fullfile(home, 'run')), name{1});
+                testCase.verifyEqual(testCase.callerFolderNames(), namesBefore, name{1});
+                testCase.verifyEqual(pwd, home, name{1});
                 testCase.verifyNoScratchPath(result);
+                if strcmp(name{1}, 'ext_session_20')
+                    testCase.verifyNotEmpty(result.error.message, name{1});
+                end
             end
             % The neighbour with a parent that exists has no error.
             e = RunSessionCaseTest.sessionfs('NONE', 'run', 'false', 'absent', 'exists');
@@ -558,11 +581,13 @@ classdef RunSessionCaseTest < matlab.unittest.TestCase
 
         % ----- inputsetcall -----
 
-        function testMissingModelFileIsRecordedAndNothingIsMade(testCase)
-            % The model file is checked by the argument validation before
-            % anything is made. The record holds an error, no warning and no
-            % session folder (a file named afile may stand in the scratch
-            % folder; nothing else does).
+        function testMissingModelFileIsRecordedWithoutAnException(testCase)
+            % A missing model file records an error and no warning; the
+            % record has the three fields and a valid listing, and nothing is
+            % made in the caller's folder. Observed on the runner and not
+            % asserted: the session folder with its .diary and .log is made
+            % before the failure and is listed.
+            namesBefore = testCase.callerFolderNames();
             e = TestData.CaseEntries.entry('inputsetcall', 'ext_inputset_08');
             result = runSessionCase(e);
             testCase.verifyEqual(sort(fieldnames(result)), ...
@@ -570,19 +595,83 @@ classdef RunSessionCaseTest < matlab.unittest.TestCase
             testCase.verifyNotEmpty(result.error.message);
             testCase.verifyEmpty(result.warnings);
             testCase.verifyFilesLayout(result.files);
-            testCase.verifyEmpty(setdiff( ...
-                RunSessionCaseTest.fileNames(result.files), "afile"));
+            testCase.verifyEqual(testCase.callerFolderNames(), namesBefore);
             testCase.verifyNoScratchPath(result);
         end
 
         function testFolderAsBoundaryConditionFileIsRecordedAsAnError(testCase)
-            % <scratch> alone names the scratch folder, which is not a file.
+            % <scratch> alone names the scratch folder, which is not a file:
+            % an error is recorded, the listing is valid and nothing is made
+            % in the caller's folder (the session folder made before the
+            % failure is listed, as observed on the runner, not asserted).
+            namesBefore = testCase.callerFolderNames();
             e = TestData.CaseEntries.entry('inputsetcall', 'ext_inputset_09');
             result = runSessionCase(e);
             testCase.verifyNotEmpty(result.error.message);
-            testCase.verifyEmpty(setdiff( ...
-                RunSessionCaseTest.fileNames(result.files), "afile"));
+            testCase.verifyFilesLayout(result.files);
+            testCase.verifyEqual(testCase.callerFolderNames(), namesBefore);
             testCase.verifyNoScratchPath(result);
+        end
+
+        function testTheCallerFolderCheckSeesANewFile(testCase)
+            % Negative control for the checks above: a file made in the
+            % current folder changes the list of names.
+            import matlab.unittest.fixtures.TemporaryFolderFixture
+            import matlab.unittest.fixtures.CurrentFolderFixture
+            fixture = testCase.applyFixture(TemporaryFolderFixture);
+            testCase.applyFixture(CurrentFolderFixture(fixture.Folder));
+            before = testCase.callerFolderNames();
+            fid = fopen('stray.txt', 'w');
+            fclose(fid);
+            testCase.verifyNotEqual(testCase.callerFolderNames(), before);
+        end
+
+        function testInputsetcallRecordsEveryDirectWarningInOrder(testCase)
+            % The options file with an unused key and the boundary-condition
+            % file with an unused key each raise a direct warning (calls of
+            % the function warning), the options first. Both are recorded, in
+            % that order; the last warning alone (lastwarn) would be only the
+            % second. The messages start with the text of the warning, which
+            % names the class.
+            namesBefore = testCase.callerFolderNames();
+            e = jsondecode(['{"name":"iw","kind":"inputsetcall","logmode":"BOTH",' ...
+                '"args":[["modelFilePath","upstream/openstream/inputs/models.inp"],' ...
+                '["modelID","TUTORIAL1"],' ...
+                '["optionsFilePath","cases/input-fixture/options_unused.inp"],' ...
+                '["optionsID","U"],' ...
+                '["geometryFilePath","upstream/openstream/inputs/geom.inp"],' ...
+                '["geometryID","TUTORIAL1"],' ...
+                '["bcFilePath","cases/input-fixture/bc_unused.inp"]]}']);
+            result = runSessionCase(e);
+            testCase.verifyWarningsLayout(result.warnings);
+            messages = string({result.warnings.message});
+            options = find(contains(messages, "Options: These inputs were not used"));
+            bc = find(contains(messages, "BOUNDARYCONDITIONS: These entries were not used"));
+            testCase.assertNotEmpty(options, 'no warning of the options file recorded');
+            testCase.assertNotEmpty(bc, 'no warning of the boundary-condition file recorded');
+            testCase.verifyLessThan(options(1), bc(1));
+            testCase.verifyGreaterThanOrEqual(numel(result.warnings), 2);
+            testCase.verifyEqual(testCase.callerFolderNames(), namesBefore);
+            testCase.verifyNoScratchPath(result);
+        end
+
+        function testErrorExitReleasesTheRecorderAndTheFolders(testCase)
+            % A sessionfs case that throws (a before that is none of the
+            % five) after the recorder and the current-folder change were
+            % made: the exception reaches the caller, and the recorder, the
+            % path entry, the current folder and the sandbox are all as
+            % before. The parent is empty, the one case that changes the
+            % current folder.
+            home = pwd;
+            pathBefore = path;
+            e = RunSessionCaseTest.sessionfs('NONE', 'run', 'false', 'absent', 'empty');
+            e.before = 'bogus';
+            testCase.verifyError(@() runSessionCase(e), 'References:InvalidInputFixture');
+            testCase.verifyFalse(WarningRecorder.active());
+            testCase.verifyEqual(path, pathBefore);
+            testCase.verifyFalse(contains(path, WarningRecorder.folder()));
+            testCase.verifyEqual(pwd, home);
+            testCase.verifyNothingLeftBehind();
         end
 
         function testFileAsSessionParentIsRecordedAndTheFileIsListed(testCase)

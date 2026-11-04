@@ -17,7 +17,11 @@ function result = runSessionCase(e)
 %   and is replaced by it before the case runs. In every recorded text the
 %   path is replaced by <scratch> again (and the path of the sandbox by
 %   <sandbox>), so that a record does not depend on the run. Paths of files
-%   are relative to the current folder.
+%   are relative to the current folder; during a sessionfs case with the
+%   empty text as parent the current folder is the scratch folder (a session
+%   folder with a relative name then stays inside the sandbox). The caller's
+%   folder is the current folder again before the files are listed and on
+%   every exit, before the sandbox is removed.
 %
 %   The record is a struct. Its parts:
 %
@@ -71,10 +75,15 @@ function result = runSessionCase(e)
 %                       is called; afterwards the logs still open are closed
 %                       (errors ignored). The record has error, warnings,
 %                       console, files and sandboxFiles. The warnings are
-%                       read from the console text
-%                       (the lines starting Warning: ; identifier ''
-%                       except for the last one, which takes the identifier
-%                       of lastwarn when its message is the same);
+%                       those a WarningRecorder saw (every call of the
+%                       function warning, in order, with identifier and
+%                       formatted message; the recorder does not depend on
+%                       the console, whose form of a displayed warning
+%                       differs between hosts), plus the last warning of
+%                       lastwarn when the recorder did not see it (a direct
+%                       call of builtin('warning'), as the log makes). The
+%                       notice that a function has the name of a built-in
+%                       is dropped;
 %   - inputsetcall:     Inputs.InputSet(args{:}) is called with the pairs of
 %                       args (a text value, given as a string scalar, which
 %                       the input set validates for the session names, or a
@@ -84,8 +93,8 @@ function result = runSessionCase(e)
 %                       them, and LOGMODE. The scratch folder holds a file
 %                       afile beforehand. No console is captured (evalc turns
 %                       the diary of the session log off). The record has
-%                       error, warnings (lastwarn after the call: the last
-%                       warning only) and files, also when the call failed;
+%                       error, warnings (as for sessionfs) and files, also
+%                       when the call failed;
 %   - inputsetwarnings: Inputs.InputSet is built as the inputset case does
 %                       it (model, options, geometry as [file, id] pairs, bc
 %                       a file, LOGMODE, in the scratch folder, overwriting).
@@ -106,7 +115,8 @@ end
 sandbox = tempname;
 scratch = fullfile(sandbox, 'scratch');
 mkdir(scratch);
-cleanup = onCleanup(@() removeFolder(sandbox));
+callerFolder = pwd;
+cleanup = onCleanup(@() leave(callerFolder, sandbox));
 previousWarnings = warning('off', 'backtrace');
 restoreWarnings = onCleanup(@() warning(previousWarnings));
 
@@ -271,14 +281,30 @@ overwrite = logical(e.overwrite);
 mode = char(e.logmode);
 before = char(e.before);
 
+callerFolder = pwd;
 guarded = @() sessionBody(before, target, dirName, parentDir, overwrite, mode);
+% The recorder is made before evalc and sees each warning with its
+% identifier, whatever the console shows. It is released at the end, and by
+% the cleanup on an error exit.
+recorder = WarningRecorder();
+releaseRecorder = onCleanup(@() releaseIfValid(recorder));
+% A session folder with a relative name (an empty parent) is made in the
+% current folder: for that one case the scratch folder is the current
+% folder during the case. runSessionCase returns to the caller's folder on
+% every exit.
+if isempty(parentDir)
+    cd(scratch);
+end
 lastwarn('', '');
 [console, state] = evalc('guarded()');
 [lastMessage, lastId] = lastwarn;
+cd(callerFolder);
+warnings = WarningRecorder.complete(recorder.recorded(), lastMessage, lastId);
+releaseIfValid(recorder);
 
 result = struct();
 result.error = state.error;
-result.warnings = warningsOfConsole(console, lastMessage, lastId);
+result.warnings = warnings;
 result.console = recordedText(console, scratch);
 result.files = listFiles(scratch, scratch);
 result.sandboxFiles = listFiles(fileparts(scratch), scratch);
@@ -324,22 +350,18 @@ if ~isempty(state.first)
 end
 end
 
-function warnings = warningsOfConsole(console, lastMessage, lastId)
-% The warnings shown in the console text: the lines that start "Warning: ".
-% Only lastwarn knows an identifier, so the last warning takes it when the
-% message is the same.
-warnings = noWarnings();
-lines = splitlines(string(console));
-for k = 1:numel(lines)
-    line = char(lines(k));
-    if startsWith(line, 'Warning: ')
-        warnings(end+1) = struct('identifier', '', ... %#ok<AGROW>
-            'message', line(numel('Warning: ')+1:end));
-    end
+function releaseIfValid(recorder)
+% Release a recorder that has not been released yet.
+if isvalid(recorder)
+    delete(recorder);
 end
-if ~isempty(warnings) && strcmp(warnings(end).message, lastMessage)
-    warnings(end).identifier = lastId;
 end
+
+function leave(callerFolder, sandbox)
+% Back to the caller's folder, then the sandbox goes (in this order: a
+% folder cannot be removed on every host while it is the current folder).
+cd(callerFolder);
+removeFolder(sandbox);
 end
 
 % ----- inputsetcall -----
@@ -360,6 +382,8 @@ for k = 1:numel(pairs)
     args = [args, pairs{k}]; %#ok<AGROW>
 end
 
+recorder = WarningRecorder();
+releaseRecorder = onCleanup(@() releaseIfValid(recorder));
 lastwarn('', '');
 err = [];
 try
@@ -367,13 +391,16 @@ try
 catch caught
     err = caught;
 end
+[lastMessage, lastId] = lastwarn;
+warnings = WarningRecorder.complete(recorder.recorded(), lastMessage, lastId);
+releaseIfValid(recorder);
 result = struct();
 if isempty(err)
     result.error = noError();
 else
     result.error = errorRecord(err);
 end
-result.warnings = lastWarning();
+result.warnings = warnings;
 result.files = listFiles(scratch, scratch);
 result = markScratch(result, scratch);
 end
