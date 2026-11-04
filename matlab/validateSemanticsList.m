@@ -140,7 +140,9 @@ switch kind
         checkModel(e, name);
         checkBoundaryConditions(e, name);
 end
-if checkFiles
+% Only the fluid kinds name files (an mcall or sumsweep2 entry has no
+% modelFile).
+if checkFiles && ismember(kind, {'fluid', 'fluidmethods', 'bcfluid'})
     checkEntryFiles(e, name, kind);
 end
 end
@@ -392,6 +394,9 @@ end
 function checkEntryFiles(e, name, kind)
 % The files the entry names exist, and the model is in its file with a mode
 % the fixture can run.
+if ~all(isfield(e, {'modelFile', 'modelId'}))
+    fail('entry %s: a %s entry has no modelFile and modelId to check', name, kind);
+end
 modelFile = char(e.modelFile);
 if ~isfile(modelFile)
     fail('entry %s: %s not found', name, modelFile);

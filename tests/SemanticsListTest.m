@@ -1116,6 +1116,28 @@ classdef SemanticsListTest < matlab.unittest.TestCase
             end
         end
 
+        function testFileCheckSkipsTheKindsThatNameNoFile(testCase)
+            % Regression: with the file check on, an mcall or a sumsweep2
+            % entry (no modelFile) is accepted, alone or beside a fluid
+            % entry whose model file exists. The same mixed list with the
+            % fluid entry's file missing is still refused, so the check runs
+            % for the fluid kind.
+            call = testCase.entryNamed('sem_maxmin1_01');
+            sweep = testCase.entryNamed('sem_sums_02');
+            fluid = testCase.entryNamed('sem_fluid_01');
+            testCase.verifyAccepted({call}, true, 'an mcall alone');
+            testCase.verifyAccepted({sweep}, true, 'a sumsweep2 alone');
+            testCase.verifyAccepted({fluid}, true, 'a fluid alone');
+            testCase.verifyAccepted({call, sweep, fluid}, true, 'the three kinds');
+            testCase.verifyAccepted({fluid, call, sweep}, true, 'the fluid first');
+            absent = testCase.filePath('absent.inp');
+            fluid.modelFile = absent;
+            testCase.verifyRejectedWith({call, sweep, fluid}, true, ...
+                [absent ' not found'], 'the three kinds, the model file missing');
+            testCase.verifyAccepted({call, sweep, fluid}, false, ...
+                'the three kinds, files not checked');
+        end
+
         function testBoundaryConditionFilesMustExistWhenFilesAreChecked(testCase)
             absent = testCase.filePath('absent.inp');
             for field = {'file', 'geometryFile'}
