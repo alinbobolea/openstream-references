@@ -1,0 +1,175 @@
+ID            ! Models ID                                                  > TUTORIAL1
+FOO ! x > 1
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+INTNU         ! Interfacial heat transfer model                            > RELAXATION
+RELAXX        ! Interfacial phase change relaxation time Xeq [-]           > -0.5 1.0
+RELAXCONDT    ! Interfacial condensation relaxation time [s]               >  0.5 0.5
+MOMENTLIQUID  ! Liquid momentum conservation model                         > FULL
+MOMENTGAS     ! Gas momentum conservation model                            > FULL
+MOMENTFILM    ! Film momentum conservation model                           > FULL
+MOMENTDROP    ! Drop momentum conservation model                           > FULL
+END
+
+ID            ! Model ID                                                   > TUTORIAL2A
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+END
+
+ID            ! Model ID                                                   > TUTORIAL2B
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+VOID          ! Void fraction model                                        > SLIP
+SLIP          ! Phase velocity ratio [-]                                   > 2
+END
+
+ID            ! Model ID                                                   > TUTORIAL2C
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+VOID          ! Void fraction model                                        > BESTION
+END
+
+ID            ! Model ID                                                   > TUTORIAL2D
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+VOID          ! Void fraction model                                        > BESTION
+THERMALNONEQ  ! Thermal non-equilibrium model                              > SAHAZUBER
+END
+
+ID            ! Model ID                                                   > TUTORIAL2E
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+VOID          ! Void fraction model                                        > BESTION
+THERMALNONEQ  ! Thermal non-equilibrium model                              > MRM
+END
+
+ID            ! Model ID                                                   > TUTORIAL2F
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+VOID          ! Void fraction model                                        > BESTION
+THERMALNONEQ  ! Thermal non-equilibrium model                              > SAHAZUBER
+SPMTM         ! Single-phase wall momentum transfer model                  > BLASIUS
+FRICTION      ! Wall friction coefficients [-]                              > 0.2 -0.2 0
+TPFM          ! Two-phase friction multiplier model                        > EPRI
+END
+
+ID            ! Model ID                                                   > TUTORIAL2G
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+VOID          ! Void fraction model                                        > BESTION
+THERMALNONEQ  ! Thermal non-equilibrium model                              > SAHAZUBER
+KLOC          ! Elevation of local perturbations [m]                       > 1   2   3   4   5
+KLOSS         ! Pressure loss coefficients of local perturbations [-]       > 0.5 0.5 0.5 0.5 0.5
+TPKM          ! Two-phase local loss multiplier model                      > HOMOGENEOUS
+END
+ 
+ID            ! Models ID                                                  > TUTORIAL3A
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+END 
+
+ID            ! Models ID                                                  > TUTORIAL3B
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+INTNU         ! Interfacial heat transfer model                            > RELAXATION
+RELAXX        ! Interfacial phase change relaxation time Xeq [-]           > -0.5 1.0
+RELAXCONDT    ! Interfacial condensation relaxation time [s]               >  0.5 0.5
+MOMENTLIQUID  ! Liquid momentum conservation model                         > FULL
+MOMENTGAS     ! Gas momentum conservation model                            > FULL
+END
+
+ID            ! Models ID                                                  > TUTORIAL4A
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+END
+
+ID            ! Models ID                                                  > TUTORIAL4B
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+OAFENTRAINED  ! Entrained-drop model at onset of annular flow              > RATIO
+OAFDROPRATIO  ! Drop/liquid mass ratio at onset of annular flow [-]        > 0.30
+END
+
+ID            ! Models ID                                                  > TUTORIAL4C
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+MOMENTFILM    ! Film momentum conservation model                           > EQUILIBRIUM
+MOMENTDROP    ! Drop momentum conservation model                           > EQUILIBRIUM
+END
+
+ID            ! Models ID                                                  > TUTORIAL4D
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+MOMENTFILM    ! Film momentum conservation model                           > FULL
+MOMENTDROP    ! Drop momentum conservation model                           > FULL
+END
+
+ID            ! Models ID                                                  > TUTORIAL4E
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+DEPOSITION    ! Drop deposition model                                      > GOVAN
+ENTRAINMENT   ! Film entrainment model                                     > GOVAN
+END
+
+ID            ! Models ID                                                  > TUTORIAL4F
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+DEPOSITION    ! Drop deposition model                                      > NONE
+ENTRAINMENT   ! Film entrainment model                                     > NONE
+END
+
+ID            ! Models ID                                                  > TUTORIAL5A
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+END
+
+ID            ! Models ID                                                  > TUTORIAL5B
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+OAFFILMSPLIT  ! Film split model at onset of annular flow                  > RATIO
+OAFBASERATIO  ! Base/total-film mass ratio at onset of annular flow [-]    > 0.30
+END
+
+ID            ! Models ID                                                  > TUTORIAL5C
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+BASEEQTHICK   ! Equilibrium base-film thickness model                      > YPLUS
+BASEYPLUS     ! Equilibrium base-film y+ value [-]                         > 15
+END
+
+ID            ! Models ID                                                  > TUTORIAL5D
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+WAVEFREQUENCY ! Wave-frequency model                                       > EQUILIBRIUM
+END
+
+ID            ! Models ID                                                  > TUTORIAL5E
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+MOMENTBASE    ! Base-film momentum model                                   > FULLNOP
+MOMENTWAVE    ! Disturbance-wave momentum model                            > FULL
+MOMENTDROP    ! Droplet momentum model                                     > FULL
+WAVEBASEINT   ! Wave/base-film interfacial momentum model                  > VAPORSHEARDROPMASS
+WAVEFREQUENCY ! Wave-frequency model                                       > RELAXATION
+END
+
+ID            ! Model ID                                                   > TUTORIAL8A
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+VOID          ! Void fraction model                                        > BESTION
+THERMALNONEQ  ! Thermal non-equilibrium model                              > SAHAZUBER
+END
+
+ID            ! Model ID                                                   > TUTORIAL8B
+NNODES        ! Number of axial nodes                                      > 50
+FLUID         ! Fluid ID                                                   > WATER
+VOID          ! Void fraction model                                        > BESTION
+THERMALNONEQ  ! Thermal non-equilibrium model                              > SAHAZUBER
+END
+
+ID            ! Model ID                                                   > TUTORIAL8C
+NNODES        ! Number of axial nodes                                      > 25
+FLUID         ! Fluid ID                                                   > WATER
+VOID          ! Void fraction model                                        > BESTION
+THERMALNONEQ  ! Thermal non-equilibrium model                              > SAHAZUBER
+END

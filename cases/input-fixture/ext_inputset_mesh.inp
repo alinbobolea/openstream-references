@@ -1,0 +1,16 @@
+TIME ! x > 0
+PRESSURE ! x > 6000000
+HIN ! x > 1000000
+MFLOW ! x > 0.1
+POWER ! x > 1000
+WMESH ! x > 1.01
+WPOWER ! x > 1
+END
+TIME ! x > 1
+PRESSURE ! x > 6000000
+HIN ! x > 1000000
+MFLOW ! x > 0.1
+POWER ! x > 1000
+WMESH ! x > 100
+WPOWER ! x > 1
+END

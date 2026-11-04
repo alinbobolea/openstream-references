@@ -1,0 +1,6 @@
+ID ! i > G1
+LENGTH ! l > 1
+AREA ! a > 1e-4
+PERIM ! p > 0.01
+ANGLE ! a > 0
+END

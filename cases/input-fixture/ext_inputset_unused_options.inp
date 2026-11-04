@@ -1,0 +1,11 @@
+ID            ! Options ID                                                 > DEFAULT
+FOO ! x > 1
+END
+
+ID            ! Options ID                                                 > TUTORIAL8E
+TSTEP         ! Time step size for transient simulations [s]               > 0.2
+END
+
+ID            ! Options ID                                                 > TUTORIAL8F
+TSTEP         ! Time step size for transient simulations [s]               > 0.5
+END

@@ -25,15 +25,21 @@ classdef InputFixtureListTest < matlab.unittest.TestCase
         end
 
         function tf = namesUpstreamFile(e)
-            % True when entry E names a file under upstream/ (the fields
-            % validateInputFixtureList checks).
+            % True when entry E names a file under upstream/ (the files
+            % validateInputFixtureList checks, its namedFiles): file and
+            % geometryFile; for the kinds inputset and inputsetwarnings the
+            % first item of the model, options and geometry pairs and bc;
+            % for inputsetcall the value of a modelFilePath, optionsFilePath,
+            % geometryFilePath or bcFilePath argument, unless it is empty
+            % or holds the scratch marker.
             paths = {};
             for field = {'file', 'geometryFile'}
                 if isfield(e, field{1})
                     paths{end+1} = char(e.(field{1})); %#ok<AGROW>
                 end
             end
-            if strcmp(char(e.kind), 'inputset')
+            kind = char(e.kind);
+            if any(strcmp(kind, {'inputset', 'inputsetwarnings'}))
                 for field = {'model', 'options', 'geometry'}
                     if isfield(e, field{1})
                         pair = e.(field{1});
@@ -43,8 +49,39 @@ classdef InputFixtureListTest < matlab.unittest.TestCase
                 if isfield(e, 'bc')
                     paths{end+1} = char(e.bc);
                 end
+            elseif strcmp(kind, 'inputsetcall')
+                pairs = InputFixtureListTest.argumentPairs(e.args);
+                for k = 1:numel(pairs)
+                    p = pairs{k};
+                    isText = (ischar(p{2}) && (isrow(p{2}) || isempty(p{2}))) ...
+                        || (isstring(p{2}) && isscalar(p{2}));
+                    if isText && ismember(char(p{1}), {'modelFilePath', ...
+                            'optionsFilePath', 'geometryFilePath', 'bcFilePath'}) ...
+                            && strlength(p{2}) > 0 && ~contains(char(p{2}), '<scratch>')
+                        paths{end+1} = char(p{2}); %#ok<AGROW>
+                    end
+                end
             end
             tf = any(startsWith(paths, 'upstream/'));
+        end
+
+        function pairs = argumentPairs(args)
+            % The [name, value] pairs of an inputsetcall args as a 1xN
+            % cell of 1x2 cells (the shapes argumentPairs of
+            % validateInputFixtureList accepts: a cell of pairs, an N-by-2
+            % cell, a single unwrapped pair); {} for an empty list.
+            if (isnumeric(args) || iscell(args)) && isempty(args)
+                pairs = {};
+            elseif iscell(args) && numel(args) == 2 && ~iscell(args{1}) ...
+                    && ~iscell(args{2})
+                pairs = {args};
+            elseif iscell(args) && all(cellfun(@iscell, args(:)))
+                pairs = reshape(args, 1, []);
+            elseif iscell(args) && ismatrix(args) && size(args, 2) == 2
+                pairs = reshape(num2cell(args, 2), 1, []);
+            else
+                pairs = {};
+            end
         end
 
         function e = variant(kind, name, from, to)
@@ -276,7 +313,7 @@ classdef InputFixtureListTest < matlab.unittest.TestCase
 
         function testRealManifestIsAccepted(testCase)
             entries = testCase.realManifest();
-            testCase.verifyNumElements(entries, 732);
+            testCase.verifyNumElements(entries, 1435);
             testCase.verifyAccepted(entries, false);
         end
 
@@ -290,7 +327,7 @@ classdef InputFixtureListTest < matlab.unittest.TestCase
             testCase.applyFixture(CurrentFolderFixture(fullfile(here, '..')));
             entries = reshape(testCase.realManifest(), 1, []);
             upstream = cellfun(@InputFixtureListTest.namesUpstreamFile, entries);
-            testCase.verifyEqual(nnz(upstream), 69);
+            testCase.verifyEqual(nnz(upstream), 109);
             local = entries(~upstream);
             testCase.verifyAccepted(local, true);
             % Negative control: one local file renamed to a missing one.
@@ -298,6 +335,60 @@ classdef InputFixtureListTest < matlab.unittest.TestCase
                 && ~strcmp(e.name, 'read_missing'), local), 1);
             local{k}.file = 'cases/input-fixture/absent.inp';
             testCase.verifyRejected(local, true, 'absent.inp');
+        end
+
+        function testUpstreamFilesAreFoundLikeTheFileCheckFindsThem(testCase)
+            % namesUpstreamFile follows the rule of the file check of
+            % validateInputFixtureList: the kinds inputset and
+            % inputsetwarnings name the first item of their model, options
+            % and geometry pairs and their bc; inputsetcall names the value
+            % of its four *FilePath arguments unless it is empty or holds
+            % the scratch marker; file and geometryFile name theirs.
+            named = { ...
+                'inputset', 'ext_inputset_01'; ...
+                'inputsetwarnings', 'ext_inputset_23'; ...
+                'inputsetwarnings', 'ext_inputset_30'; ...
+                'inputsetcall', 'ext_inputset_13'};
+            for k = 1:size(named, 1)
+                e = TestData.CaseEntries.entry(named{k, :});
+                testCase.verifyTrue(InputFixtureListTest.namesUpstreamFile(e), ...
+                    e.name);
+            end
+            none = { ...
+                'inputset', 'ext_inputset_03'; ...
+                'inputset', 'ext_inputset_07'; ...
+                'inputsetcall', 'ext_inputset_08'; ...
+                'inputsetcall', 'ext_inputset_10'; ...
+                'inputsetcall', 'ext_inputset_14'; ...
+                'inputsetcall', 'ext_inputset_19'; ...
+                'logcalls', 'ext_log_03'; ...
+                'sessionfs', 'ext_session_14'; ...
+                'write', 'ext_write_01'};
+            for k = 1:size(none, 1)
+                e = TestData.CaseEntries.entry(none{k, :});
+                testCase.verifyFalse(InputFixtureListTest.namesUpstreamFile(e), ...
+                    e.name);
+            end
+            % Each of the four file arguments counts; an argument that is
+            % not a file argument, and a marked value, do not.
+            for name = {'modelFilePath', 'optionsFilePath', 'geometryFilePath', ...
+                    'bcFilePath'}
+                e = InputFixtureListTest.variant('inputsetcall', 'ext_inputset_14', ...
+                    '["sessionDirName", "run1"]', ...
+                    ['["' name{1} '", "upstream/openstream/inputs/x.inp"]']);
+                testCase.verifyTrue(InputFixtureListTest.namesUpstreamFile(e), name{1});
+            end
+            e = InputFixtureListTest.variant('inputsetcall', 'ext_inputset_14', ...
+                '["sessionName", "s"]', '["sessionName", "upstream/x.inp"]');
+            testCase.verifyFalse(InputFixtureListTest.namesUpstreamFile(e));
+            e = InputFixtureListTest.variant('inputsetcall', 'ext_inputset_14', ...
+                '["sessionDirName", "run1"]', ...
+                '["bcFilePath", "upstream/<scratch>/x.inp"]');
+            testCase.verifyFalse(InputFixtureListTest.namesUpstreamFile(e));
+            % A single pair may decode unwrapped, as one 2-element cell.
+            e = struct('name', 't', 'kind', 'inputsetcall', 'logmode', 'BOTH', ...
+                'args', {{'bcFilePath', 'upstream/x.inp'}});
+            testCase.verifyTrue(InputFixtureListTest.namesUpstreamFile(e));
         end
 
         function testExporterChangeFieldIsAccepted(testCase)
@@ -770,9 +861,9 @@ classdef InputFixtureListTest < matlab.unittest.TestCase
                 paths = [paths, InputFixtureListTest.namedFilePaths(lines{k})]; %#ok<AGROW>
             end
             paths = unique(paths);
-            % The entries name 17 different files (a count that keeps the
+            % The entries name 16 different files (a count that keeps the
             % search of their text from finding nothing and passing).
-            testCase.assertNumElements(paths, 17);
+            testCase.assertNumElements(paths, 16);
             testCase.makeFiles(paths);
             entries = TestData.CaseEntries.decode(lines);
             testCase.verifyAccepted(entries, true);
