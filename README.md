@@ -13,7 +13,9 @@ a plain format that any MAT-file reader can open.
   `v2026.0`), with its `+CoolPropWrapper` submodule.
 - OpenSTREAM-database commit `b48541e6438a92b4c0ddc83cf0ceda3f71a59b22`
   (tag `v2026.0.0`), for the dataset-driven cases.
-- MATLAB R2026b on the GitHub-hosted `ubuntu-24.04` runner image.
+- MATLAB R2026b on the GitHub-hosted `ubuntu-24.04` runner image; the
+  `input-fixture-windows` cases also run on the `windows-2025` image (see
+  [Windows job](#windows-job)).
 - CoolProp 8.0.0, installed from upstream's
   `+CoolPropWrapper/requirements.txt`.
 
@@ -21,8 +23,9 @@ a plain format that any MAT-file reader can open.
 
 | Path | Contents |
 |---|---|
-| `cases/` | Case lists (JSON). Input-file cases name the upstream input files and IDs; dataset cases name a database dataset, a record (`testID`), a solver and model/option overrides; `input-fixture.json` lists the input-parsing cases, and `input-fixture/` holds the input files written for them |
+| `cases/` | Case lists (JSON). Input-file cases name the upstream input files and IDs; dataset cases name a database dataset, a record (`testID`), a solver and model/option overrides; `input-fixture.json` lists the input-parsing cases, and `input-fixture/` holds the input files written for them; `input-fixture-windows.json` lists the path cases that also run on Windows |
 | `matlab/` | Scripts that run the cases and export the results |
+| `support/` | `runnerDiagnostics.py`, run by the workflow on the runner before MATLAB starts (see [Runner diagnostics](#runner-diagnostics)); `warningRecorder/`, a function file used while the session cases record warnings |
 | `tests/` | MATLAB unit tests for the export scripts |
 | `results/` | Exported results, one folder per case list |
 | `fixtures/` | A format fixture with known values, for checking MAT-file readers |
@@ -48,10 +51,14 @@ Each result file holds one variable, `result`, with these fields:
   field object and stored state, read the way upstream's integration test
   reads them.
 
-Every results folder also has an `environment.json` recording the MATLAB and
-CoolProp versions, the upstream commits, the runner image and the processor
-model (`cpuModel`, read from `/proc/cpuinfo`; empty where that file does not
-exist).
+Every results folder that the case scripts write (`results/tutorial1/`,
+`results/tutorial1-upstream/`, `results/nuthos15-bartolomey/`,
+`results/input-fixture/`, `results/semantics-fixture/` and
+`results/input-fixture-windows/`) also has an `environment.json` recording
+the MATLAB and CoolProp versions, the upstream commits, the runner image and the processor
+model (`cpuModel`: the first `model name` of `/proc/cpuinfo` where that file
+exists; on Windows, where it does not, the value of the environment variable
+`PROCESSOR_IDENTIFIER`, empty if that is not set).
 
 ## Running
 
@@ -63,6 +70,61 @@ workflow** also runs one target and opens a pull request with the results:
 | `tutorial1` | `cases/tutorial1.json`: upstream's TUTORIAL1 input files, four solvers, plus a re-export of upstream's saved references | `results/tutorial1/`, `results/tutorial1-upstream/` |
 | `nuthos15-bartolomey` | `cases/nuthos15-bartolomey.json`: Bartolomey records 22 and 35 from OpenSTREAM-database, Mixture solver | `results/nuthos15-bartolomey/` |
 | `input-fixture` | `cases/input-fixture.json`: what OpenSTREAM's input classes and the MATLAB functions they rely on do with given input files and values, including invalid ones | `results/input-fixture/` |
+| `semantics-fixture` | `cases/semantics-fixture.json`: what MATLAB functions and the CoolProp fluid properties do with given arguments, including invalid ones | `results/semantics-fixture/` |
+| `extension` | `semantics-fixture` and then `input-fixture`, in one MATLAB session (if the first fails, the second still runs and the target then fails), plus the Windows job below | `results/semantics-fixture/`, `results/input-fixture/`, `results/input-fixture-windows/` |
+
+The workflow also writes `results/<target>/pip-freeze.txt` (the Python
+packages installed) and `results/<target>/runner-diagnostics.txt` (see
+below), where `<target>` is the chosen target. Results from runs made before
+these files were added lack them, and `results/tutorial1-upstream/` is never
+one of those folders. For `extension` the folder is `results/extension/`: it
+holds only these two files and has no `environment.json`; the records of that
+run are in `results/semantics-fixture/`, `results/input-fixture/` and
+`results/input-fixture-windows/`.
+
+### Windows job
+
+The target `input-fixture-windows` is not a choice of the workflow input:
+only the job `windows` runs it, when the target `extension` is chosen. It runs
+`exportInputFixture` over `cases/input-fixture-windows.json`, 17 `legalpath`
+cases (`win_legalpath_01` to `win_legalpath_17`) whose paths are those of the
+Linux cases `ext_session_01` to `ext_session_12` and `ext_session_29` to
+`ext_session_33`, which stay in `cases/input-fixture.json` (their answer on
+Linux is recorded too). The job runs on the `windows-2025` image with the
+same upstream commits, Python and CoolProp as the Linux job, and uploads
+`results/input-fixture-windows/` as the artifact `windows-results-<run id>`.
+It is marked `continue-on-error`, and the `references` job runs whether it
+succeeded, failed or was skipped, so a Windows failure does not lose the Linux
+record; the `references` job then downloads the artifact (if there is one)
+into `results/input-fixture-windows/` before it opens the pull request. The
+run therefore shows as successful even when the Windows job failed: look for
+`results/input-fixture-windows/` in the pull request.
+
+### Runner diagnostics
+
+A step of the `references` job runs `support/runnerDiagnostics.py` after the
+packages are installed and before MATLAB starts, with plain Python 3.13 (no
+MATLAB), and writes `results/<target>/runner-diagnostics.txt`. It records the
+Python version; the CoolProp version, the path and sha256 of its extension
+module, the libraries that module loads (including `libm`) with their sha256,
+the hash the installed package lists for the module and the sha256 of the
+wheel pip downloads for the installed version; the processor `model name` and
+`flags` lines of `/proc/cpuinfo`; the C library version and `uname -a`; the
+values CoolProp gives for the calls the fluid property class makes for water
+at 6.0, 4.41 and 6.95 MPa, one pressure at a time, in the class's order (on
+the tabulated backend it uses and, for comparison, on the exact backend; as
+exact hexadecimal floats and as `repr`): the saturation values, the surface
+tension from a new exact-backend state, the conductivities, specific heats
+and Prandtl numbers from a new state, the minimum and maximum enthalpies
+(pressure-temperature lookups at the minimum temperature plus 1 K and the maximum
+temperature minus 1 K), and the critical, triple and limiting values. The file
+says what is not recorded: the class's first state, its loops over a whole
+pressure vector and its search for the largest heat flux over pressure.
+Finally the sha256 of the tables that Python run built (in a throwaway `HOME`,
+so the tables a later MATLAB session uses are not touched). Each part runs on
+its own: a part that fails, and a command that exits with a code other than 0,
+does not finish in time or cannot start, writes an `ERROR` line into the file,
+and the step still succeeds.
 
 ## Input fixture
 
@@ -71,14 +133,39 @@ entry of `cases/input-fixture.json` has a unique `name`, a `kind` and the
 fields its kind needs; file paths are relative to the repository root, and
 numeric arguments are given as text lists, `{"double": ["0.2", "NaN", "-0"]}`,
 converted with `str2double`, so that values JSON numbers cannot carry (NaN,
-Inf, -0) can be written. The kinds are: `read` and `convert2json`
-(upstream's input-file parser), `model`, `options`, `geometry`, `bc`,
-`default`, `listprops` and `write` (the input classes), `inputset` (a full
-input set and its solver-dependent properties), and `handle`, `textscan`,
-`upper`, `sprintf`, `num2str`, `strcat`, `readlines`, `ismembertol`,
-`uint8`, `sum`, `sumsweep` and `legalpath` (single functions the input code
-relies on: MATLAB built-ins and upstream's `Session.isLegalPath`). Some
-cases fail on purpose: the error is part of the record.
+Inf, -0) can be written. The kinds are:
+
+- `read` and `convert2json`: upstream's input-file parser, reading a file and
+  converting it to JSON;
+- `model`, `options`, `geometry` and `bc`: an input object built from a file
+  and an ID (`bc` also names a geometry), with its properties recorded;
+- `default` and `listprops`: an input class built without arguments, and the
+  lists of its input properties;
+- `write`: successive `writeInputFile` calls of an input class into one file;
+  a call may give `mode`, the `fopen` mode (`w`, `a`, `r+` or `a+`), and is
+  then written with that mode;
+- `inputset`: a full input set and its solver-dependent properties;
+- `inputsetcall`: a direct call of the input set with given name-value pairs
+  (session names, folders, log mode), recording the error, the warnings and the
+  files made;
+- `inputsetwarnings`: an input set built while its warnings are recorded,
+  taken from the console or from the files it wrote (`capture`);
+- `logcalls`: a session log set up with a log mode, then a list of calls
+  (`log`, `warning`, `openLog`, `openLogKeep`, `closeLog`, `readLog`,
+  `readLogFilePath`, `removeFolder`), recording the error and the warnings of
+  each call;
+- `sessionfs`: a session folder created with what exists beforehand (nothing,
+  a folder, a folder with a file, a file, a log of its own still open) and a
+  parent folder (existing, missing, a file, empty), recording the files left;
+- `handle`, `textscan`, `upper`, `sprintf`, `num2str`, `strcat`, `readlines`,
+  `uint8`, `sum` and `sumsweep`: single MATLAB built-ins the input code
+  relies on;
+- `ismembertol`: one call of `ismembertol`; `ismembertolsweep`: a list of
+  such calls `{a, b, tol}` in one entry, each with its own result or error,
+  with the numbers given as texts;
+- `legalpath`: upstream's `Session.isLegalPath`.
+
+Some cases fail on purpose: the error is part of the record.
 
 Arguments of `sprintf` and `strcat` (and of `write` calls) are objects with
 one key: `double`, `logical`, `text`, `handle`, `strings`, `uint8` (a text

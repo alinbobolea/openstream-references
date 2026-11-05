@@ -3,7 +3,8 @@ function root = setupOpenstream(openstreamRoot)
 %
 %   ROOT = SETUPOPENSTREAM(OPENSTREAMROOT) points MATLAB at the Python
 %   installed by actions/setup-python (environment variable pythonLocation)
-%   when one is set and Python is not loaded yet, then adds the OpenSTREAM
+%   when one is set and Python is not loaded yet (pythonExecutable gives the
+%   program inside it, on Linux and on Windows), then adds the OpenSTREAM
 %   checkout to the path. ROOT is the checkout's absolute path.
 
 arguments
@@ -14,7 +15,7 @@ pythonLocation = getenv('pythonLocation');
 if ~isempty(pythonLocation)
     pe = pyenv;
     if pe.Status == "NotLoaded"
-        pyenv(Version = fullfile(pythonLocation, 'bin', 'python3'));
+        pyenv(Version = pythonExecutable(pythonLocation));
     end
 end
 

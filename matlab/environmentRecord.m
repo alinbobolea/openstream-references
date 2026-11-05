@@ -4,8 +4,10 @@ function env = environmentRecord(jsonFile)
 %   ENV = ENVIRONMENTRECORD() returns a struct with the MATLAB, Python and
 %   CoolProp versions, the upstream commits (environment variables set by
 %   the workflow), the runner image, the processor model (cpuModel, from
-%   /proc/cpuinfo; '' where that file does not exist) and the creation
-%   time (UTC).
+%   /proc/cpuinfo where that file exists; where it does not exist, on
+%   Windows, the value of the environment variable PROCESSOR_IDENTIFIER,
+%   '' when it is not set; see machineProcessorModel) and the creation time
+%   (UTC).
 %
 %   ENV = ENVIRONMENTRECORD(JSONFILE) also writes ENV to JSONFILE.
 
@@ -22,10 +24,9 @@ env.openstreamCommit = getenv('OPENSTREAM_COMMIT');
 env.coolpropWrapperCommit = getenv('COOLPROPWRAPPER_COMMIT');
 env.runnerImage = strtrim([getenv('ImageOS') ' ' getenv('ImageVersion')]);
 env.computer = computer;
-env.cpuModel = '';
-if isfile('/proc/cpuinfo')
-    env.cpuModel = cpuModelName(fileread('/proc/cpuinfo'));
-end
+% Where /proc/cpuinfo does not exist (Windows), the model is the value of
+% the environment variable PROCESSOR_IDENTIFIER (see machineProcessorModel).
+env.cpuModel = machineProcessorModel('/proc/cpuinfo', getenv('PROCESSOR_IDENTIFIER'));
 env.created = char(datetime('now', TimeZone = 'UTC', ...
     Format = 'yyyy-MM-dd''T''HH:mm:ss''Z'''));
 

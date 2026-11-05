@@ -1,0 +1,19 @@
+[
+  {"name": "win_legalpath_01", "kind": "legalpath", "path": "a:b"},
+  {"name": "win_legalpath_02", "kind": "legalpath", "path": "C:"},
+  {"name": "win_legalpath_03", "kind": "legalpath", "path": "C:a"},
+  {"name": "win_legalpath_04", "kind": "legalpath", "path": "\\\\?\\C:\\a"},
+  {"name": "win_legalpath_05", "kind": "legalpath", "path": "\\\\?\\a"},
+  {"name": "win_legalpath_06", "kind": "legalpath", "path": "\\\\?\\UNC\\host\\share\\a"},
+  {"name": "win_legalpath_07", "kind": "legalpath", "path": "//host"},
+  {"name": "win_legalpath_08", "kind": "legalpath", "path": "//host/share/a"},
+  {"name": "win_legalpath_09", "kind": "legalpath", "path": "dir /x"},
+  {"name": "win_legalpath_10", "kind": "legalpath", "path": "1:\\a"},
+  {"name": "win_legalpath_11", "kind": "legalpath", "path": "C:\\a:b"},
+  {"name": "win_legalpath_12", "kind": "legalpath", "path": "a\u0001b"},
+  {"name": "win_legalpath_13", "kind": "legalpath", "path": "run?1"},
+  {"name": "win_legalpath_14", "kind": "legalpath", "path": "a<b"},
+  {"name": "win_legalpath_15", "kind": "legalpath", "path": "dir "},
+  {"name": "win_legalpath_16", "kind": "legalpath", "path": "dir \\x"},
+  {"name": "win_legalpath_17", "kind": "legalpath", "path": "\\\\host\\"}
+]

@@ -13,6 +13,7 @@ on:
           - nuthos15-bartolomey
           - input-fixture
           - semantics-fixture
+          - extension
         default: tutorial1
 
 jobs:
@@ -35,9 +36,52 @@ jobs:
           source-folder: matlab
           select-by-folder: tests
 
-  references:
-    if: github.event_name == 'workflow_dispatch'
+  windows:
+    # Records what the path rules do on Windows, for the combined target only.
+    # A failure here must not lose the Linux record: the references job below
+    # runs whether this job succeeded, failed or was skipped.
+    if: github.event_name == 'workflow_dispatch' && inputs.target == 'extension'
     needs: tests
+    continue-on-error: true
+    runs-on: windows-2025
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: OpenSTREAM-solvers/openstream
+          ref: a614c7173822a93c1e64ac28d1541cbac028cbd8
+          path: upstream/openstream
+          submodules: true
+      - name: Record upstream commits
+        shell: bash
+        run: |
+          echo "OPENSTREAM_COMMIT=$(git -C upstream/openstream rev-parse HEAD)" >> "$GITHUB_ENV"
+          echo "COOLPROPWRAPPER_COMMIT=$(git -C upstream/openstream/+CoolPropWrapper rev-parse HEAD)" >> "$GITHUB_ENV"
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - name: Install CoolProp as pinned by upstream
+        shell: bash
+        run: |
+          pip install -r upstream/openstream/+CoolPropWrapper/requirements.txt
+      - uses: matlab-actions/setup-matlab@v3
+        with:
+          release: R2026b
+          cache: true
+      - uses: matlab-actions/run-command@v3
+        with:
+          command: >-
+            addpath("matlab");
+            runTarget("input-fixture-windows")
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: windows-results-${{ github.run_id }}
+          path: results/input-fixture-windows/**
+
+  references:
+    if: ${{ !cancelled() && github.event_name == 'workflow_dispatch' && needs.tests.result == 'success' }}
+    needs: [tests, windows]
     runs-on: ubuntu-24.04
     permissions:
       contents: write
@@ -67,6 +111,10 @@ jobs:
           pip install -r upstream/openstream/+CoolPropWrapper/requirements.txt
           mkdir -p results/${{ inputs.target }}
           pip freeze > results/${{ inputs.target }}/pip-freeze.txt
+      - name: Record runner diagnostics
+        run: |
+          out="results/${{ inputs.target }}/runner-diagnostics.txt"
+          python support/runnerDiagnostics.py "$out" || echo "runner diagnostics failed with exit code $?" >> "$out"
       - uses: matlab-actions/setup-matlab@v3
         with:
           release: R2026b
@@ -83,6 +131,12 @@ jobs:
           path: |
             results/**
             fixtures/**
+      - uses: actions/download-artifact@v7
+        if: inputs.target == 'extension'
+        continue-on-error: true
+        with:
+          name: windows-results-${{ github.run_id }}
+          path: results/input-fixture-windows
       - name: Open results pull request
         env:
           GH_TOKEN: ${{ github.token }}
@@ -96,4 +150,4 @@ jobs:
           git push origin "$branch"
           gh pr create --base main --head "$branch" \
             --title "MATLAB reference results (${{ inputs.target }}), run ${{ github.run_id }}" \
-            --body "OpenSTREAM ${OPENSTREAM_COMMIT}, MATLAB R2026b. Environment: results/${{ inputs.target }}/environment.json."
+            --body "OpenSTREAM ${OPENSTREAM_COMMIT}, MATLAB R2026b. Environment: see environment.json in each results folder."
