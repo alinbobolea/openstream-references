@@ -1,0 +1,12 @@
+{
+  "matlabVersion": "26.2.0.3433840 (R2026b) Update 1",
+  "matlabRelease": "2026b",
+  "pythonVersion": "3.13.17 (tags/v3.13.17:64e080d, Oct 21 2026, 14:08:53) [MSC v.1944 64 bit (AMD64)]",
+  "coolpropVersion": "8.0.0",
+  "openstreamCommit": "a614c7173822a93c1e64ac28d1541cbac028cbd8",
+  "coolpropWrapperCommit": "a7c40902ff66faf6ed668986398bb1b9faa16e13",
+  "runnerImage": "win25-vs2026 20261030.294.1",
+  "computer": "PCWIN64",
+  "cpuModel": "AMD64 Family 25 Model 17 Stepping 1, AuthenticAMD",
+  "created": "2026-11-05T02:41:17Z"
+}

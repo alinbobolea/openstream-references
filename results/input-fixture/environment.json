@@ -1,12 +1,12 @@
 {
-  "matlabVersion": "26.2.0.3386108 (R2026b)",
+  "matlabVersion": "26.2.0.3433840 (R2026b) Update 1",
   "matlabRelease": "2026b",
-  "pythonVersion": "3.13.16 (main, Oct  1 2026, 02:37:54) [GCC 13.3.0]",
+  "pythonVersion": "3.13.18 (main, Oct 26 2026, 14:20:56) [GCC 13.3.0]",
   "coolpropVersion": "8.0.0",
   "openstreamCommit": "a614c7173822a93c1e64ac28d1541cbac028cbd8",
   "coolpropWrapperCommit": "a7c40902ff66faf6ed668986398bb1b9faa16e13",
-  "runnerImage": "ubuntu24 20261023.334.3",
+  "runnerImage": "ubuntu24 20261101.360.1",
   "computer": "GLNXA64",
-  "cpuModel": "Intel(R) Xeon(R) 6973P-C",
-  "created": "2026-10-24T18:12:43Z"
+  "cpuModel": "AMD EPYC 7763 64-Core Processor",
+  "created": "2026-11-05T02:44:55Z"
 }
