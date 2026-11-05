@@ -69,6 +69,26 @@ classdef ProcessorModelNameTest < matlab.unittest.TestCase
             testCase.verifyEqual(processorModelName(string(missing), string.empty), '');
         end
 
+        function testEveryKindOfEmptyIdentifierGivesEmptyChar(testCase)
+            % Added after a CI run: char of an empty string array has more
+            % than two dimensions, so no empty value may reach char.
+            empties = {'', "", string.empty, [], {}, string(missing), '   ', " "};
+            for k = 1:numel(empties)
+                out = processorModelName(string(missing), empties{k});
+                testCase.verifyEqual(out, '', sprintf('identifier %d', k));
+                testCase.verifyClass(out, 'char');
+            end
+        end
+
+        function testEmptyFileTextOfAnyKindGivesEmptyChar(testCase)
+            % The same for the text of the file: it exists but names no model.
+            for text = {'', "", string.empty, []}
+                out = processorModelName(text{1}, 'Some Identifier');
+                testCase.verifyEqual(out, '');
+                testCase.verifyClass(out, 'char');
+            end
+        end
+
         function testResultIsChar(testCase)
             out = processorModelName(string(missing), "Some Identifier");
             testCase.verifyClass(out, 'char');

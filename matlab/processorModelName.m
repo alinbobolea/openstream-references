@@ -13,16 +13,31 @@ function name = processorModelName(cpuinfoText, processorIdentifier)
 %     this variable, for example "Intel64 Family 6 Model 85 Stepping 7,
 %     GenuineIntel".
 %
-%   The caller reads the file and the variable, so that both cases can be
-%   tested on any system.
+%   A value that is not a char array or a string scalar (an empty string
+%   array, [], a missing string) counts as empty text. The caller reads the
+%   file and the variable, so that both cases can be tested on any system.
 
 if isstring(cpuinfoText) && isscalar(cpuinfoText) && ismissing(cpuinfoText)
-    name = strtrim(char(string(processorIdentifier)));
+    name = strtrim(scalarText(processorIdentifier));
     if isempty(name)
         name = '';
     end
 else
-    name = cpuModelName(cpuinfoText);
+    name = cpuModelName(scalarText(cpuinfoText));
 end
 
+end
+
+function text = scalarText(value)
+% VALUE as a char array: itself if it is a char array, its text if it is a
+% string scalar that is not missing, '' for anything else. char of an empty
+% string array is not a 0-by-0 char (it has more than two dimensions, and
+% strtrim then errors), so that case is never given to char.
+if ischar(value)
+    text = value;
+elseif isstring(value) && isscalar(value) && ~ismissing(value)
+    text = char(value);
+else
+    text = '';
+end
 end
