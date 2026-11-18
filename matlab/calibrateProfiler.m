@@ -53,8 +53,10 @@ calibration.entries = entries;
 
 end
 
-function runSample()
-% The calls whose executed lines are known: see the tags in the class.
+function ok = runSample()
+% The calls whose executed lines are known: see the tags in the class. The value only
+% gives runProfiled something to return.
+ok = true;
 sample = Calibration.ProfilerSample(5);
 sample.branches(1);
 sample.branches(3);

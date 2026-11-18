@@ -116,11 +116,13 @@ classdef InputOverridesTest < matlab.unittest.TestCase
             testCase.verifyEqual(formatInputValue([true false]), "TRUE FALSE");
             testCase.verifyEqual(formatInputValue('  BESTION '), "BESTION");
             testCase.verifyEqual(formatInputValue("ELEVATION"), "ELEVATION");
-            testCase.verifyEqual(formatInputValue('@(x) x.^2 + 1'), "@(x) x.^2 + 1");
+            % A function text keeps its characters while the reader keeps them: its
+            % character class has no ^ (so x.^2 is refused, below).
+            testCase.verifyEqual(formatInputValue('@(x) x.*2 + 1'), "@(x) x.*2 + 1");
         end
 
         function testTextThatTheReaderWouldDropIsRefused(testCase)
-            for bad = {'', '   ', 'a;b', 'a"b', 'a!b', ['ab'; 'cd'], ["a" "b"]}
+            for bad = {'', '   ', 'a;b', 'a"b', 'a!b', '@(x) x.^2', ['ab'; 'cd'], ["a" "b"]}
                 testCase.verifyError(@() formatInputValue(bad{1}), ...
                     'References:InvalidOverride');
             end

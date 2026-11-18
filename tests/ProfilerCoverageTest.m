@@ -29,6 +29,12 @@ classdef ProfilerCoverageTest < matlab.unittest.TestCase
             info = struct('FunctionTable', {entries});
         end
 
+        function out = boom()
+            % An action that errors (with an output, as runProfiled calls it).
+            error('Probe:boom', 'boom');
+            out = 1; %#ok<UNRCH>
+        end
+
     end
 
     methods (Test)
@@ -153,7 +159,7 @@ classdef ProfilerCoverageTest < matlab.unittest.TestCase
             runProfiled(@() 1, root);
             status = profile('status');
             testCase.verifyEqual(status.ProfilerStatus, 'off');
-            testCase.verifyError(@() runProfiled(@() error('Probe:boom', 'boom'), root), ...
+            testCase.verifyError(@() runProfiled(@ProfilerCoverageTest.boom, root), ...
                 'Probe:boom');
             status = profile('status');
             testCase.verifyEqual(status.ProfilerStatus, 'off');
