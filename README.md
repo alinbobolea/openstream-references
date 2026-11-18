@@ -224,6 +224,56 @@ record's mass flux and diameter and the saturated-liquid viscosity at its
 pressure. Each result `<name>.mat` has a folder `<name>-inputs/` with the four
 generated input files.
 
+A dataset case may also have `geometry` and `boundaryConditions`: structs of
+key-value pairs that are copied into the dataset's input options for the
+geometry and for the boundary conditions (for example `POWER` or `WPOWER`),
+as `model` and `options` are.
+
+## Input-file case overrides
+
+An input-file case (`cases/tutorial1.json` style) may have the optional fields
+`model`, `options`, `geometry` and `boundaryConditions`:
+
+- `model`, `options`, `geometry`: a struct of key-value pairs. The case reads
+  the named entry of the base input file and changes only these keys. The
+  entry is copied to a file written for the case, with the ID in upper case
+  of the case name; a key that the entry does not have is added. Numbers are
+  written with 17 significant digits, so that they read back as the same
+  value. A key that upstream did not use (a misspelled key) stops the run,
+  because upstream only warns about it and the warnings are switched off while
+  the input set is built.
+- `boundaryConditions`: the full list of time entries (each a struct with at
+  least `TIME`, `PRESSURE`, `HIN` and `MFLOW`); it replaces the base
+  boundary-condition file.
+
+## Coverage and derived outputs
+
+Besides the fields above, each result of `runCases` and `runDatasetCases` has:
+
+- `coverage`: the lines that MATLAB's profiler reported as executed while the
+  solver was constructed and solved, one element per file of the OpenSTREAM
+  checkout: `file` (relative path), `lines` (line numbers), `counts` (how many
+  times each ran) and `functions` (the profile entries of the file).
+- `derived`: the value of every public method of the stored states that returns
+  a value, called without a node index, with all its outputs, for every stored
+  state of every root (`mixtureInit`, the iteration states, and `mixture`, the
+  physical time steps, for the mixture solver) and for the phase objects they
+  hold (`liquid` and `vapor`). The inputs `twall`, `UPold` and `MCTold` are
+  given from the state's own wall temperature and the previous stored state.
+  `derived.methods` lists every method found and why a method was not called;
+  `errorId` and `errorMessage` give the failure of a call (the export goes on);
+  `nodeByNode` marks the values built with one call per node, for methods that
+  fail for several nodes at once. The exact rules are in the header comment of
+  `matlab/exportDerived.m`.
+- `coverageDerived`: the same record as `coverage`, for the calls of the
+  derived-output export.
+
+`runCases` also saves `profiler-calibration.mat` (variable `calibration`):
+the class `Calibration.ProfilerSample`, which has lines that are known to run
+and lines that are known not to, is run under the profiler, and the file says
+which of its lines the profiler reported (statements, and signature, `case`,
+`else`, `catch`, `end` and continued-statement lines).
+
 ## Licence and credit
 
 The scripts in this repository are released under the MIT License (see

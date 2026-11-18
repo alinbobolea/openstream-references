@@ -26,7 +26,7 @@ arguments
     outputDir (1,1) string
 end
 
-setupOpenstream(openstreamRoot);
+root = setupOpenstream(openstreamRoot);
 databasePath = char(databaseRoot);
 if ~startsWith(databasePath, filesep)
     databasePath = fullfile(pwd, databasePath);
@@ -70,6 +70,13 @@ for k = 1:numel(cases)
     for field = fieldnames(c.options)'
         opts.options.(field{1}) = c.options.(field{1});
     end
+    for kind = ["geometry" "boundaryConditions"]
+        if isfield(c, kind)
+            for field = fieldnames(c.(kind))'
+                opts.(kind).(field{1}) = c.(kind).(field{1});
+            end
+        end
+    end
     if isfield(c, 'relaxCondCoefficients')
         coefficients = c.relaxCondCoefficients;
         entryData = data.entryData;
@@ -83,18 +90,23 @@ for k = 1:numel(cases)
     % Generate the inputs and run, with warnings off as the paper does.
     data.makeInputFiles(inputOptions = opts, ...
         ioDirectory = fullfile(workDir, c.name));
+    % The run (construction and solve) is under the profiler, and so is the
+    % export of the derived outputs, with its own record of executed lines.
     warningState = warning;
     warning('off', 'all');
     try
-        data.runCase(c.solver, 'inputSetOpts', inputSetOpts, ...
-            'saveResultsToFile', false);
+        [~, coverage] = runProfiled(@() runCaseOf(data, c.solver, inputSetOpts), root);
     catch err
         warning(warningState);
         rethrow(err);
     end
     warning(warningState);
 
-    result = exportSolver(data.results, c); %#ok<NASGU> saved below
+    result = exportSolver(data.results, c);
+    result.coverage = coverage;
+    [derived, coverageDerived] = runProfiled(@() exportDerived(data.results), root);
+    result.derived = toPlain(derived);
+    result.coverageDerived = coverageDerived; %#ok<STRNU> saved below
     save(fullfile(outputDir, c.name + ".mat"), "result", "-v7");
 
     inputsDir = fullfile(outputDir, c.name + "-inputs");
@@ -107,4 +119,10 @@ end
 
 environmentRecord(fullfile(outputDir, "environment.json"));
 
+end
+
+function ok = runCaseOf(data, solverName, inputSetOpts)
+% The dataset's own run; the value only gives runProfiled something to return.
+data.runCase(solverName, 'inputSetOpts', inputSetOpts, 'saveResultsToFile', false);
+ok = true;
 end

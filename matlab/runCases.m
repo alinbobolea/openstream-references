@@ -28,9 +28,19 @@ workDir = tempname;
 mkdir(workDir);
 inputFolder = fullfile(root, 'inputs');
 
+% What the profiler reports for the lines of a class with known executed
+% lines, so that the lines an upstream file requires are decided from MATLAB's
+% own output.
+calibration = calibrateProfiler(); %#ok<NASGU> saved below
+save(fullfile(outputDir, "profiler-calibration.mat"), "calibration", "-v7");
+
 for k = 1:numel(cases)
     c = cases{k};
     fprintf('\n=== %s (%s) ===\n', c.name, c.solver);
+
+    % The files of the case: the upstream ones, or, when the case overrides
+    % keys or boundary conditions, files written for it.
+    prepared = prepareCaseInputs(c, inputFolder, fullfile(workDir, "inputs-" + c.name));
 
     % Upstream's test suppresses input-default warnings only while the
     % input set is built.
@@ -38,13 +48,13 @@ for k = 1:numel(cases)
     warning('off', 'all');
     try
         inputSet = Inputs.InputSet( ...
-            modelFilePath         = fullfile(inputFolder, c.modelFile), ...
-            modelID               = c.modelID, ...
-            optionsFilePath       = fullfile(inputFolder, c.optionsFile), ...
-            optionsID             = c.optionsID, ...
-            geometryFilePath      = fullfile(inputFolder, c.geometryFile), ...
-            geometryID            = c.geometryID, ...
-            bcFilePath            = fullfile(inputFolder, c.bcFile), ...
+            modelFilePath         = prepared.modelFilePath, ...
+            modelID               = prepared.modelID, ...
+            optionsFilePath       = prepared.optionsFilePath, ...
+            optionsID             = prepared.optionsID, ...
+            geometryFilePath      = prepared.geometryFilePath, ...
+            geometryID            = prepared.geometryID, ...
+            bcFilePath            = prepared.bcFilePath, ...
             sessionParentDir      = workDir, ...
             overwriteSessionFiles = true, ...
             LOGMODE               = 'BOTH');
@@ -53,14 +63,25 @@ for k = 1:numel(cases)
         rethrow(err);
     end
     warning(warningState);
+    requireOverridesUsed(inputSet, prepared.overrides);
 
-    solver = feval(c.solver, inputSet);
-    solver.solve();
-
-    result = exportSolver(solver, c); %#ok<NASGU> saved below
+    % Construction and solve run under the profiler; so does the export of
+    % the derived outputs, with its own record of executed lines.
+    [solver, coverage] = runProfiled( ...
+        @() constructAndSolve(c.solver, inputSet), root);
+    result = exportSolver(solver, c);
+    result.coverage = coverage;
+    [derived, coverageDerived] = runProfiled(@() exportDerived(solver), root);
+    result.derived = toPlain(derived);
+    result.coverageDerived = coverageDerived; %#ok<STRNU> saved below
     save(fullfile(outputDir, c.name + ".mat"), "result", "-v7");
 end
 
 environmentRecord(fullfile(outputDir, "environment.json"));
 
+end
+
+function solver = constructAndSolve(solverClass, inputSet)
+solver = feval(solverClass, inputSet);
+solver.solve();
 end

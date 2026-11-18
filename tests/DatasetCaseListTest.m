@@ -81,6 +81,48 @@ classdef DatasetCaseListTest < matlab.unittest.TestCase
                 'References:UnknownSolver');
         end
 
+        function testGeometryAndBoundaryConditionOverridesAreAccepted(testCase)
+            c = testCase.validCase();
+            c.geometry = struct('NWALL', 2, 'HDIAM', 0.01);
+            c.boundaryConditions = struct('POWER', 90000, 'WPOWER', [0.5; 0.5]);
+            testCase.verifyWarningFree( ...
+                @() validateDatasetCaseList(c, testCase.root));
+        end
+
+        function testOverrideThatIsNotAStructIsRejected(testCase)
+            for kind = ["geometry" "boundaryConditions"]
+                c = testCase.validCase();
+                c.(kind) = 5;
+                testCase.verifyError( ...
+                    @() validateDatasetCaseList(c, testCase.root), ...
+                    'References:InvalidCase', char(kind));
+                c.(kind) = [struct('A', 1), struct('A', 2)];
+                testCase.verifyError( ...
+                    @() validateDatasetCaseList(c, testCase.root), ...
+                    'References:InvalidCase', char(kind));
+            end
+        end
+
+        function testOverrideOfTheIDIsRejected(testCase)
+            for kind = ["geometry" "boundaryConditions"]
+                c = testCase.validCase();
+                c.(kind) = struct('ID', 'OTHER');
+                testCase.verifyError( ...
+                    @() validateDatasetCaseList(c, testCase.root), ...
+                    'References:InvalidCase', char(kind));
+            end
+        end
+
+        function testOverrideValueThatCannotBeWrittenIsRejected(testCase)
+            for bad = {NaN, [], 'a;b'}
+                c = testCase.validCase();
+                c.geometry = struct('KEY', bad{1});
+                testCase.verifyError( ...
+                    @() validateDatasetCaseList(c, testCase.root), ...
+                    'References:InvalidCase');
+            end
+        end
+
     end
 
 end

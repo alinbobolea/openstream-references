@@ -83,6 +83,65 @@ classdef CaseListTest < matlab.unittest.TestCase
                 'References:UnknownSolver');
         end
 
+        function testCaseWithOverridesIsAccepted(testCase)
+            c = testCase.validCase();
+            c.model = struct('NEARWALLHRATIO', 1.2, 'VOID', 'BESTION', ...
+                'RELAXX', [-0.5; 1]);
+            c.options = struct('SSCONVP', 10);
+            c.geometry = struct('NWALL', 2);
+            c.boundaryConditions = [ ...
+                struct('TIME', 0, 'PRESSURE', 6e6, 'HIN', 1e6, 'MFLOW', 1), ...
+                struct('TIME', 5, 'PRESSURE', 6e6, 'HIN', 1e6, 'MFLOW', 2)];
+            testCase.verifyWarningFree(@() validateCaseList(c, testCase.root));
+        end
+
+        function testOverrideThatIsNotAStructIsRejected(testCase)
+            for kind = ["model" "options" "geometry"]
+                c = testCase.validCase();
+                c.(kind) = 5;
+                testCase.verifyError(@() validateCaseList(c, testCase.root), ...
+                    'References:InvalidCase', char(kind));
+                c.(kind) = [struct('A', 1), struct('A', 2)];
+                testCase.verifyError(@() validateCaseList(c, testCase.root), ...
+                    'References:InvalidCase', char(kind));
+            end
+        end
+
+        function testOverrideOfTheIDIsRejected(testCase)
+            for kind = ["model" "options" "geometry"]
+                c = testCase.validCase();
+                c.(kind) = struct('id', 'OTHER');
+                testCase.verifyError(@() validateCaseList(c, testCase.root), ...
+                    'References:InvalidCase', char(kind));
+            end
+        end
+
+        function testOverrideKeyGivenTwiceIsRejected(testCase)
+            c = testCase.validCase();
+            c.model = struct('A', 1, 'a', 2);
+            testCase.verifyError(@() validateCaseList(c, testCase.root), ...
+                'References:InvalidCase');
+        end
+
+        function testOverrideValueThatCannotBeWrittenIsRejected(testCase)
+            for bad = {NaN, [], 'a;b', @sin}
+                c = testCase.validCase();
+                c.options = struct('KEY', bad{1});
+                testCase.verifyError(@() validateCaseList(c, testCase.root), ...
+                    'References:InvalidCase');
+            end
+        end
+
+        function testBoundaryConditionsProblemsAreRejected(testCase)
+            ok = struct('TIME', 0, 'PRESSURE', 6e6, 'HIN', 1e6, 'MFLOW', 1);
+            for bad = {struct([]), rmfield(ok, 'HIN'), 5, {ok, 7}}
+                c = testCase.validCase();
+                c.boundaryConditions = bad{1};
+                testCase.verifyError(@() validateCaseList(c, testCase.root), ...
+                    'References:InvalidCase');
+            end
+        end
+
     end
 
 end
