@@ -17,7 +17,17 @@ function runTarget(target)
 %     naming each one that failed and why;
 %   - "input-fixture-windows": the cases of cases/input-fixture-windows.json
 %     (exportInputFixture), to be run on Windows by the Windows job of the
-%     workflow; it is not a choice of the workflow input.
+%     workflow; it is not a choice of the workflow input;
+%   - "mixture-options": the input-file cases of cases/mixture-options.json
+%     for the Mixture solver (upstream's tutorial models, an option sweep,
+%     two walls, transient runs), run with ContinueOnError;
+%   - "bennett1967": the dataset cases of cases/bennett1967.json (post-dryout
+%     runs with each post-transition heat transfer model), run with
+%     ContinueOnError;
+%   - "groeneveld2019": the dataset cases of cases/groeneveld2019.json
+%     (critical heat flux points with the BIASI and BEZRUKOV correlations),
+%     run with ContinueOnError. The three last targets record a failing case
+%     in failures.json and go on (see runCases).
 %
 %   The accepted names are listed by knownTargets, and every one of them has
 %   a case below. Any other target errors with References:UnknownTarget,
@@ -54,6 +64,17 @@ switch target
     case "input-fixture-windows"
         exportInputFixture("cases/input-fixture-windows.json", ...
             "upstream/openstream", "results/input-fixture-windows");
+    case "mixture-options"
+        runCases("cases/mixture-options.json", "upstream/openstream", ...
+            "results/mixture-options", ContinueOnError = true);
+    case "bennett1967"
+        runDatasetCases("cases/bennett1967.json", "upstream/openstream", ...
+            "upstream/openstream-database", "results/bennett1967", ...
+            ContinueOnError = true);
+    case "groeneveld2019"
+        runDatasetCases("cases/groeneveld2019.json", "upstream/openstream", ...
+            "upstream/openstream-database", "results/groeneveld2019", ...
+            ContinueOnError = true);
 end
 
 end

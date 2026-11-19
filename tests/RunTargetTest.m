@@ -87,6 +87,18 @@ classdef RunTargetTest < matlab.unittest.TestCase
                     calls = {'exportInputFixture', ...
                         ["cases/input-fixture-windows.json" "upstream/openstream" ...
                         "results/input-fixture-windows"]};
+                case "mixture-options"
+                    calls = {'runCases', ["cases/mixture-options.json" ...
+                        "upstream/openstream" "results/mixture-options" ...
+                        "ContinueOnError" string(char(true))]};
+                case "bennett1967"
+                    calls = {'runDatasetCases', ["cases/bennett1967.json" ...
+                        "upstream/openstream" "upstream/openstream-database" ...
+                        "results/bennett1967" "ContinueOnError" string(char(true))]};
+                case "groeneveld2019"
+                    calls = {'runDatasetCases', ["cases/groeneveld2019.json" ...
+                        "upstream/openstream" "upstream/openstream-database" ...
+                        "results/groeneveld2019" "ContinueOnError" string(char(true))]};
                 case "extension"
                     % Both fixtures in one session, the semantics one first.
                     calls = { ...
@@ -326,7 +338,8 @@ classdef RunTargetTest < matlab.unittest.TestCase
             testCase.verifyTrue(isrow(names));
             testCase.verifyEqual(numel(unique(names)), numel(names));
             for name = ["tutorial1" "nuthos15-bartolomey" "input-fixture" ...
-                    "semantics-fixture" "extension" "input-fixture-windows"]
+                    "semantics-fixture" "extension" "input-fixture-windows" ...
+                    "mixture-options" "bennett1967" "groeneveld2019"]
                 testCase.verifyTrue(ismember(name, names), char(name));
             end
         end
@@ -335,7 +348,7 @@ classdef RunTargetTest < matlab.unittest.TestCase
             names = knownTargets();
             testCase.verifyTrue(ismember("extension", names));
             testCase.verifyTrue(ismember("input-fixture-windows", names));
-            testCase.verifyEqual(numel(names), 6);
+            testCase.verifyEqual(numel(names), 9);
         end
 
         function testExtensionTargetCallsBothExportersInOrder(testCase)

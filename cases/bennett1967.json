@@ -1,0 +1,1838 @@
+[
+  {
+    "name": "bennett_5325_vapor",
+    "dataset": "Bennett1967",
+    "testID": 5325,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "VAPOR"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5325_dougall",
+    "dataset": "Bennett1967",
+    "testID": 5325,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DOUGALL"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5325_bishop",
+    "dataset": "Bennett1967",
+    "testID": 5325,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "BISHOP"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5325_moeck",
+    "dataset": "Bennett1967",
+    "testID": 5325,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "MOECK"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5325_delorme",
+    "dataset": "Bennett1967",
+    "testID": 5325,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DELORME"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5325_condieiv",
+    "dataset": "Bennett1967",
+    "testID": 5325,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "CONDIEIV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5353_vapor",
+    "dataset": "Bennett1967",
+    "testID": 5353,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "VAPOR"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5353_dougall",
+    "dataset": "Bennett1967",
+    "testID": 5353,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DOUGALL"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5353_bishop",
+    "dataset": "Bennett1967",
+    "testID": 5353,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "BISHOP"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5353_moeck",
+    "dataset": "Bennett1967",
+    "testID": 5353,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "MOECK"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5353_delorme",
+    "dataset": "Bennett1967",
+    "testID": 5353,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DELORME"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5353_condieiv",
+    "dataset": "Bennett1967",
+    "testID": 5353,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "CONDIEIV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5453_vapor",
+    "dataset": "Bennett1967",
+    "testID": 5453,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "VAPOR"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5453_dougall",
+    "dataset": "Bennett1967",
+    "testID": 5453,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DOUGALL"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5453_bishop",
+    "dataset": "Bennett1967",
+    "testID": 5453,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "BISHOP"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5453_moeck",
+    "dataset": "Bennett1967",
+    "testID": 5453,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "MOECK"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5453_delorme",
+    "dataset": "Bennett1967",
+    "testID": 5453,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DELORME"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5453_condieiv",
+    "dataset": "Bennett1967",
+    "testID": 5453,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "CONDIEIV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5268_vapor",
+    "dataset": "Bennett1967",
+    "testID": 5268,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "VAPOR"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5268_dougall",
+    "dataset": "Bennett1967",
+    "testID": 5268,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DOUGALL"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5268_bishop",
+    "dataset": "Bennett1967",
+    "testID": 5268,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "BISHOP"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5268_moeck",
+    "dataset": "Bennett1967",
+    "testID": 5268,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "MOECK"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5268_delorme",
+    "dataset": "Bennett1967",
+    "testID": 5268,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DELORME"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5268_condieiv",
+    "dataset": "Bennett1967",
+    "testID": 5268,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "CONDIEIV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5274_vapor",
+    "dataset": "Bennett1967",
+    "testID": 5274,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "VAPOR"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5274_dougall",
+    "dataset": "Bennett1967",
+    "testID": 5274,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DOUGALL"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5274_bishop",
+    "dataset": "Bennett1967",
+    "testID": 5274,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "BISHOP"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5274_moeck",
+    "dataset": "Bennett1967",
+    "testID": 5274,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "MOECK"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5274_delorme",
+    "dataset": "Bennett1967",
+    "testID": 5274,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DELORME"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5274_condieiv",
+    "dataset": "Bennett1967",
+    "testID": 5274,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "CONDIEIV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5285_vapor",
+    "dataset": "Bennett1967",
+    "testID": 5285,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "VAPOR"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5285_dougall",
+    "dataset": "Bennett1967",
+    "testID": 5285,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DOUGALL"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5285_bishop",
+    "dataset": "Bennett1967",
+    "testID": 5285,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "BISHOP"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5285_moeck",
+    "dataset": "Bennett1967",
+    "testID": 5285,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "MOECK"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5285_delorme",
+    "dataset": "Bennett1967",
+    "testID": 5285,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DELORME"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5285_condieiv",
+    "dataset": "Bennett1967",
+    "testID": 5285,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "CONDIEIV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5407_vapor",
+    "dataset": "Bennett1967",
+    "testID": 5407,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "VAPOR"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5407_dougall",
+    "dataset": "Bennett1967",
+    "testID": 5407,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DOUGALL"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5407_bishop",
+    "dataset": "Bennett1967",
+    "testID": 5407,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "BISHOP"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5407_moeck",
+    "dataset": "Bennett1967",
+    "testID": 5407,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "MOECK"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5407_delorme",
+    "dataset": "Bennett1967",
+    "testID": 5407,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DELORME"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5407_condieiv",
+    "dataset": "Bennett1967",
+    "testID": 5407,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "CONDIEIV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5422_vapor",
+    "dataset": "Bennett1967",
+    "testID": 5422,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "VAPOR"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5422_dougall",
+    "dataset": "Bennett1967",
+    "testID": 5422,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DOUGALL"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5422_bishop",
+    "dataset": "Bennett1967",
+    "testID": 5422,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "BISHOP"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5422_moeck",
+    "dataset": "Bennett1967",
+    "testID": 5422,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "MOECK"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5422_delorme",
+    "dataset": "Bennett1967",
+    "testID": 5422,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DELORME"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5422_condieiv",
+    "dataset": "Bennett1967",
+    "testID": 5422,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "CONDIEIV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5385_vapor",
+    "dataset": "Bennett1967",
+    "testID": 5385,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "VAPOR"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5385_dougall",
+    "dataset": "Bennett1967",
+    "testID": 5385,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DOUGALL"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5385_bishop",
+    "dataset": "Bennett1967",
+    "testID": 5385,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "BISHOP"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5385_moeck",
+    "dataset": "Bennett1967",
+    "testID": 5385,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "MOECK"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5385_delorme",
+    "dataset": "Bennett1967",
+    "testID": 5385,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "DELORME"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  },
+  {
+    "name": "bennett_5385_condieiv",
+    "dataset": "Bennett1967",
+    "testID": 5385,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "ELEVATION",
+      "BTHTM": "CONDIEIV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "cbtElevationFromRecord": true
+  }
+]

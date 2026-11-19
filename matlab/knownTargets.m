@@ -6,6 +6,7 @@ function names = knownTargets()
 %   "input-fixture-windows", which only the Windows job of the workflow runs.
 
 names = ["tutorial1" "nuthos15-bartolomey" "input-fixture" "semantics-fixture" ...
-    "extension" "input-fixture-windows"];
+    "extension" "input-fixture-windows" "mixture-options" "bennett1967" ...
+    "groeneveld2019"];
 
 end

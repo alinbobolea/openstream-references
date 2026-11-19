@@ -1,0 +1,3650 @@
+[
+  {
+    "name": "groeneveld_24777_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 24777,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_24777_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 24777,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_25137_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 25137,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_25137_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 25137,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_25455_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 25455,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_25455_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 25455,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_1403_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 1403,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_1403_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 1403,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_1275_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 1275,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_1275_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 1275,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_25457_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 25457,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_25457_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 25457,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_1153_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 1153,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_1153_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 1153,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_927_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 927,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_927_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 927,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_22816_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 22816,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_22816_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 22816,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_24709_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 24709,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_24709_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 24709,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_2259_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 2259,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_2259_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 2259,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_6297_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 6297,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_6297_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 6297,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_3306_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 3306,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_3306_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 3306,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_2103_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 2103,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_2103_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 2103,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_6249_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 6249,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_6249_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 6249,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_6348_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 6348,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_6348_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 6348,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_3363_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 3363,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_3363_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 3363,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_3324_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 3324,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_3324_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 3324,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_19222_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 19222,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_19222_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 19222,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_19167_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 19167,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_19167_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 19167,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_14031_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 14031,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_14031_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 14031,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_5330_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 5330,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_5330_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 5330,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_8749_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 8749,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_8749_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 8749,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_5061_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 5061,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_5061_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 5061,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_15931_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 15931,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_15931_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 15931,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_8781_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 8781,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_8781_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 8781,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_5665_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 5665,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_5665_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 5665,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_15204_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 15204,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_15204_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 15204,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_6903_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 6903,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_6903_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 6903,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_714_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 714,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_714_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 714,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_5476_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 5476,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_5476_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 5476,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_6087_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 6087,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_6087_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 6087,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_796_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 796,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_796_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 796,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_13249_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 13249,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_13249_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 13249,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_17620_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 17620,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_17620_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 17620,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_13636_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 13636,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_13636_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 13636,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_19276_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 19276,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_19276_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 19276,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_10081_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 10081,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_10081_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 10081,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_9873_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 9873,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_9873_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 9873,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_10025_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 10025,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_10025_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 10025,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_20767_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 20767,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_20767_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 20767,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_10041_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 10041,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_10041_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 10041,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_9403_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 9403,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_9403_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 9403,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_7719_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 7719,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_7719_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 7719,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_13843_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 13843,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_13843_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 13843,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_23672_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 23672,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_23672_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 23672,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_4331_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 4331,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_4331_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 4331,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_4177_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 4177,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_4177_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 4177,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_23297_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 23297,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_23297_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 23297,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_14254_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 14254,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_14254_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 14254,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_12557_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 12557,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_12557_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 12557,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_14241_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 14241,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_14241_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 14241,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_14602_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 14602,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_14602_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 14602,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_14905_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 14905,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_14905_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 14905,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_20441_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 20441,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_20441_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 20441,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_23490_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 23490,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_23490_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 23490,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_21432_biasi",
+    "dataset": "Groeneveld2019",
+    "testID": 21432,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BIASI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  },
+  {
+    "name": "groeneveld_21432_bezrukov",
+    "dataset": "Groeneveld2019",
+    "testID": 21432,
+    "solver": "Mixture",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "RELAXCONDCOEF": [
+        0.0005,
+        0.3333333333333333,
+        0.0001,
+        0.0
+      ],
+      "RELAXEVAPCOEF": [
+        0.00015,
+        0.3333333333333333,
+        1e-05,
+        0.0
+      ],
+      "CBT": "BEZRUKOV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    }
+  }
+]

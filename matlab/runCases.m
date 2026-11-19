@@ -1,4 +1,4 @@
-function runCases(caseListFile, openstreamRoot, outputDir)
+function runCases(caseListFile, openstreamRoot, outputDir, options)
 %RUNCASES Run every case of a case list and save the exported results.
 %
 %   RUNCASES(CASELISTFILE, OPENSTREAMROOT, OUTPUTDIR) validates the case list
@@ -7,11 +7,19 @@ function runCases(caseListFile, openstreamRoot, outputDir)
 %   and saves exportSolver's result as OUTPUTDIR/<name>.mat (variable
 %   "result", MAT-file version 7). It finally writes
 %   OUTPUTDIR/environment.json. Any error stops the run.
+%
+%   RUNCASES(..., ContinueOnError = true) goes on after a case whose solve or
+%   export errors: the failure is recorded (runGuarded), the input files of
+%   the case are copied to OUTPUTDIR/<name>-inputs, and OUTPUTDIR/failures.json
+%   lists every failed case (an empty list when none failed). An error in the
+%   case list, the input files or the overrides still stops the run: those are
+%   mistakes of the list, not failures of upstream.
 
 arguments
     caseListFile (1,1) string
     openstreamRoot (1,1) string
     outputDir (1,1) string
+    options.ContinueOnError (1,1) logical = false
 end
 
 root = setupOpenstream(openstreamRoot);
@@ -34,6 +42,7 @@ inputFolder = fullfile(root, 'inputs');
 calibration = calibrateProfiler(); %#ok<NASGU> saved below
 save(fullfile(outputDir, "profiler-calibration.mat"), "calibration", "-v7");
 
+failures = {};
 for k = 1:numel(cases)
     c = cases{k};
     fprintf('\n=== %s (%s) ===\n', c.name, c.solver);
@@ -65,20 +74,35 @@ for k = 1:numel(cases)
     warning(warningState);
     requireOverridesUsed(inputSet, prepared.overrides);
 
-    % Construction and solve run under the profiler; so does the export of
-    % the derived outputs, with its own record of executed lines.
-    [solver, coverage] = runProfiled( ...
-        @() constructAndSolve(c.solver, inputSet), root);
-    result = exportSolver(solver, c);
-    result.coverage = coverage;
-    [derived, coverageDerived] = runProfiled(@() exportDerived(solver), root);
-    result.derived = toPlain(derived);
-    result.coverageDerived = coverageDerived; %#ok<STRNU> saved below
-    save(fullfile(outputDir, c.name + ".mat"), "result", "-v7");
+    % The solve and the export are the work of the case that may fail.
+    files = string({prepared.modelFilePath, prepared.optionsFilePath, ...
+        prepared.geometryFilePath, prepared.bcFilePath});
+    failures = runGuarded( ...
+        @() solveExportAndSave(c, inputSet, root, outputDir), ...
+        string(c.name), files, outputDir, options.ContinueOnError, failures);
+end
+
+if options.ContinueOnError
+    writeFailures(outputDir, failures);
+    fprintf('\n%d of %d cases failed (failures.json)\n', numel(failures), ...
+        numel(cases));
 end
 
 environmentRecord(fullfile(outputDir, "environment.json"));
 
+end
+
+function solveExportAndSave(c, inputSet, root, outputDir)
+% Construction and solve run under the profiler; so does the export of the
+% derived outputs, with its own record of executed lines.
+[solver, coverage] = runProfiled( ...
+    @() constructAndSolve(c.solver, inputSet), root);
+result = exportSolver(solver, c);
+result.coverage = coverage;
+[derived, coverageDerived] = runProfiled(@() exportDerived(solver), root);
+result.derived = toPlain(derived);
+result.coverageDerived = coverageDerived; %#ok<STRNU> saved below
+save(fullfile(outputDir, c.name + ".mat"), "result", "-v7");
 end
 
 function solver = constructAndSolve(solverClass, inputSet)

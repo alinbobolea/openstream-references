@@ -1,4 +1,4 @@
-function runDatasetCases(caseListFile, openstreamRoot, databaseRoot, outputDir)
+function runDatasetCases(caseListFile, openstreamRoot, databaseRoot, outputDir, options)
 %RUNDATASETCASES Run dataset-driven cases and save the exported results.
 %
 %   RUNDATASETCASES(CASELISTFILE, OPENSTREAMROOT, DATABASEROOT, OUTPUTDIR)
@@ -17,13 +17,25 @@ function runDatasetCases(caseListFile, openstreamRoot, databaseRoot, outputDir)
 %     OUTPUTDIR/<name>.mat (variable "result", MAT-file version 7);
 %   - copies the four generated input files to OUTPUTDIR/<name>-inputs.
 %
+%   - when a case has cbtElevationFromRecord = true, sets
+%     model.CBTELEVATION to the record's dryout elevation ZBO (the runBecker
+%     function of the same project), and errors when the record has none;
+%
 %   It finally writes OUTPUTDIR/environment.json. Any error stops the run.
+%
+%   RUNDATASETCASES(..., ContinueOnError = true) goes on after a case whose
+%   solve or export errors: the failure is recorded (runGuarded), the four
+%   generated input files of the case are copied to OUTPUTDIR/<name>-inputs,
+%   and OUTPUTDIR/failures.json lists every failed case (an empty list when
+%   none failed). An error in the case list, the record or the options still
+%   stops the run.
 
 arguments
     caseListFile (1,1) string
     openstreamRoot (1,1) string
     databaseRoot (1,1) string
     outputDir (1,1) string
+    options.ContinueOnError (1,1) logical = false
 end
 
 root = setupOpenstream(openstreamRoot);
@@ -46,6 +58,7 @@ workDir = tempname;
 mkdir(workDir);
 inputSetOpts = {'overwriteSessionFiles', true, 'LOGMODE', 'BOTH'};
 
+failures = {};
 for k = 1:numel(cases)
     c = cases{k};
     fprintf('\n=== %s (%s, TestID %d, %s) ===\n', c.name, c.dataset, ...
@@ -87,37 +100,61 @@ for k = 1:numel(cases)
             [coefficients(1) / reynolds^coefficients(2), 1/3, 1.0e-4, 0.0];
     end
 
+    if isfield(c, 'cbtElevationFromRecord') && c.cbtElevationFromRecord
+        elevation = data.entryData.ZBO;
+        if ~isnumeric(elevation) || ~isscalar(elevation) || ~isfinite(elevation)
+            error('References:InvalidCase', ...
+                'Case %s: the record has no dryout elevation (ZBO)', c.name);
+        end
+        opts.model.CBTELEVATION = elevation;
+    end
+
     % Generate the inputs and run, with warnings off as the paper does.
     data.makeInputFiles(inputOptions = opts, ...
         ioDirectory = fullfile(workDir, c.name));
-    % The run (construction and solve) is under the profiler, and so is the
-    % export of the derived outputs, with its own record of executed lines.
-    warningState = warning;
-    warning('off', 'all');
-    try
-        [~, coverage] = runProfiled(@() runCaseOf(data, c.solver, inputSetOpts), root);
-    catch err
-        warning(warningState);
-        rethrow(err);
-    end
-    warning(warningState);
+    files = string({data.modelFilePath, data.optionsFilePath, ...
+        data.geometryFilePath, data.bcFilePath});
+    failures = runGuarded( ...
+        @() runAndExport(c, data, root, inputSetOpts, outputDir, files), ...
+        string(c.name), files, outputDir, options.ContinueOnError, failures);
+end
 
-    result = exportSolver(data.results, c);
-    result.coverage = coverage;
-    [derived, coverageDerived] = runProfiled(@() exportDerived(data.results), root);
-    result.derived = toPlain(derived);
-    result.coverageDerived = coverageDerived; %#ok<STRNU> saved below
-    save(fullfile(outputDir, c.name + ".mat"), "result", "-v7");
-
-    inputsDir = fullfile(outputDir, c.name + "-inputs");
-    mkdir(inputsDir);
-    for source = {data.modelFilePath, data.optionsFilePath, ...
-            data.geometryFilePath, data.bcFilePath}
-        copyfile(source{1}, inputsDir);
-    end
+if options.ContinueOnError
+    writeFailures(outputDir, failures);
+    fprintf('\n%d of %d cases failed (failures.json)\n', numel(failures), ...
+        numel(cases));
 end
 
 environmentRecord(fullfile(outputDir, "environment.json"));
+
+end
+
+function runAndExport(c, data, root, inputSetOpts, outputDir, files)
+% The run and the export of one case, the work that may fail.
+% The run (construction and solve) is under the profiler, and so is the
+% export of the derived outputs, with its own record of executed lines.
+warningState = warning;
+warning('off', 'all');
+try
+    [~, coverage] = runProfiled(@() runCaseOf(data, c.solver, inputSetOpts), root);
+catch err
+    warning(warningState);
+    rethrow(err);
+end
+warning(warningState);
+
+result = exportSolver(data.results, c);
+result.coverage = coverage;
+[derived, coverageDerived] = runProfiled(@() exportDerived(data.results), root);
+result.derived = toPlain(derived);
+result.coverageDerived = coverageDerived; %#ok<STRNU> saved below
+save(fullfile(outputDir, c.name + ".mat"), "result", "-v7");
+
+inputsDir = fullfile(outputDir, c.name + "-inputs");
+mkdir(inputsDir);
+for source = files
+    copyfile(source, inputsDir);
+end
 
 end
 

@@ -72,6 +72,9 @@ workflow** also runs one target and opens a pull request with the results:
 | `input-fixture` | `cases/input-fixture.json`: what OpenSTREAM's input classes and the MATLAB functions they rely on do with given input files and values, including invalid ones | `results/input-fixture/` |
 | `semantics-fixture` | `cases/semantics-fixture.json`: what MATLAB functions and the CoolProp fluid properties do with given arguments, including invalid ones | `results/semantics-fixture/` |
 | `extension` | `semantics-fixture` and then `input-fixture`, in one MATLAB session (if the first fails, the second still runs and the target then fails), plus the Windows job below | `results/semantics-fixture/`, `results/input-fixture/`, `results/input-fixture-windows/` |
+| `mixture-options` | `cases/mixture-options.json`: input-file cases for the Mixture solver: upstream's tutorial model entries TUTORIAL2A-G and 8A-C, the option sweep (one case for each member of every model and option kind, on a TUTORIAL1 variant heated past the boiling transition), two walls, and transient runs with each way of interpolating the boundary conditions in time. A failing case is recorded and the run goes on | `results/mixture-options/` |
+| `bennett1967` | `cases/bennett1967.json`: Bennett1967 records chosen by binning, each run with every post-transition wall heat transfer model (`BTHTM`), `CBT = ELEVATION` at the record's dryout elevation (`cbtElevationFromRecord`). A failing case is recorded and the run goes on | `results/bennett1967/` |
+| `groeneveld2019` | `cases/groeneveld2019.json`: Groeneveld2019 records chosen by binning, each run with the BIASI and the BEZRUKOV critical heat flux correlations. A failing case is recorded and the run goes on | `results/groeneveld2019/` |
 
 The workflow also writes `results/<target>/pip-freeze.txt` (the Python
 packages installed) and `results/<target>/runner-diagnostics.txt` (see
@@ -273,6 +276,23 @@ the class `Calibration.ProfilerSample`, which has lines that are known to run
 and lines that are known not to, is run under the profiler, and the file says
 which of its lines the profiler reported (statements, and signature, `case`,
 `else`, `catch`, `end` and continued-statement lines).
+
+## Cases that fail
+
+`runCases` and `runDatasetCases` stop at the first case that errors, unless they are
+called with `ContinueOnError = true`, as the targets `mixture-options`, `bennett1967`
+and `groeneveld2019` do. A case whose solve or export errors is then recorded and the
+run goes on: `failures.json` in the results folder lists, for each failed case, its
+`name`, the `identifier` and `message` of the error and `where` it was raised (an empty
+list `[]` when no case failed), and the input files of the failed case are copied to
+`<name>-inputs/`. The other cases are saved as usual, so the pull request of the run
+holds them. A mistake in the case list, in an input file or in an override still stops
+the run, because it is a mistake of the list and not a failure of upstream.
+
+A dataset case may have `cbtElevationFromRecord = true`: the run then sets the model
+key `CBTELEVATION` to the record's dryout elevation `ZBO` (the `runBecker` function of
+the database's NUTHOS-15 project does that), and errors when the record has none. The
+case must not also give `CBTELEVATION`.
 
 ## Licence and credit
 

@@ -1,0 +1,3558 @@
+[
+  {
+    "name": "upstream_tutorial2a_steady",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2A",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp"
+  },
+  {
+    "name": "upstream_tutorial2b_steady",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2B",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp"
+  },
+  {
+    "name": "upstream_tutorial2c_steady",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2C",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp"
+  },
+  {
+    "name": "upstream_tutorial2d_steady",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2D",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp"
+  },
+  {
+    "name": "upstream_tutorial2e_steady",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp"
+  },
+  {
+    "name": "upstream_tutorial2f_steady",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2F",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp"
+  },
+  {
+    "name": "upstream_tutorial2g_steady",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2G",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp"
+  },
+  {
+    "name": "upstream_tutorial8a_steady",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL8A",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp"
+  },
+  {
+    "name": "upstream_tutorial8b_steady",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL8B",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp"
+  },
+  {
+    "name": "upstream_tutorial8c_steady",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL8C",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp"
+  },
+  {
+    "name": "upstream_tutorial2d_transient",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2D",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial2_transient.inp"
+  },
+  {
+    "name": "sweep_base",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_properties_saturated",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "SATURATED",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_void_homogeneous",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_void_slip",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "SLIP",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_void_epri",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "EPRI",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_thermalnoneq_equilibrium",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "EQUILIBRIUM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_thermalnoneq_sahazuber",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "SAHAZUBER",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_thermalnoneq_epri",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "EPRI",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_thermalrelax_fourierx",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "FOURIERX",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_thermalrelax_timex",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "TIMEX",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_thermalrelax_void",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "VOID",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_thermalrelax_fourier",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "FOURIER",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_nearwallrelax_void",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "NEARWALLRELAX": "VOID"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_nearwallrelax_film",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "NEARWALLRELAX": "FILM"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_nearwallh_film",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "NEARWALLH": "FILM"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_oaf_wallis_simp",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "OAF": "WALLIS_SIMP"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_oaf_levitan",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "OAF": "LEVITAN"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_tpfm_slip",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "TPFM": "SLIP"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_tpfm_epri",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "TPFM": "EPRI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_tpkm_slip",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "TPKM": "SLIP",
+      "KLOC": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "KLOSS": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_tpkm_romie",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "TPKM": "ROMIE",
+      "KLOC": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "KLOSS": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_btmtm_vapor",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "BTMTM": "VAPOR"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_cbt_none",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "NONE",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_cbt_biasi",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "BIASI",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_cbt_bezrukov",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "BEZRUKOV",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_mfbt_constant",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "MFBT": "CONSTANT"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_sphtm_dittusboeltergen",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "SPHTM": "DITTUSBOELTERGEN"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_sphtm_siedertate",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "SPHTM": "SIEDERTATE"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_sphtm_gnielinski",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "SPHTM": "GNIELINSKI"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_bthtm_dougall",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "BTHTM": "DOUGALL"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_bthtm_bishop",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "BTHTM": "BISHOP"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_bthtm_moeck",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "BTHTM": "MOECK"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_bthtm_delorme",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "BTHTM": "DELORME"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_bthtm_condieiv",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "BTHTM": "CONDIEIV"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_inttransh_saturated",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "INTTRANSH": "SATURATED"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_mrmtimeint_euler",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8,
+      "MRMTIMEINT": "EULER"
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_tpkm_homogeneous_obstructed",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "KLOC": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "KLOSS": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_obstructions_spacer_and_relaxation",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "BIASI",
+      "CBTELEVATION": 2.5,
+      "KLOC": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "KLOSS": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "CBTKEFFECT": [
+        0.5,
+        -1.0
+      ],
+      "KTRELAX": [
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1
+      ]
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_imposed_relaxation_times",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "TIMEX",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "RELAXCONDT": [
+        1.0,
+        0.4,
+        0.2,
+        0.1,
+        0.1
+      ],
+      "RELAXEVAPT": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ]
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_near_wall_ratio",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "NEARWALLHRATIO": 0.8
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sweep_near_wall_equilibrium_at_onset",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "NEARWALLEQOAF": true
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "two_walls_unequal_steady",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "geometry": {
+      "PERIM": [
+        0.0138,
+        0.0138
+      ]
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          0.6,
+          0.1,
+          0.2,
+          0.1
+        ]
+      }
+    ]
+  },
+  {
+    "name": "two_walls_unequal_transient",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TSTEP": 0.25
+    },
+    "geometry": {
+      "PERIM": [
+        0.0138,
+        0.0138
+      ]
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          0.6,
+          0.1,
+          0.2,
+          0.1
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6200000.0,
+        "HIN": 1200000.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          0.6,
+          0.1,
+          0.2,
+          0.1
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          0.6,
+          0.1,
+          0.2,
+          0.1
+        ]
+      }
+    ]
+  },
+  {
+    "name": "two_walls_equal_transient",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TSTEP": 0.25
+    },
+    "geometry": {
+      "PERIM": [
+        0.0138,
+        0.0138
+      ]
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          0.5,
+          0.25,
+          0.5,
+          0.25
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6200000.0,
+        "HIN": 1200000.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          0.5,
+          0.25,
+          0.5,
+          0.25
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          0.5,
+          0.25,
+          0.5,
+          0.25
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_power_step_linear",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "linear",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_flow_ramp_linear",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "linear",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_power_step_nearest",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "nearest",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_flow_ramp_nearest",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "nearest",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_power_step_next",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "next",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_flow_ramp_next",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "next",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_power_step_previous",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "previous",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_flow_ramp_previous",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "previous",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_power_step_pchip",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "pchip",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_flow_ramp_pchip",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "pchip",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_power_step_cubic",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "cubic",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_flow_ramp_cubic",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "cubic",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_power_step_v5cubic",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "v5cubic",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_flow_ramp_v5cubic",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "v5cubic",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_power_step_makima",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "makima",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_flow_ramp_makima",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "makima",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_power_step_spline",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "spline",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 120000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "transient_flow_ramp_spline",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "options": {
+      "TIMEINTERP": "spline",
+      "TSTEP": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 2.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 4.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "TIME": 6.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.05,
+        "POWER": 87500.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  }
+]

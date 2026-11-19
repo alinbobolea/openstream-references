@@ -8,7 +8,9 @@ function validateDatasetCaseList(cases, databaseRoot)
 %     model and options, and case names are unique; the optional fields
 %     geometry and boundaryConditions, when present, are scalar structs of
 %     key-value pairs without an ID key and with values that
-%     formatInputValue accepts (References:InvalidCase);
+%     formatInputValue accepts (References:InvalidCase); the optional field
+%     cbtElevationFromRecord, when present, is true or false and is not true
+%     together with a model key CBTELEVATION (References:InvalidCase);
 %   - the dataset package folder DATABASEROOT/+<dataset> exists
 %     (References:MissingInput);
 %   - the solver is one of Mixture, TwoFluid, ThreeField, FourField
@@ -49,6 +51,21 @@ for k = 1:numel(cases)
     for kind = ["geometry" "boundaryConditions"]
         if isfield(cases{k}, kind)
             requireOverrideStruct(names(k), kind, cases{k}.(kind));
+        end
+    end
+end
+
+for k = 1:numel(cases)
+    if isfield(cases{k}, 'cbtElevationFromRecord')
+        value = cases{k}.cbtElevationFromRecord;
+        if ~islogical(value) || ~isscalar(value)
+            error('References:InvalidCase', ...
+                'Case %s: cbtElevationFromRecord must be true or false', names(k));
+        end
+        if value && isfield(cases{k}.model, 'CBTELEVATION')
+            error('References:InvalidCase', ...
+                ['Case %s: cbtElevationFromRecord and model.CBTELEVATION are ' ...
+                 'both given'], names(k));
         end
     end
 end

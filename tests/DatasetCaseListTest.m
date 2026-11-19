@@ -123,6 +123,38 @@ classdef DatasetCaseListTest < matlab.unittest.TestCase
             end
         end
 
+        function testCbtElevationFromRecordIsAcceptedAsTrueOrFalse(testCase)
+            for value = [true false]
+                c = testCase.validCase();
+                c.cbtElevationFromRecord = value;
+                testCase.verifyWarningFree( ...
+                    @() validateDatasetCaseList(c, testCase.root), char(string(value)));
+            end
+        end
+
+        function testCbtElevationFromRecordThatIsNotALogicalIsRejected(testCase)
+            for bad = {1, 'true', [true true], []}
+                c = testCase.validCase();
+                c.cbtElevationFromRecord = bad{1};
+                testCase.verifyError( ...
+                    @() validateDatasetCaseList(c, testCase.root), ...
+                    'References:InvalidCase');
+            end
+        end
+
+        function testCbtElevationFromRecordWithAnElevationOfTheCaseIsRejected(testCase)
+            c = testCase.validCase();
+            c.cbtElevationFromRecord = true;
+            c.model = struct('CBTELEVATION', 3.5);
+            testCase.verifyError( ...
+                @() validateDatasetCaseList(c, testCase.root), ...
+                'References:InvalidCase');
+            % The control: with the field false the elevation of the case is fine.
+            c.cbtElevationFromRecord = false;
+            testCase.verifyWarningFree( ...
+                @() validateDatasetCaseList(c, testCase.root));
+        end
+
     end
 
 end
