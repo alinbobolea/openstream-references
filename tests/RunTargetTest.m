@@ -62,6 +62,16 @@ classdef RunTargetTest < matlab.unittest.TestCase
             fclose(fid);
         end
 
+        function texts = argumentTexts(args)
+            % The recorded arguments ARGS (a cell row) as a string row. A
+            % flag such as ContinueOnError = true is a logical, which char
+            % cannot convert; string gives "1" for true.
+            texts = strings(1, numel(args));
+            for k = 1:numel(args)
+                texts(k) = string(args{k});
+            end
+        end
+
         function calls = expectedCalls(target)
             % The calls runTarget(TARGET) makes, in order: {function,
             % argument texts}.
@@ -90,15 +100,15 @@ classdef RunTargetTest < matlab.unittest.TestCase
                 case "mixture-options"
                     calls = {'runCases', ["cases/mixture-options.json" ...
                         "upstream/openstream" "results/mixture-options" ...
-                        "ContinueOnError" string(char(true))]};
+                        "ContinueOnError" string(true)]};
                 case "bennett1967"
                     calls = {'runDatasetCases', ["cases/bennett1967.json" ...
                         "upstream/openstream" "upstream/openstream-database" ...
-                        "results/bennett1967" "ContinueOnError" string(char(true))]};
+                        "results/bennett1967" "ContinueOnError" string(true)]};
                 case "groeneveld2019"
                     calls = {'runDatasetCases', ["cases/groeneveld2019.json" ...
                         "upstream/openstream" "upstream/openstream-database" ...
-                        "results/groeneveld2019" "ContinueOnError" string(char(true))]};
+                        "results/groeneveld2019" "ContinueOnError" string(true)]};
                 case "extension"
                     % Both fixtures in one session, the semantics one first.
                     calls = { ...
@@ -545,7 +555,7 @@ classdef RunTargetTest < matlab.unittest.TestCase
                 for k = 1:numel(calls)
                     testCase.verifyEqual(calls{k}{1}, expected{k, 1}, char(target));
                     testCase.verifyEqual( ...
-                        string(cellfun(@char, calls{k}{2}, 'UniformOutput', false)), ...
+                        RunTargetTest.argumentTexts(calls{k}{2}), ...
                         expected{k, 2}, sprintf('%s: %s', char(target), expected{k, 1}));
                 end
             end
