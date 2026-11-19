@@ -1,0 +1,51 @@
+ID         ! Identifier for the options configuration                       > DEFAULT
+AXIALINTERP! Method for interpolating axial power distribution              > NEXT
+TIMEINTERP ! Method for interpolating time-dependent boundary conditions    > LINEAR
+TSTEP      ! Time step size for transient simulations [s]                   > 0.10000000000
+MAXITER    ! Maximum number of inner iterations per time step               > 100.00000000000
+SSTSTEP    ! Time step size for steady-state iterations [s]                 > 1.00000000000
+SSMAXITER  ! Maximum number of steady-state iterations                      > 30.00000000000
+MRMTIMEINT ! Time integration for vapor mass/energy conservation equations  > EXPONENTIAL
+ERRORW     ! Mass flow rate error target in inner iterations [kg/s]         > 0.00100000000
+ERRORP     ! Pressure error target in inner iterations [Pa]                 > 0.10000000000
+ERRORH     ! Enthalpy error target in inner iterations [J/kg]               > 0.10000000000
+SSCONVW    ! Mass flow rate steady-state convergence criterion [kg/s]       > 0.00100000000
+SSCONVP    ! Pressure steady-state convergence criterion [Pa]               > 10.00000000000
+SSCONVH    ! Enthalpy steady-state convergence criterion [J/kg]             > 1.00000000000
+RELAXWM    ! Relaxation factor for the mixture mass conservation equation [-]> 1.00000000000
+RELAXPM    ! Relaxation factor for the mixture momentum conservation equation [-]> 0.80000000000
+RELAXHM    ! Relaxation factor for the mixture energy conservation equation [-]> 0.80000000000
+RELAXWV    ! Relaxation factor for the vapor  mass conservation equation [-]> 0.70000000000
+RELAXHV    ! Relaxation factor for the vapor  energy conservation equation [-]> 0.70000000000
+ERRORU     ! Velocity error target in inner iterations [m/s]                > 0.00010000000
+SSCONVU    ! Velocity steady-state convergence criterion [m/s]              > 0.00100000000
+RELAXWL    ! Relaxation factor for the liquid mass conservation equation [-]> 1.00000000000
+RELAXUL    ! Relaxation factor for the liquid momentum conservation equation [-]> 0.50000000000
+RELAXUV    ! Relaxation factor for the vapor  momentum conservation equation [-]> 0.50000000000
+RELAXHL    ! Relaxation factor for the liquid energy conservation equation [-]> 1.00000000000
+OAFEQUILMAXITER! Maximum number of iterations to find equilibrium at onset of annular flow> 100.00000000000
+OAFEQUILTOL! Target film mass flow rate tolerance to find equilibrium at onset of annular flow [kg/s/m]> 0.00010000000
+UDEQUILMAXITER! Maximum number of iterations to find droplet equilibrium velocity> 100.00000000000
+UDEQUILTOL ! Target drop force tolerance to find droplet equilibrium velocity [N/m^3]> 0.00100000000
+UFEQUILMAXITER! Maximum number of iterations to find film equilibrium velocity > 100.00000000000
+UFEQUILTOL ! Target film force tolerance to find film equilibrium velocity [N/m^3]> 0.00100000000
+ENTNUMMAXITER! Maximum number of iterations to find film entrainment number   > 100.00000000000
+ENTNUMTOL  ! Target velocity slip tolerance to find film entrainment number [-]> 0.01000000000
+ERRORWF    ! Film mass flow rate error target in inner iterations [kg/s/m]  > 0.00010000000
+ERRORUF    ! Film velocity error target in inner iterations [m/s]           > 0.01000000000
+ERRORUD    ! Drop velocity error target in inner iterations [m/s]           > 0.01000000000
+SSCONVWF   ! Film mass flow rate steady-state convergence criterion [kg/s/m]> 0.00010000000
+SSCONVUF   ! Film velocity steady-state convergence criterion [m/s]         > 0.01000000000
+SSCONVUD   ! Drop velocity steady-state convergence criterion [m/s]         > 0.01000000000
+RELAXWF    ! Relaxation factor for the film mass conservation equation [-]  > 0.50000000000
+RELAXUF    ! Relaxation factor for the film momentum conservation equation [-]> 0.20000000000
+RELAXUD    ! Relaxation factor for the drop momentum conservation equation [-]> 0.20000000000
+ERRORFW    ! Wave frequency error target in inner iterations [Hz]           > 0.10000000000
+SSCONVFW   ! Wave frequency steady-state convergence criterion [Hz]         > 0.10000000000
+RELAXWB    ! Relaxation factor for the base mass conservation equation [-]  > 0.50000000000
+RELAXUB    ! Relaxation factor for the base momentum conservation equation [-]> 0.20000000000
+RELAXWW    ! Relaxation factor for the wave mass conservation equation [-]  > 0.50000000000
+RELAXUW    ! Relaxation factor for the wave momentum conservation equation [-]> 0.20000000000
+RELAXFW    ! Relaxation factor for the wave number conservation equation [-]> 0.50000000000
+END
+

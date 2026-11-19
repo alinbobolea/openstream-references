@@ -1,0 +1,7 @@
+ID         ! Channel identifier                                             > GROENEVELD2019
+LENGTH     ! Axial length [m]                                               > 3.04800000000
+AREA       ! Coolant area [m^2]                                             > 0.00006822200
+PERIM      ! Perimeter(s) of the channel walls [m]                          > 0.02928000000
+ANGLE      ! Inclination angle from vertical [deg]                          > 0.00000000000
+END
+
