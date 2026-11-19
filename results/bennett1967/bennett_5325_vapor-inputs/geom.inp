@@ -1,0 +1,7 @@
+ID         ! Channel identifier                                             > BENNETT1967
+LENGTH     ! Axial length [m]                                               > 5.56260000000
+AREA       ! Coolant area [m^2]                                             > 0.00012516000
+PERIM      ! Perimeter(s) of the channel walls [m]                          > 0.03965900000
+ANGLE      ! Inclination angle from vertical [deg]                          > 0.00000000000
+END
+

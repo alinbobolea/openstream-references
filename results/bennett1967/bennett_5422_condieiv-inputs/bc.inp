@@ -1,0 +1,9 @@
+TIME       ! Simulation time [s]                                            > 0.00000000000
+PRESSURE   ! System pressure [Pa]                                           > 6894760.00000000000
+HIN        ! Inlet enthalpy [J/kg]                                          > 1183132.58480000007
+MFLOW      ! Mass flow rate [kg/s]                                          > 0.32422000000
+POWER      ! Total power [W]                                                > 228000.00000000000
+WMESH      ! Node size distribution [m]                                     > 1.82880000000 1.82880000000
+WPOWER     ! Relative power distribution(s) [-]                             > 1.00000000000 1.00000000000
+END
+
