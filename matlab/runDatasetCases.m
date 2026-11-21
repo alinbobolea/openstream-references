@@ -148,6 +148,9 @@ result.coverage = coverage;
 [derived, coverageDerived] = runProfiled(@() exportDerived(data.results), root);
 result.derived = toPlain(derived);
 result.coverageDerived = coverageDerived; %#ok<STRNU> saved below
+[probes, coverageProbes] = runProfiled(@() exportProbes(data.results), root);
+result.probes = toPlain(probes);
+result.coverageProbes = coverageProbes; %#ok<STRNU> saved below
 save(fullfile(outputDir, c.name + ".mat"), "result", "-v7");
 
 inputsDir = fullfile(outputDir, c.name + "-inputs");

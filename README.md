@@ -75,6 +75,7 @@ workflow** also runs one target and opens a pull request with the results:
 | `mixture-options` | `cases/mixture-options.json`: input-file cases for the Mixture solver: upstream's tutorial model entries TUTORIAL2A-G and 8A-C, the option sweep (one case for each member of every model and option kind, on a TUTORIAL1 variant heated past the boiling transition), two walls, and transient runs with each way of interpolating the boundary conditions in time. A failing case is recorded and the run goes on | `results/mixture-options/` |
 | `bennett1967` | `cases/bennett1967.json`: Bennett1967 records chosen by binning, each run with every post-transition wall heat transfer model (`BTHTM`), `CBT = ELEVATION` at the record's dryout elevation (`cbtElevationFromRecord`). A failing case is recorded and the run goes on | `results/bennett1967/` |
 | `groeneveld2019` | `cases/groeneveld2019.json`: Groeneveld2019 records chosen by binning, each run with the BIASI and the BEZRUKOV critical heat flux correlations. A failing case is recorded and the run goes on | `results/groeneveld2019/` |
+| `mixture-options-2` | `cases/mixture-options-2.json`: a second round of input-file cases for the Mixture solver: EPRI two-phase friction below 4.137 MPa, the Saha-Zuber vapor quality at low powers, and two walls past the boiling transition with each post-transition heat transfer model. A failing case is recorded and the run goes on | `results/mixture-options-2/` |
 
 The workflow also writes `results/<target>/pip-freeze.txt` (the Python
 packages installed) and `results/<target>/runner-diagnostics.txt` (see
@@ -270,17 +271,18 @@ Besides the fields above, each result of `runCases` and `runDatasetCases` has:
   `matlab/exportDerived.m`.
 - `coverageDerived`: the same record as `coverage`, for the calls of the
   derived-output export.
+- `probes` and `coverageProbes`: for a Mixture solver, four direct calls that no solve makes (a `Mixture` built with its two arguments, `CHF` at some nodes, `copyFlowProperties` with `all = true`, and a copy into an object that is not on the mesh, whose error is the answer) and the lines they executed; the rules are in the header comment of `matlab/exportProbes.m`. An empty struct for the other solvers.
 
 `runCases` also saves `profiler-calibration.mat` (variable `calibration`):
 the class `Calibration.ProfilerSample`, which has lines that are known to run
 and lines that are known not to, is run under the profiler, and the file says
-which of its lines the profiler reported (statements, and signature, `case`,
+which of its lines the profiler reported (statements, and signature, `import`, `case`,
 `else`, `catch`, `end` and continued-statement lines).
 
 ## Cases that fail
 
 `runCases` and `runDatasetCases` stop at the first case that errors, unless they are
-called with `ContinueOnError = true`, as the targets `mixture-options`, `bennett1967`
+called with `ContinueOnError = true`, as the targets `mixture-options`, `mixture-options-2`, `bennett1967`
 and `groeneveld2019` do. A case whose solve or export errors is then recorded and the
 run goes on: `failures.json` in the results folder lists, for each failed case, its
 `name`, the `identifier` and `message` of the error and `where` it was raised (an empty

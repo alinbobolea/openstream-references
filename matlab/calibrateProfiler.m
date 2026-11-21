@@ -18,7 +18,7 @@ function calibration = calibrateProfiler()
 %
 %   The result states what the profiler reports for classdef methods, for the
 %   statement lines of an if, a switch, a for loop and a try, for the lines of
-%   a statement continued with "...", and for signature, else, case, otherwise,
+%   a statement continued with "...", and for signature, import, else, case, otherwise,
 %   catch and end lines, so that the lines an upstream file requires of a case
 %   are decided from MATLAB's own output.
 

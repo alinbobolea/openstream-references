@@ -26,8 +26,13 @@ function runTarget(target)
 %     ContinueOnError;
 %   - "groeneveld2019": the dataset cases of cases/groeneveld2019.json
 %     (critical heat flux points with the BIASI and BEZRUKOV correlations),
-%     run with ContinueOnError. The three last targets record a failing case
-%     in failures.json and go on (see runCases).
+%     run with ContinueOnError;
+%   - "mixture-options-2": the cases of cases/mixture-options-2.json, a second
+%     round for the Mixture solver (EPRI friction at a low pressure, the
+%     Saha-Zuber vapor quality at low powers, two walls past the boiling
+%     transition with each post-transition model), run with ContinueOnError.
+%     The four last targets record a failing case in failures.json and go on
+%     (see runCases).
 %
 %   The accepted names are listed by knownTargets, and every one of them has
 %   a case below. Any other target errors with References:UnknownTarget,
@@ -75,6 +80,9 @@ switch target
         runDatasetCases("cases/groeneveld2019.json", "upstream/openstream", ...
             "upstream/openstream-database", "results/groeneveld2019", ...
             ContinueOnError = true);
+    case "mixture-options-2"
+        runCases("cases/mixture-options-2.json", "upstream/openstream", ...
+            "results/mixture-options-2", ContinueOnError = true);
 end
 
 end

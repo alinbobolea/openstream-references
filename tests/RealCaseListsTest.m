@@ -10,6 +10,7 @@ classdef RealCaseListsTest < matlab.unittest.TestCase
 
     properties
         mixture
+        mixture2
         bennett
         groeneveld
     end
@@ -27,6 +28,7 @@ classdef RealCaseListsTest < matlab.unittest.TestCase
             read = @(file) RealCaseListsTest.asCells(jsondecode( ...
                 fileread(fullfile(here, '..', 'cases', file))));
             testCase.mixture = read('mixture-options.json');
+            testCase.mixture2 = read('mixture-options-2.json');
             testCase.bennett = read('bennett1967.json');
             testCase.groeneveld = read('groeneveld2019.json');
         end
@@ -83,6 +85,13 @@ classdef RealCaseListsTest < matlab.unittest.TestCase
             end
         end
 
+        function c = namedCase(list, name)
+            names = RealCaseListsTest.namesOf(list);
+            index = find(names == string(name));
+            assert(isscalar(index), 'no case named %s', char(string(name)));
+            c = list{index};
+        end
+
         function values = valuesOfKind(list, kind)
             % The strings that LIST gives the key KIND, in the model or in the
             % options of any case.
@@ -102,9 +111,18 @@ classdef RealCaseListsTest < matlab.unittest.TestCase
     methods (Test)
 
         function testNamesAreValidAndUnique(testCase)
-            for list = {testCase.mixture, testCase.bennett, testCase.groeneveld}
+            for list = {testCase.mixture, testCase.mixture2, testCase.bennett, ...
+                    testCase.groeneveld}
                 testCase.verifyEmpty(RealCaseListsTest.nameProblems(list{1}));
             end
+        end
+
+        function testNoNameIsInTwoOfTheMixtureLists(testCase)
+            % The cases of both lists are frozen under their names: one name,
+            % one case.
+            both = [RealCaseListsTest.namesOf(testCase.mixture), ...
+                RealCaseListsTest.namesOf(testCase.mixture2)];
+            testCase.verifyEqual(numel(unique(both)), numel(both));
         end
 
         function testNameCheckSeesARepeatedAndABadName(testCase)
@@ -131,12 +149,58 @@ classdef RealCaseListsTest < matlab.unittest.TestCase
             % applied by the runner; here the overrides are written out.
             required = {'name', 'solver', 'modelFile', 'modelID', 'optionsFile', ...
                 'optionsID', 'geometryFile', 'geometryID', 'bcFile'};
-            for k = 1:numel(testCase.mixture)
-                c = testCase.mixture{k};
-                testCase.verifyTrue(all(isfield(c, required)), c.name);
-                if isfield(c, 'boundaryConditions')
-                    boundaryConditionLines(c.boundaryConditions);
+            for list = {testCase.mixture, testCase.mixture2}
+                for k = 1:numel(list{1})
+                    c = list{1}{k};
+                    testCase.verifyTrue(all(isfield(c, required)), c.name);
+                    if isfield(c, 'boundaryConditions')
+                        boundaryConditionLines(c.boundaryConditions);
+                    end
                 end
+            end
+        end
+
+        function testTheSecondRoundHasTheElevenAgreedCases(testCase)
+            names = RealCaseListsTest.namesOf(testCase.mixture2);
+            expected = ["round2_tpfm_epri_3mpa" "round2_tpfm_epri_2mpa" ...
+                "round2_sahazuber_20kw" "round2_sahazuber_40kw" ...
+                "round2_sahazuber_60kw" "round2_two_walls_vapor" ...
+                "round2_two_walls_dougall" "round2_two_walls_bishop" ...
+                "round2_two_walls_moeck" "round2_two_walls_delorme" ...
+                "round2_two_walls_condieiv"];
+            testCase.verifyEqual(sort(names), sort(expected));
+        end
+
+        function testTheEpriCasesAreBelowTheLowPressureLimitOfTheCorrelation(testCase)
+            % Upstream's EPRI multiplier changes below 4.137 MPa.
+            for name = ["round2_tpfm_epri_3mpa" "round2_tpfm_epri_2mpa"]
+                c = RealCaseListsTest.namedCase(testCase.mixture2, name);
+                testCase.verifyEqual(string(c.model.TPFM), "EPRI", char(name));
+                testCase.verifyLessThan(c.boundaryConditions(1).PRESSURE, 4.137e6, ...
+                    char(name));
+            end
+        end
+
+        function testTheSahaZuberCasesHaveLowPowers(testCase)
+            powers = [20 40 60] * 1000;
+            for k = 1:3
+                name = sprintf('round2_sahazuber_%dkw', powers(k) / 1000);
+                c = RealCaseListsTest.namedCase(testCase.mixture2, name);
+                testCase.verifyEqual(string(c.model.THERMALNONEQ), "SAHAZUBER", name);
+                testCase.verifyEqual(c.boundaryConditions(1).POWER, powers(k), name);
+            end
+        end
+
+        function testTheTwoWallCasesRunEveryPostTransitionModelOnTwoWalls(testCase)
+            members = ["VAPOR" "DOUGALL" "BISHOP" "MOECK" "DELORME" "CONDIEIV"];
+            for member = members
+                c = RealCaseListsTest.namedCase(testCase.mixture2, ...
+                    "round2_two_walls_" + lower(member));
+                testCase.verifyEqual(string(c.model.BTHTM), member);
+                testCase.verifyEqual(string(c.model.CBT), "ELEVATION", char(member));
+                testCase.verifyNumElements(c.geometry.PERIM, 2, char(member));
+                testCase.verifyEqual(c.boundaryConditions(1).WPOWER(:).', ...
+                    [0.6 0.1 0.2 0.1], 'AbsTol', 1e-15);
             end
         end
 

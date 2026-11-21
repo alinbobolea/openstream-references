@@ -7,6 +7,6 @@ function names = knownTargets()
 
 names = ["tutorial1" "nuthos15-bartolomey" "input-fixture" "semantics-fixture" ...
     "extension" "input-fixture-windows" "mixture-options" "bennett1967" ...
-    "groeneveld2019"];
+    "groeneveld2019" "mixture-options-2"];
 
 end

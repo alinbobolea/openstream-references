@@ -109,6 +109,10 @@ classdef RunTargetTest < matlab.unittest.TestCase
                     calls = {'runDatasetCases', ["cases/groeneveld2019.json" ...
                         "upstream/openstream" "upstream/openstream-database" ...
                         "results/groeneveld2019" "ContinueOnError" string(true)]};
+                case "mixture-options-2"
+                    calls = {'runCases', ["cases/mixture-options-2.json" ...
+                        "upstream/openstream" "results/mixture-options-2" ...
+                        "ContinueOnError" string(true)]};
                 case "extension"
                     % Both fixtures in one session, the semantics one first.
                     calls = { ...
@@ -349,7 +353,8 @@ classdef RunTargetTest < matlab.unittest.TestCase
             testCase.verifyEqual(numel(unique(names)), numel(names));
             for name = ["tutorial1" "nuthos15-bartolomey" "input-fixture" ...
                     "semantics-fixture" "extension" "input-fixture-windows" ...
-                    "mixture-options" "bennett1967" "groeneveld2019"]
+                    "mixture-options" "bennett1967" "groeneveld2019" ...
+                    "mixture-options-2"]
                 testCase.verifyTrue(ismember(name, names), char(name));
             end
         end
@@ -358,7 +363,7 @@ classdef RunTargetTest < matlab.unittest.TestCase
             names = knownTargets();
             testCase.verifyTrue(ismember("extension", names));
             testCase.verifyTrue(ismember("input-fixture-windows", names));
-            testCase.verifyEqual(numel(names), 9);
+            testCase.verifyEqual(numel(names), 10);
         end
 
         function testExtensionTargetCallsBothExportersInOrder(testCase)

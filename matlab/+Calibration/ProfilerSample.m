@@ -9,7 +9,7 @@ classdef ProfilerSample
     %                  sample (see runSample in calibrateProfiler);
     %   - [never:KIND] a statement that does not run;
     %   - [label:KIND] a line of a kind whose treatment by the profiler is
-    %                  being recorded (a signature, case, else, end, a line of
+    %                  being recorded (a signature, case, else, end, import, a line of
     %                  a continued statement). Nothing is known about it in
     %                  advance.
     %
@@ -69,6 +69,7 @@ classdef ProfilerSample
         end                                                                % [label:end-of-function]
 
         function out = withLocalCall(obj)                                  % [label:method-signature]
+            import Calibration.ProfilerSample                              % [label:import]
             out = localDouble(obj.scale);                                  % [ran:statement-calling-local-function]
         end                                                                % [label:end-of-function]
 

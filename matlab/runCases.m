@@ -102,6 +102,11 @@ result.coverage = coverage;
 [derived, coverageDerived] = runProfiled(@() exportDerived(solver), root);
 result.derived = toPlain(derived);
 result.coverageDerived = coverageDerived; %#ok<STRNU> saved below
+% The direct calls of the Mixture classes that the solve never makes, with their
+% own record of executed lines (an empty record for the other solvers).
+[probes, coverageProbes] = runProfiled(@() exportProbes(solver), root);
+result.probes = toPlain(probes);
+result.coverageProbes = coverageProbes; %#ok<STRNU> saved below
 save(fullfile(outputDir, c.name + ".mat"), "result", "-v7");
 end
 

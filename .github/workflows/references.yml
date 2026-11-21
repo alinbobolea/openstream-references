@@ -17,6 +17,7 @@ on:
           - mixture-options
           - bennett1967
           - groeneveld2019
+          - mixture-options-2
         default: tutorial1
 
 jobs:
