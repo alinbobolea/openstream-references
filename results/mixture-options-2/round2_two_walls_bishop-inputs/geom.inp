@@ -1,0 +1,6 @@
+ID        ! Channel ID                     > ROUND2_TWO_WALLS_BISHOP
+LENGTH    ! Axial length [m]               > 5.5
+AREA      ! Coolant area [m^2]             > 6.0821e-05
+PERIM     ! Perimeters [m]                 > 0.0138 0.0138
+ANGLE     ! Angle [rad]                    > 0
+END

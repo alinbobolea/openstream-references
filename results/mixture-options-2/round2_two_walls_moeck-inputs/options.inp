@@ -1,0 +1,5 @@
+ID            ! Options ID                                                 > ROUND2_TWO_WALLS_MOECK
+SSCONVP      ! > 10
+RELAXPM      ! > 0.80000000000000004
+RELAXHM      ! > 0.80000000000000004
+END
