@@ -7,6 +7,6 @@
   "coolpropWrapperCommit": "a7c40902ff66faf6ed668986398bb1b9faa16e13",
   "runnerImage": "ubuntu24 20261116.376.1",
   "computer": "GLNXA64",
-  "cpuModel": "AMD EPYC 9V74 80-Core Processor",
-  "created": "2026-11-21T11:29:52Z"
+  "cpuModel": "AMD EPYC 7763 64-Core Processor",
+  "created": "2026-11-21T14:16:24Z"
 }
