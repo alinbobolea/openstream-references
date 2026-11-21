@@ -1,0 +1,14 @@
+
+ID            ! Model ID                                                   > ROUND2_TWO_WALLS_VAPOR
+NNODES        ! Number of axial nodes                                      > 100
+FLUID         ! Fluid ID                                                   > WATER
+VOID          ! Void fraction model                                        > BESTION
+THERMALNONEQ  ! Thermal non-equilibrium model                              > MRM
+PROPERTIES   ! > PSYSTEM
+WBOILINGN    ! > 1
+WBOILINGXSUB ! > -0.20000000000000001
+THERMALRELAX ! > HOMOGENEOUS
+CBT          ! > ELEVATION
+CBTELEVATION ! > 2.5
+BTHTM        ! > VAPOR
+END
