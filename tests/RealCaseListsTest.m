@@ -160,15 +160,46 @@ classdef RealCaseListsTest < matlab.unittest.TestCase
             end
         end
 
-        function testTheSecondRoundHasTheElevenAgreedCases(testCase)
+        function testTheSecondRoundHasTheNineteenAgreedCases(testCase)
             names = RealCaseListsTest.namesOf(testCase.mixture2);
             expected = ["round2_tpfm_epri_3mpa" "round2_tpfm_epri_2mpa" ...
                 "round2_sahazuber_20kw" "round2_sahazuber_40kw" ...
                 "round2_sahazuber_60kw" "round2_two_walls_vapor" ...
                 "round2_two_walls_dougall" "round2_two_walls_bishop" ...
                 "round2_two_walls_moeck" "round2_two_walls_delorme" ...
-                "round2_two_walls_condieiv"];
+                "round2_two_walls_condieiv" ...
+                "round2_thermalnoneq_epri_2kw" "round2_thermalnoneq_epri_4kw" ...
+                "round2_two_walls_biasi_vapor" "round2_two_walls_biasi_dougall" ...
+                "round2_two_walls_biasi_bishop" "round2_two_walls_biasi_moeck" ...
+                "round2_two_walls_biasi_delorme" "round2_two_walls_biasi_condieiv"];
             testCase.verifyEqual(sort(names), sort(expected));
+        end
+
+        function testTheEpriVaporQualityCasesKeepTheOutletSubcooled(testCase)
+            % The EPRI vapor quality (THERMALNONEQ = EPRI) has a branch for a
+            % channel in which no node passes the bubble-departure quality; it
+            % needs a power below about 5 kW at this flow and inlet enthalpy.
+            for kilowatts = [2 4]
+                name = sprintf('round2_thermalnoneq_epri_%dkw', kilowatts);
+                c = RealCaseListsTest.namedCase(testCase.mixture2, name);
+                testCase.verifyEqual(string(c.model.THERMALNONEQ), "EPRI", name);
+                testCase.verifyEqual(c.boundaryConditions(1).POWER, kilowatts * 1000, name);
+            end
+        end
+
+        function testTheTwoWallBiasiCasesFlagTheTransitionFromTheHeatFlux(testCase)
+            % CBT = ELEVATION fails with two walls in upstream (CBT_CALC builds
+            % one column), so these cases use the heat-flux flag.
+            members = ["VAPOR" "DOUGALL" "BISHOP" "MOECK" "DELORME" "CONDIEIV"];
+            for member = members
+                c = RealCaseListsTest.namedCase(testCase.mixture2, ...
+                    "round2_two_walls_biasi_" + lower(member));
+                testCase.verifyEqual(string(c.model.BTHTM), member);
+                testCase.verifyEqual(string(c.model.CBT), "BIASI", char(member));
+                testCase.verifyNumElements(c.geometry.PERIM, 2, char(member));
+                testCase.verifyEqual(c.boundaryConditions(1).WPOWER(:).', ...
+                    [0.6 0.1 0.2 0.1], 'AbsTol', 1e-15);
+            end
         end
 
         function testTheEpriCasesAreBelowTheLowPressureLimitOfTheCorrelation(testCase)
