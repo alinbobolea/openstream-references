@@ -925,5 +925,354 @@
         ]
       }
     ]
+  },
+  {
+    "name": "round3_euler_relax_0p25",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8,
+      "MRMTIMEINT": "EULER",
+      "RELAXWV": 0.25,
+      "RELAXHV": 0.25
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "round3_euler_relax_0p2",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8,
+      "MRMTIMEINT": "EULER",
+      "RELAXWV": 0.2,
+      "RELAXHV": 0.2
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "round3_fourier_coefficients",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "FOURIER",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "RELAXCONDFOCOEF": [
+        5e-05,
+        500000.0,
+        0.5,
+        0.5
+      ],
+      "RELAXEVAPFOCOEF": [
+        0.0001,
+        500000.0,
+        1.0,
+        1.0,
+        0.005,
+        2.0
+      ]
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "round3_void_quality_exponent",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "VOID",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "RELAXCONDCOEF": [
+        0.0001,
+        0.3333333333333333,
+        0.05,
+        0.5
+      ],
+      "RELAXEVAPCOEF": [
+        0.0001,
+        0.3333333333333333,
+        1e-05,
+        0.5
+      ]
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "round3_fourierx_table",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "FOURIERX",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "RELAXCONDFO": [
+        0.0002,
+        0.00015,
+        0.0001,
+        5e-05,
+        5e-05
+      ],
+      "RELAXEVAPFO": [
+        0.0001,
+        8e-05,
+        5e-05,
+        3e-05,
+        3e-05
+      ]
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "round3_nearwallh_film_low_flux",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "BESTION",
+      "THERMALNONEQ": "MRM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "NEARWALLH": "FILM"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.045,
+        "POWER": 150000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "round3_romie_dry_outlet",
+    "solver": "Solvers.Mixture.MixtureSolver",
+    "modelFile": "models.inp",
+    "modelID": "TUTORIAL2E",
+    "optionsFile": "options.inp",
+    "optionsID": "DEFAULT",
+    "geometryFile": "geom.inp",
+    "geometryID": "TUTORIAL1",
+    "bcFile": "tutorial1.inp",
+    "model": {
+      "PROPERTIES": "PSYSTEM",
+      "WBOILINGN": 1,
+      "WBOILINGXSUB": -0.2,
+      "VOID": "HOMOGENEOUS",
+      "THERMALNONEQ": "EQUILIBRIUM",
+      "THERMALRELAX": "HOMOGENEOUS",
+      "CBT": "ELEVATION",
+      "CBTELEVATION": 2.5,
+      "TPKM": "ROMIE"
+    },
+    "options": {
+      "SSCONVP": 10,
+      "RELAXPM": 0.8,
+      "RELAXHM": 0.8
+    },
+    "boundaryConditions": [
+      {
+        "TIME": 0.0,
+        "PRESSURE": 6000000.0,
+        "HIN": 1139400.0,
+        "MFLOW": 0.07,
+        "POWER": 400000.0,
+        "WMESH": [
+          3.5,
+          2.0
+        ],
+        "WPOWER": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
   }
 ]

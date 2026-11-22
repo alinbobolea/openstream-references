@@ -160,7 +160,7 @@ classdef RealCaseListsTest < matlab.unittest.TestCase
             end
         end
 
-        function testTheSecondRoundHasTheNineteenAgreedCases(testCase)
+        function testTheSecondTargetHasTheTwentySixAgreedCases(testCase)
             names = RealCaseListsTest.namesOf(testCase.mixture2);
             expected = ["round2_tpfm_epri_3mpa" "round2_tpfm_epri_2mpa" ...
                 "round2_sahazuber_20kw" "round2_sahazuber_40kw" ...
@@ -171,8 +171,64 @@ classdef RealCaseListsTest < matlab.unittest.TestCase
                 "round2_thermalnoneq_epri_2kw" "round2_thermalnoneq_epri_4kw" ...
                 "round2_two_walls_biasi_vapor" "round2_two_walls_biasi_dougall" ...
                 "round2_two_walls_biasi_bishop" "round2_two_walls_biasi_moeck" ...
-                "round2_two_walls_biasi_delorme" "round2_two_walls_biasi_condieiv"];
+                "round2_two_walls_biasi_delorme" "round2_two_walls_biasi_condieiv" ...
+                "round3_euler_relax_0p25" "round3_euler_relax_0p2" ...
+                "round3_fourier_coefficients" "round3_void_quality_exponent" ...
+                "round3_fourierx_table" "round3_nearwallh_film_low_flux" ...
+                "round3_romie_dry_outlet"];
             testCase.verifyEqual(sort(names), sort(expected));
+        end
+
+        function testTheEulerCasesRelaxTheVaporMoreThanTheDefault(testCase)
+            % The Euler integration does not converge with the default vapor
+            % relaxation of 0.7 (the first Euler case stopped not converged);
+            % these two converge.
+            for relax = [0.25 0.2]
+                name = "round3_euler_relax_" + strrep(num2str(relax), '.', 'p');
+                c = RealCaseListsTest.namedCase(testCase.mixture2, name);
+                testCase.verifyEqual(string(c.options.MRMTIMEINT), "EULER", char(name));
+                testCase.verifyEqual(c.options.RELAXWV, relax, char(name));
+                testCase.verifyEqual(c.options.RELAXHV, relax, char(name));
+            end
+        end
+
+        function testTheFourierCasesUseCoefficientsThatTheDefaultsHide(testCase)
+            c = RealCaseListsTest.namedCase(testCase.mixture2, ...
+                "round3_fourier_coefficients");
+            testCase.verifyEqual(string(c.model.THERMALRELAX), "FOURIER");
+            condCoef = c.model.RELAXCONDFOCOEF;
+            evapCoef = c.model.RELAXEVAPFOCOEF;
+            testCase.verifyNotEqual(condCoef(3), condCoef(4), 'the exponents differ');
+            testCase.verifyNotEqual(evapCoef(3), evapCoef(4), 'the exponents differ');
+            testCase.verifyGreaterThan(condCoef(3), 0);
+            testCase.verifyLessThan(evapCoef(5), 0.00881463768115942, ...
+                'the reference diameter is below the hydraulic diameter');
+            v = RealCaseListsTest.namedCase(testCase.mixture2, ...
+                "round3_void_quality_exponent");
+            testCase.verifyEqual(string(v.model.THERMALRELAX), "VOID");
+            testCase.verifyEqual(v.model.RELAXCONDCOEF(4), 0.5);
+            testCase.verifyEqual(v.model.RELAXEVAPCOEF(4), 0.5);
+            x = RealCaseListsTest.namedCase(testCase.mixture2, ...
+                "round3_fourierx_table");
+            testCase.verifyEqual(string(x.model.THERMALRELAX), "FOURIERX");
+            testCase.verifyGreaterThan(numel(unique(x.model.RELAXCONDFO)), 1);
+            testCase.verifyGreaterThan(numel(unique(x.model.RELAXEVAPFO)), 1);
+        end
+
+        function testTheLowFluxAndTheDryOutletCasesReachTheirBounds(testCase)
+            % The film enthalpy ratio is 1 up to a mass flux of 900 kg/m2/s; the flow
+            % area of the tutorial channel is about 6.1e-5 m2, so 0.045 kg/s is
+            % about 740.
+            c = RealCaseListsTest.namedCase(testCase.mixture2, ...
+                "round3_nearwallh_film_low_flux");
+            testCase.verifyEqual(string(c.model.NEARWALLH), "FILM");
+            testCase.verifyEqual(c.boundaryConditions(1).MFLOW, 0.045);
+            d = RealCaseListsTest.namedCase(testCase.mixture2, ...
+                "round3_romie_dry_outlet");
+            testCase.verifyEqual(string(d.model.TPKM), "ROMIE");
+            testCase.verifyEqual(string(d.model.VOID), "HOMOGENEOUS");
+            testCase.verifyEqual(string(d.model.THERMALNONEQ), "EQUILIBRIUM");
+            testCase.verifyEqual(d.boundaryConditions(1).POWER, 400000);
         end
 
         function testTheEpriVaporQualityCasesKeepTheOutletSubcooled(testCase)
