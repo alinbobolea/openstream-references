@@ -1,5 +1,5 @@
 runner diagnostics (plain Python, no MATLAB)
-HOME for this run: a throwaway folder (/tmp/diagnostics-home-f6yrfmv0)
+HOME for this run: a throwaway folder (/tmp/diagnostics-home-b9kw1ycp)
 
 == python
 python: 3.13.18 (main, Oct 26 2026, 14:20:56) [GCC 13.3.0]
@@ -47,8 +47,8 @@ RECORD hash equals the hash of the file: True
 == wheel of the installed version
 pip 26.3 from /opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/pip (python 3.13)
 pip download, last lines:
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.8/10.8 MB 35.4 MB/s  0:00:00
-  Saved /tmp/wheel-o9jpj33v/coolprop-8.0.0-cp312-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.8/10.8 MB 198.6 MB/s  0:00:00
+  Saved /tmp/wheel-cza9eyin/coolprop-8.0.0-cp312-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
   Successfully downloaded CoolProp
 downloaded wheel: coolprop-8.0.0-cp312-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl  sha256 8ca1aefd1873b14f3e7e9122a08a32fe8c62ac03a1fc4496512a31a3bba8f611
 
@@ -162,7 +162,7 @@ TMAX: 0x1.f400000000000p+10  2000.0
 PTRIPLE: 0x1.31d3d0840ab88p+9  611.6548008968684
 
 == tables
-tables built by this run, under /tmp/diagnostics-home-f6yrfmv0/.CoolProp (relative path, bytes, sha256):
+tables built by this run, under /tmp/diagnostics-home-b9kw1ycp/.CoolProp (relative path, bytes, sha256):
   Tables/HelmholtzEOSBackend(Water[1.0000000000])/phase_envelope.bin.z  149  7bdd0157aca94092fb995bd11d26098cb51ee41efcb309371498624c54b32aae
   Tables/HelmholtzEOSBackend(Water[1.0000000000])/pure_saturation.bin.z  198215  16704fc3b19621009c58c84c9983f7e6c42d14127d89bf5dfa65e37026df92b8
   Tables/HelmholtzEOSBackend(Water[1.0000000000])/single_phase_logpT.bin.z  8745100  b0f47628fd8b36b9b97babf7802950538d79c0718aabc414a58daf247e8c207a
